@@ -288,19 +288,27 @@ blockquote{
 
 .editorial-photo{
   position:absolute;
-  top:58px;
+  top:72px;
   right:0;
-  width:50%;
+  width:47%;
   z-index:1;
 }
 
 .editorial-photo img{
   width:100%;
-  height:600px;
+  height:550px;
   object-fit:cover;
   object-position:center 40%;
   border-radius:22px;
   display:block;
+}
+
+.photo-caption{
+  margin-top:10px;
+  text-align:right;
+  font-size:.78rem;
+  letter-spacing:.08em;
+  color:var(--muted);
 }
 
 @media(max-width:900px){
