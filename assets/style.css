@@ -335,3 +335,279 @@ blockquote{
     height:460px;
   }
 }
+/* ========================================
+   Rafael Editorial Typography
+======================================== */
+
+body{
+  font-family:
+    "Noto Sans TC",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+}
+
+.brand{
+  font-family:"Cormorant Garamond", serif;
+  font-size:1.28rem;
+  font-weight:600;
+  letter-spacing:.035em;
+}
+
+.hero-kicker,
+.card .eyebrow{
+  font-family:"Cormorant Garamond", serif;
+  font-size:.92rem;
+  font-weight:600;
+  letter-spacing:.22em;
+}
+
+.hero h1,
+.section h2,
+.article-head h1,
+.article-body h2{
+  font-family:
+    "Cormorant Garamond",
+    "Noto Serif TC",
+    serif;
+}
+
+.hero h1{
+  font-weight:600;
+  letter-spacing:-.025em;
+}
+
+.section h2,
+.article-body h2{
+  font-weight:600;
+}
+
+.nav-links,
+.hero p,
+.hero-cta,
+.article-body,
+.card p{
+  font-family:"Noto Sans TC", sans-serif;
+}
+
+
+/* ========================================
+   Homepage Editorial Carousel
+======================================== */
+
+.hero-carousel{
+  position:absolute;
+  top:72px;
+  right:0;
+  width:47%;
+  height:550px;
+  z-index:1;
+  outline:none;
+}
+
+.carousel-viewport{
+  position:relative;
+  width:100%;
+  height:100%;
+  overflow:hidden;
+  border-radius:22px;
+  background:#e8e3dc;
+}
+
+.carousel-slide{
+  position:absolute;
+  inset:0;
+  margin:0;
+  opacity:0;
+  visibility:hidden;
+  transition:
+    opacity .85s ease,
+    visibility .85s ease;
+}
+
+.carousel-slide.is-active{
+  opacity:1;
+  visibility:visible;
+}
+
+.carousel-slide::after{
+  content:"";
+  position:absolute;
+  inset:45% 0 0;
+  background:linear-gradient(
+    to bottom,
+    transparent,
+    rgba(15,18,20,.55)
+  );
+  pointer-events:none;
+}
+
+.carousel-slide img{
+  width:100%;
+  height:100%;
+  display:block;
+  object-fit:cover;
+}
+
+/* 各張照片的裁切位置 */
+.carousel-slide:nth-child(1) img{
+  object-position:center 50%;
+}
+
+.carousel-slide:nth-child(2) img{
+  object-position:center 68%;
+}
+
+.carousel-slide:nth-child(3) img{
+  object-position:center 58%;
+}
+
+.carousel-slide:nth-child(4) img{
+  object-position:center 65%;
+}
+
+.carousel-slide:nth-child(5) img{
+  object-position:center 64%;
+}
+
+
+/* IG 風格城市名稱 */
+.carousel-location{
+  position:absolute;
+  left:25px;
+  bottom:24px;
+  z-index:2;
+  display:flex;
+  flex-direction:column;
+  color:#fff;
+  text-shadow:0 2px 15px rgba(0,0,0,.38);
+}
+
+.carousel-city{
+  font-family:"Cormorant Garamond", serif;
+  font-size:clamp(2.1rem, 4vw, 3.3rem);
+  font-weight:500;
+  line-height:.9;
+  letter-spacing:.13em;
+}
+
+.carousel-country{
+  margin-top:10px;
+  margin-left:3px;
+  font-family:"Cormorant Garamond", serif;
+  font-size:.76rem;
+  font-weight:500;
+  letter-spacing:.34em;
+}
+
+
+/* 左右箭頭 */
+.carousel-arrow{
+  position:absolute;
+  top:50%;
+  z-index:4;
+  width:42px;
+  height:42px;
+  padding:0;
+  border:1px solid rgba(255,255,255,.65);
+  border-radius:50%;
+  color:#fff;
+  background:rgba(20,20,20,.3);
+  backdrop-filter:blur(5px);
+  font-size:1.15rem;
+  cursor:pointer;
+  transform:translateY(-50%);
+  transition:
+    background .2s ease,
+    transform .2s ease;
+}
+
+.carousel-arrow:hover{
+  background:rgba(20,20,20,.62);
+  transform:translateY(-50%) scale(1.05);
+}
+
+.carousel-prev{
+  left:14px;
+}
+
+.carousel-next{
+  right:14px;
+}
+
+
+/* 下方輪播圓點 */
+.carousel-dots{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:8px;
+  margin-top:14px;
+}
+
+.carousel-dot{
+  width:7px;
+  height:7px;
+  padding:0;
+  border:0;
+  border-radius:999px;
+  background:#b9b3aa;
+  cursor:pointer;
+  transition:
+    width .25s ease,
+    background .25s ease;
+}
+
+.carousel-dot.is-active{
+  width:26px;
+  background:var(--accent);
+}
+
+
+/* 平板與手機 */
+@media(max-width:900px){
+  .hero-carousel{
+    position:relative;
+    top:auto;
+    right:auto;
+    width:100%;
+    height:500px;
+    margin-top:34px;
+    margin-bottom:32px;
+  }
+
+  .carousel-city{
+    font-size:2.8rem;
+  }
+}
+
+@media(max-width:640px){
+  .hero-carousel{
+    height:440px;
+  }
+
+  .carousel-location{
+    left:20px;
+    bottom:20px;
+  }
+
+  .carousel-city{
+    font-size:2.35rem;
+  }
+
+  .carousel-country{
+    font-size:.7rem;
+  }
+
+  .carousel-arrow{
+    width:38px;
+    height:38px;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  .carousel-slide{
+    transition:none;
+  }
+}
