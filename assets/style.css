@@ -611,3 +611,24 @@ body{
     transition:none;
   }
 }
+/* 首頁說明文字：避免與輪播照片重疊 */
+.hero-copy p{
+  position:relative;
+  z-index:3;
+  color:#5b5955;
+  line-height:1.9;
+}
+
+@media(min-width:901px){
+  .hero-copy p{
+    width:45%;
+    max-width:540px;
+  }
+}
+
+@media(max-width:900px){
+  .hero-copy p{
+    width:100%;
+    max-width:680px;
+  }
+}
