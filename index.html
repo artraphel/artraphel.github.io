@@ -10,6 +10,12 @@
   <meta property="og:title" content="Rafael｜歐洲自由行旅遊筆記">
   <meta property="og:description" content="歐洲自由行、城市旅行與第一手旅行經驗。">
   <meta property="og:url" content="https://artraphel.github.io/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link
+  href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;600;700&family=Noto+Serif+TC:wght@500;600;700&display=swap"
+  rel="stylesheet">
   <link rel="stylesheet" href="/assets/style.css">
 </head>
 <body>
@@ -40,12 +46,103 @@
     </a>
   </div>
 
-<div class="editorial-photo">
-  <img
-    src="/assets/images/rafael-europe-travel-porto.jpg"
-    alt="Rafael 在葡萄牙波多自由行，背景為杜羅河與波多城市景觀">
+<div
+  class="hero-carousel"
+  tabindex="0"
+  aria-label="Rafael 的歐洲城市旅行照片輪播">
 
-  <div class="photo-caption">Porto, Portugal</div>
+  <div class="carousel-viewport">
+
+    <!-- 01 新波多 -->
+    <figure class="carousel-slide is-active" aria-hidden="false">
+      <img
+        src="/assets/images/rafael-porto-douro-river.jpg.jpg"
+        alt="Rafael 在葡萄牙波多杜羅河畔旅行，背景為波多歷史城區與傳統船隻"
+        fetchpriority="high"
+        decoding="async">
+
+      <figcaption class="carousel-location">
+        <span class="carousel-city">PORTO</span>
+        <span class="carousel-country">PORTUGAL</span>
+      </figcaption>
+    </figure>
+
+    <!-- 02 昂蒂布海邊漫步 -->
+    <figure class="carousel-slide" aria-hidden="true">
+      <img
+        src="/assets/images/rafael-antibes-seaside-walk.jpg.jpg"
+        alt="Rafael 漫步法國昂蒂布蔚藍海岸，遠眺地中海與舊城"
+        loading="lazy"
+        decoding="async">
+
+      <figcaption class="carousel-location">
+        <span class="carousel-city">ANTIBES</span>
+        <span class="carousel-country">FRANCE</span>
+      </figcaption>
+    </figure>
+
+    <!-- 03 威尼斯碼頭 -->
+    <figure class="carousel-slide" aria-hidden="true">
+      <img
+        src="/assets/images/rafael-venice-gondola-pier.jpg.jpg"
+        alt="Rafael 在義大利威尼斯貢多拉碼頭旅行，背景為潟湖與教堂"
+        loading="lazy"
+        decoding="async">
+
+      <figcaption class="carousel-location">
+        <span class="carousel-city">VENICE</span>
+        <span class="carousel-country">ITALY</span>
+      </figcaption>
+    </figure>
+
+    <!-- 04 昂蒂布城牆 -->
+    <figure class="carousel-slide" aria-hidden="true">
+      <img
+        src="/assets/images/rafael-antibes-old-town-coast.jpg.jpg"
+        alt="Rafael 在法國昂蒂布舊城海岸旅行，背景為城牆與地中海"
+        loading="lazy"
+        decoding="async">
+
+      <figcaption class="carousel-location">
+        <span class="carousel-city">ANTIBES</span>
+        <span class="carousel-country">CÔTE D’AZUR</span>
+      </figcaption>
+    </figure>
+
+    <!-- 05 塞維亞 -->
+    <figure class="carousel-slide" aria-hidden="true">
+      <img
+        src="/assets/images/rafael-seville-plaza-espana.jpg.jpg"
+        alt="Rafael 在西班牙塞維亞西班牙廣場欣賞彩繪磁磚建築"
+        loading="lazy"
+        decoding="async">
+
+      <figcaption class="carousel-location">
+        <span class="carousel-city">SEVILLE</span>
+        <span class="carousel-country">SPAIN</span>
+      </figcaption>
+    </figure>
+
+  </div>
+
+  <button
+    class="carousel-arrow carousel-prev"
+    type="button"
+    aria-label="上一張照片">←</button>
+
+  <button
+    class="carousel-arrow carousel-next"
+    type="button"
+    aria-label="下一張照片">→</button>
+
+  <div class="carousel-dots" aria-label="選擇輪播照片">
+    <button class="carousel-dot is-active" type="button" aria-label="顯示第 1 張照片"></button>
+    <button class="carousel-dot" type="button" aria-label="顯示第 2 張照片"></button>
+    <button class="carousel-dot" type="button" aria-label="顯示第 3 張照片"></button>
+    <button class="carousel-dot" type="button" aria-label="顯示第 4 張照片"></button>
+    <button class="carousel-dot" type="button" aria-label="顯示第 5 張照片"></button>
+  </div>
+
 </div>
 </section>
   </main>
@@ -56,5 +153,117 @@
       <span>Europe · City Travel · First-hand Experience</span>
     </div>
   </footer>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const carousel = document.querySelector(".hero-carousel");
+
+    if (!carousel) return;
+
+    const slides = Array.from(
+      carousel.querySelectorAll(".carousel-slide")
+    );
+
+    const dots = Array.from(
+      carousel.querySelectorAll(".carousel-dot")
+    );
+
+    const previousButton = carousel.querySelector(".carousel-prev");
+    const nextButton = carousel.querySelector(".carousel-next");
+
+    const reduceMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+    let currentSlide = 0;
+    let autoplayTimer;
+
+    function showSlide(index) {
+      currentSlide = (index + slides.length) % slides.length;
+
+      slides.forEach(function (slide, slideIndex) {
+        const isActive = slideIndex === currentSlide;
+
+        slide.classList.toggle("is-active", isActive);
+        slide.setAttribute("aria-hidden", String(!isActive));
+      });
+
+      dots.forEach(function (dot, dotIndex) {
+        const isActive = dotIndex === currentSlide;
+
+        dot.classList.toggle("is-active", isActive);
+
+        if (isActive) {
+          dot.setAttribute("aria-current", "true");
+        } else {
+          dot.removeAttribute("aria-current");
+        }
+      });
+    }
+
+    function stopAutoplay() {
+      window.clearInterval(autoplayTimer);
+    }
+
+    function startAutoplay() {
+      stopAutoplay();
+
+      if (reduceMotion) return;
+
+      autoplayTimer = window.setInterval(function () {
+        showSlide(currentSlide + 1);
+      }, 6000);
+    }
+
+    function restartAutoplay() {
+      stopAutoplay();
+      startAutoplay();
+    }
+
+    previousButton.addEventListener("click", function () {
+      showSlide(currentSlide - 1);
+      restartAutoplay();
+    });
+
+    nextButton.addEventListener("click", function () {
+      showSlide(currentSlide + 1);
+      restartAutoplay();
+    });
+
+    dots.forEach(function (dot, index) {
+      dot.addEventListener("click", function () {
+        showSlide(index);
+        restartAutoplay();
+      });
+    });
+
+    carousel.addEventListener("keydown", function (event) {
+      if (event.key === "ArrowLeft") {
+        showSlide(currentSlide - 1);
+        restartAutoplay();
+      }
+
+      if (event.key === "ArrowRight") {
+        showSlide(currentSlide + 1);
+        restartAutoplay();
+      }
+    });
+
+    carousel.addEventListener("mouseenter", stopAutoplay);
+    carousel.addEventListener("mouseleave", startAutoplay);
+    carousel.addEventListener("focusin", stopAutoplay);
+    carousel.addEventListener("focusout", startAutoplay);
+
+    document.addEventListener("visibilitychange", function () {
+      if (document.hidden) {
+        stopAutoplay();
+      } else {
+        startAutoplay();
+      }
+    });
+
+    showSlide(0);
+    startAutoplay();
+  });
+</script>
 </body>
 </html>
