@@ -129,6 +129,60 @@ img{max-width:100%;display:block}
   line-height:1.35;
 }
 .card p{color:var(--muted);margin:0}
+.latest-section{
+  padding-top:76px;
+  border-top:1px solid var(--line);
+}
+.section-heading{
+  display:grid;
+  grid-template-columns:minmax(0,1.15fr) minmax(260px,.65fr);
+  align-items:end;
+  gap:42px;
+  margin-bottom:30px;
+}
+.section-heading h2{margin:.35rem 0 0}
+.section-heading p{
+  margin:0 0 6px;
+  color:var(--muted);
+}
+.article-card{
+  position:relative;
+  min-height:310px;
+  display:flex;
+  flex-direction:column;
+  overflow:hidden;
+}
+.article-card::after{
+  content:"";
+  position:absolute;
+  right:-52px;
+  bottom:-72px;
+  width:180px;
+  height:180px;
+  border:1px solid var(--line);
+  border-radius:50%;
+}
+.card-number{
+  align-self:flex-end;
+  margin-bottom:22px;
+  font-family:"Cormorant Garamond",serif;
+  font-size:2.7rem;
+  line-height:1;
+  color:#d7d0c7;
+}
+.article-card h3{
+  max-width:520px;
+  font-family:"Noto Serif TC",serif;
+  font-size:1.35rem;
+}
+.card-link{
+  margin-top:auto;
+  padding-top:24px;
+  color:var(--accent);
+  font-weight:700;
+  position:relative;
+  z-index:1;
+}
 
 .article-wrap{
   max-width:var(--reading);
@@ -185,6 +239,10 @@ img{max-width:100%;display:block}
   margin-bottom:.4rem;
 }
 .article-body p{margin:0 0 1rem}
+.article-body a{
+  color:var(--accent);
+  text-underline-offset:3px;
+}
 .article-body ul{padding-left:1.35rem}
 .answer-first{
   font-weight:700;
@@ -254,16 +312,15 @@ blockquote{
   flex-wrap:wrap;
 }
 @media(max-width:640px){
-  .nav{align-items:flex-start;padding-top:16px;padding-bottom:16px}
-  .nav-links{justify-content:flex-end}
+  .nav{align-items:center;padding-top:13px;padding-bottom:13px}
+  .nav-links{justify-content:flex-end;gap:11px}
+  .nav-links a{font-size:.86rem}
   .hero{padding-top:46px}
   th,td{min-width:130px}
 }
-@media(max-width:640px){
-  .nav{align-items:flex-start;padding-top:16px;padding-bottom:16px}
-  .nav-links{justify-content:flex-end}
-  .hero{padding-top:46px}
-  th,td{min-width:130px}
+@media(max-width:760px){
+  .section-heading{grid-template-columns:1fr;gap:12px}
+  .article-card{min-height:280px}
 }
 
 /* 下面開始新增 editorial hero */
