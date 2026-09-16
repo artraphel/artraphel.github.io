@@ -2,10 +2,14 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://artraphel.github.io/</loc>
-    <lastmod>2026-09-11</lastmod>
+    <lastmod>2026-09-16</lastmod>
   </url>
   <url>
     <loc>https://artraphel.github.io/italy/venice-travel-guide/</loc>
     <lastmod>2026-09-11</lastmod>
+  </url>
+  <url>
+    <loc>https://artraphel.github.io/portugal/lisbon-pastel-de-nata/</loc>
+    <lastmod>2026-09-16</lastmod>
   </url>
 </urlset>

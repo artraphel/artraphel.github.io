@@ -1,0 +1,691 @@
+
+:root{
+  --bg:#f7f5f1;
+  --surface:#ffffff;
+  --text:#1f2328;
+  --muted:#666b73;
+  --line:#e3ded6;
+  --accent:#6d4c41;
+  --accent-soft:#eee4dc;
+  --max:1120px;
+  --reading:760px;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+  line-height:1.8;
+}
+a{color:inherit}
+img{max-width:100%;display:block}
+.site-header{
+  background:rgba(247,245,241,.96);
+  border-bottom:1px solid var(--line);
+  position:sticky;
+  top:0;
+  z-index:20;
+  backdrop-filter:blur(10px);
+}
+.nav{
+  max-width:var(--max);
+  margin:auto;
+  min-height:64px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 22px;
+  gap:20px;
+}
+.brand{
+  text-decoration:none;
+  font-weight:800;
+  letter-spacing:.02em;
+}
+.nav-links{
+  display:flex;
+  gap:18px;
+  flex-wrap:wrap;
+}
+.nav-links a{
+  text-decoration:none;
+  color:var(--muted);
+  font-size:.95rem;
+}
+.nav-links a:hover{color:var(--text)}
+
+.hero{
+  max-width:var(--max);
+  margin:0 auto;
+  padding:72px 22px 48px;
+}
+.hero-kicker{
+  text-transform:uppercase;
+  letter-spacing:.13em;
+  font-size:.78rem;
+  color:var(--accent);
+  font-weight:800;
+}
+.hero h1{
+  font-family:Georgia,"Times New Roman","Noto Serif TC",serif;
+  font-size:clamp(2.4rem,7vw,5.6rem);
+  line-height:1.03;
+  margin:.4rem 0 1rem;
+  max-width:960px;
+}
+.hero p{
+  max-width:760px;
+  color:var(--muted);
+  font-size:1.08rem;
+}
+.hero-cta{
+  display:inline-flex;
+  margin-top:16px;
+  padding:10px 16px;
+  border:1px solid var(--text);
+  border-radius:999px;
+  text-decoration:none;
+  font-weight:700;
+}
+.section{
+  max-width:var(--max);
+  margin:auto;
+  padding:42px 22px 72px;
+}
+.section h2{
+  font-family:Georgia,"Times New Roman","Noto Serif TC",serif;
+  font-size:clamp(1.7rem,4vw,2.7rem);
+  line-height:1.25;
+}
+.card-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:20px;
+}
+.card{
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:24px;
+  text-decoration:none;
+  transition:transform .2s ease, box-shadow .2s ease;
+}
+.card:hover{
+  transform:translateY(-3px);
+  box-shadow:0 12px 30px rgba(0,0,0,.06);
+}
+.card .eyebrow{
+  color:var(--accent);
+  font-size:.82rem;
+  font-weight:800;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+.card h3{
+  margin:.4rem 0 .5rem;
+  line-height:1.35;
+}
+.card p{color:var(--muted);margin:0}
+.latest-section{
+  padding-top:76px;
+  border-top:1px solid var(--line);
+}
+.section-heading{
+  display:grid;
+  grid-template-columns:minmax(0,1.15fr) minmax(260px,.65fr);
+  align-items:end;
+  gap:42px;
+  margin-bottom:30px;
+}
+.section-heading h2{margin:.35rem 0 0}
+.section-heading p{
+  margin:0 0 6px;
+  color:var(--muted);
+}
+.article-card{
+  position:relative;
+  min-height:310px;
+  display:flex;
+  flex-direction:column;
+  overflow:hidden;
+}
+.article-card::after{
+  content:"";
+  position:absolute;
+  right:-52px;
+  bottom:-72px;
+  width:180px;
+  height:180px;
+  border:1px solid var(--line);
+  border-radius:50%;
+}
+.card-number{
+  align-self:flex-end;
+  margin-bottom:22px;
+  font-family:"Cormorant Garamond",serif;
+  font-size:2.7rem;
+  line-height:1;
+  color:#d7d0c7;
+}
+.article-card h3{
+  max-width:520px;
+  font-family:"Noto Serif TC",serif;
+  font-size:1.35rem;
+}
+.card-link{
+  margin-top:auto;
+  padding-top:24px;
+  color:var(--accent);
+  font-weight:700;
+  position:relative;
+  z-index:1;
+}
+
+.article-wrap{
+  max-width:var(--reading);
+  margin:auto;
+  padding:54px 22px 96px;
+}
+.breadcrumbs{
+  font-size:.9rem;
+  color:var(--muted);
+  margin-bottom:18px;
+}
+.breadcrumbs a{color:var(--muted)}
+.article-head h1{
+  font-family:Georgia,"Times New Roman","Noto Serif TC",serif;
+  font-size:clamp(2.2rem,6vw,4rem);
+  line-height:1.15;
+  margin:.3rem 0 1rem;
+}
+.article-deck{
+  font-size:1.08rem;
+  color:var(--muted);
+}
+.meta{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px 18px;
+  color:var(--muted);
+  font-size:.9rem;
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+  padding:14px 0;
+  margin:22px 0 36px;
+}
+.toc{
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:18px 20px;
+  margin:0 0 34px;
+}
+.toc strong{display:block;margin-bottom:8px}
+.toc ul{margin:0;padding-left:20px}
+.article-body h2{
+  font-family:Georgia,"Times New Roman","Noto Serif TC",serif;
+  font-size:1.8rem;
+  line-height:1.35;
+  margin-top:2.8rem;
+  margin-bottom:.7rem;
+}
+.article-body h3{
+  font-size:1.22rem;
+  line-height:1.45;
+  margin-top:1.8rem;
+  margin-bottom:.4rem;
+}
+.article-body p{margin:0 0 1rem}
+.article-body a{
+  color:var(--accent);
+  text-underline-offset:3px;
+}
+.article-body ul{padding-left:1.35rem}
+.answer-first{
+  font-weight:700;
+  font-size:1.03rem;
+}
+.table-wrap{
+  overflow-x:auto;
+  margin:18px 0 26px;
+}
+table{
+  width:100%;
+  border-collapse:collapse;
+  background:var(--surface);
+  border:1px solid var(--line);
+}
+th,td{
+  padding:12px 14px;
+  border-bottom:1px solid var(--line);
+  text-align:left;
+  vertical-align:top;
+}
+th{
+  background:var(--accent-soft);
+  font-weight:800;
+}
+blockquote{
+  margin:18px 0;
+  padding:14px 18px;
+  border-left:4px solid var(--accent);
+  background:var(--accent-soft);
+}
+.note{
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:16px 18px;
+  margin:18px 0;
+}
+.faq details{
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:12px;
+  padding:14px 16px;
+  margin:10px 0;
+}
+.faq summary{
+  cursor:pointer;
+  font-weight:800;
+}
+.article-footer{
+  margin-top:52px;
+  padding-top:24px;
+  border-top:1px solid var(--line);
+}
+.site-footer{
+  border-top:1px solid var(--line);
+  padding:26px 22px;
+  color:var(--muted);
+  font-size:.9rem;
+}
+.site-footer-inner{
+  max-width:var(--max);
+  margin:auto;
+  display:flex;
+  justify-content:space-between;
+  gap:20px;
+  flex-wrap:wrap;
+}
+@media(max-width:640px){
+  .nav{align-items:center;padding-top:13px;padding-bottom:13px}
+  .nav-links{justify-content:flex-end;gap:11px}
+  .nav-links a{font-size:.86rem}
+  .hero{padding-top:46px}
+  th,td{min-width:130px}
+}
+@media(max-width:760px){
+  .section-heading{grid-template-columns:1fr;gap:12px}
+  .article-card{min-height:280px}
+}
+
+/* 下面開始新增 editorial hero */
+.editorial-hero{
+  position:relative;
+  min-height:680px;
+  padding-top:72px;
+  padding-bottom:90px;
+}
+
+.editorial-hero .hero-copy{
+  position:relative;
+  z-index:2;
+  width:64%;
+  max-width:780px;
+}
+
+.editorial-hero .hero-copy h1{
+  position:relative;
+  z-index:3;
+}
+
+.editorial-photo{
+  position:absolute;
+  top:72px;
+  right:0;
+  width:47%;
+  z-index:1;
+}
+
+.editorial-photo img{
+  width:100%;
+  height:550px;
+  object-fit:cover;
+  object-position:center 40%;
+  border-radius:22px;
+  display:block;
+}
+
+.photo-caption{
+  margin-top:10px;
+  text-align:right;
+  font-size:.78rem;
+  letter-spacing:.08em;
+  color:var(--muted);
+}
+
+@media(max-width:900px){
+  .editorial-hero{
+    min-height:auto;
+    padding-top:48px;
+    padding-bottom:55px;
+  }
+
+  .editorial-hero .hero-copy{
+    width:100%;
+    max-width:none;
+  }
+
+  .editorial-photo{
+    position:relative;
+    top:auto;
+    right:auto;
+    width:100%;
+    margin-top:32px;
+  }
+
+  .editorial-photo img{
+    height:460px;
+  }
+}
+/* ========================================
+   Rafael Editorial Typography
+======================================== */
+
+body{
+  font-family:
+    "Noto Sans TC",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+}
+
+.brand{
+  font-family:"Cormorant Garamond", serif;
+  font-size:1.28rem;
+  font-weight:600;
+  letter-spacing:.035em;
+}
+
+.hero-kicker,
+.card .eyebrow{
+  font-family:"Cormorant Garamond", serif;
+  font-size:.92rem;
+  font-weight:600;
+  letter-spacing:.22em;
+}
+
+.hero h1,
+.section h2,
+.article-head h1,
+.article-body h2{
+  font-family:
+    "Cormorant Garamond",
+    "Noto Serif TC",
+    serif;
+}
+
+.hero h1{
+  font-weight:600;
+  letter-spacing:-.025em;
+}
+
+.section h2,
+.article-body h2{
+  font-weight:600;
+}
+
+.nav-links,
+.hero p,
+.hero-cta,
+.article-body,
+.card p{
+  font-family:"Noto Sans TC", sans-serif;
+}
+
+
+/* ========================================
+   Homepage Editorial Carousel
+======================================== */
+
+.hero-carousel{
+  position:absolute;
+  top:72px;
+  right:0;
+  width:47%;
+  height:550px;
+  z-index:1;
+  outline:none;
+}
+
+.carousel-viewport{
+  position:relative;
+  width:100%;
+  height:100%;
+  overflow:hidden;
+  border-radius:22px;
+  background:#e8e3dc;
+}
+
+.carousel-slide{
+  position:absolute;
+  inset:0;
+  margin:0;
+  opacity:0;
+  visibility:hidden;
+  transition:
+    opacity .85s ease,
+    visibility .85s ease;
+}
+
+.carousel-slide.is-active{
+  opacity:1;
+  visibility:visible;
+}
+
+.carousel-slide::after{
+  content:"";
+  position:absolute;
+  inset:45% 0 0;
+  background:linear-gradient(
+    to bottom,
+    transparent,
+    rgba(15,18,20,.55)
+  );
+  pointer-events:none;
+}
+
+.carousel-slide img{
+  width:100%;
+  height:100%;
+  display:block;
+  object-fit:cover;
+}
+
+/* 各張照片的裁切位置 */
+.carousel-slide:nth-child(1) img{
+  object-position:center 50%;
+}
+
+.carousel-slide:nth-child(2) img{
+  object-position:center 68%;
+}
+
+.carousel-slide:nth-child(3) img{
+  object-position:center 58%;
+}
+
+.carousel-slide:nth-child(4) img{
+  object-position:center 65%;
+}
+
+.carousel-slide:nth-child(5) img{
+  object-position:center 64%;
+}
+
+
+/* IG 風格城市名稱 */
+.carousel-location{
+  position:absolute;
+  left:25px;
+  bottom:24px;
+  z-index:2;
+  display:flex;
+  flex-direction:column;
+  color:#fff;
+  text-shadow:0 2px 15px rgba(0,0,0,.38);
+}
+
+.carousel-city{
+  font-family:"Cormorant Garamond", serif;
+  font-size:clamp(2.1rem, 4vw, 3.3rem);
+  font-weight:500;
+  line-height:.9;
+  letter-spacing:.13em;
+}
+
+.carousel-country{
+  margin-top:10px;
+  margin-left:3px;
+  font-family:"Cormorant Garamond", serif;
+  font-size:.76rem;
+  font-weight:500;
+  letter-spacing:.34em;
+}
+
+
+/* 左右箭頭 */
+.carousel-arrow{
+  position:absolute;
+  top:50%;
+  z-index:4;
+  width:42px;
+  height:42px;
+  padding:0;
+  border:1px solid rgba(255,255,255,.65);
+  border-radius:50%;
+  color:#fff;
+  background:rgba(20,20,20,.3);
+  backdrop-filter:blur(5px);
+  font-size:1.15rem;
+  cursor:pointer;
+  transform:translateY(-50%);
+  transition:
+    background .2s ease,
+    transform .2s ease;
+}
+
+.carousel-arrow:hover{
+  background:rgba(20,20,20,.62);
+  transform:translateY(-50%) scale(1.05);
+}
+
+.carousel-prev{
+  left:14px;
+}
+
+.carousel-next{
+  right:14px;
+}
+
+
+/* 下方輪播圓點 */
+.carousel-dots{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:8px;
+  margin-top:14px;
+}
+
+.carousel-dot{
+  width:7px;
+  height:7px;
+  padding:0;
+  border:0;
+  border-radius:999px;
+  background:#b9b3aa;
+  cursor:pointer;
+  transition:
+    width .25s ease,
+    background .25s ease;
+}
+
+.carousel-dot.is-active{
+  width:26px;
+  background:var(--accent);
+}
+
+
+/* 平板與手機 */
+@media(max-width:900px){
+  .hero-carousel{
+    position:relative;
+    top:auto;
+    right:auto;
+    width:100%;
+    height:500px;
+    margin-top:34px;
+    margin-bottom:32px;
+  }
+
+  .carousel-city{
+    font-size:2.8rem;
+  }
+}
+
+@media(max-width:640px){
+  .hero-carousel{
+    height:440px;
+  }
+
+  .carousel-location{
+    left:20px;
+    bottom:20px;
+  }
+
+  .carousel-city{
+    font-size:2.35rem;
+  }
+
+  .carousel-country{
+    font-size:.7rem;
+  }
+
+  .carousel-arrow{
+    width:38px;
+    height:38px;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  .carousel-slide{
+    transition:none;
+  }
+}
+/* 首頁說明文字：避免與輪播照片重疊 */
+.hero-copy p{
+  position:relative;
+  z-index:3;
+  color:#5b5955;
+  line-height:1.9;
+}
+
+@media(min-width:901px){
+  .hero-copy p{
+    width:45%;
+    max-width:540px;
+  }
+}
+
+@media(max-width:900px){
+  .hero-copy p{
+    width:100%;
+    max-width:680px;
+  }
+}
