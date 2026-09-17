@@ -689,3 +689,239 @@ body{
     max-width:680px;
   }
 }
+
+/* ========================================
+   Lisbon Pastel de Nata Article
+======================================== */
+
+.lisbon-pastel-article{
+  --lisbon-blue:#315f78;
+  --lisbon-blue-soft:#edf3f5;
+  --custard:#c88a3d;
+  --custard-soft:#f5ead8;
+  background-color:#f8f5ef;
+  background-image:
+    radial-gradient(circle at 7% 17%, transparent 0 108px, rgba(200,138,61,.08) 109px 111px, transparent 112px),
+    radial-gradient(circle at 94% 54%, transparent 0 142px, rgba(49,95,120,.065) 143px 145px, transparent 146px),
+    linear-gradient(45deg, rgba(49,95,120,.018) 25%, transparent 25%, transparent 75%, rgba(49,95,120,.018) 75%),
+    linear-gradient(45deg, rgba(49,95,120,.018) 25%, transparent 25%, transparent 75%, rgba(49,95,120,.018) 75%);
+  background-position:0 0, 0 0, 0 0, 24px 24px;
+  background-size:auto, auto, 48px 48px, 48px 48px;
+}
+
+.lisbon-pastel-article .article-head{
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+  margin:0 -34px 34px;
+  padding:38px 34px 28px;
+  border:1px solid rgba(109,76,65,.12);
+  border-radius:24px;
+  background:
+    linear-gradient(135deg, rgba(255,255,255,.88), rgba(245,234,216,.68));
+  box-shadow:0 18px 45px rgba(73,55,39,.055);
+}
+
+.lisbon-pastel-article .article-head::before,
+.lisbon-pastel-article .article-head::after{
+  content:"";
+  position:absolute;
+  z-index:-1;
+  border-radius:50%;
+  pointer-events:none;
+}
+
+.lisbon-pastel-article .article-head::before{
+  width:280px;
+  height:280px;
+  right:-120px;
+  top:-145px;
+  border:1px solid rgba(200,138,61,.2);
+  box-shadow:
+    0 0 0 24px rgba(200,138,61,.035),
+    0 0 0 52px rgba(200,138,61,.025);
+}
+
+.lisbon-pastel-article .article-head::after{
+  width:120px;
+  height:120px;
+  right:70px;
+  bottom:-86px;
+  border:1px solid rgba(49,95,120,.16);
+  box-shadow:0 0 0 20px rgba(49,95,120,.025);
+}
+
+.lisbon-pastel-article .article-head .meta{
+  margin-bottom:0;
+}
+
+.article-hero-media,
+.article-photo{
+  margin:28px 0;
+}
+
+.article-hero-media{
+  position:relative;
+  overflow:hidden;
+  margin:0 0 38px;
+  border-radius:22px;
+  background:#ded4c8;
+  box-shadow:0 18px 42px rgba(49,37,28,.11);
+}
+
+.article-hero-media::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.28);
+  border-radius:inherit;
+}
+
+.article-hero-media img{
+  width:100%;
+  height:clamp(440px, 68vw, 590px);
+  object-fit:cover;
+  object-position:center 58%;
+}
+
+.article-hero-media figcaption,
+.article-photo figcaption{
+  color:#6a625a;
+  font-size:.84rem;
+  line-height:1.65;
+}
+
+.article-hero-media figcaption{
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:0;
+  z-index:2;
+  padding:52px 20px 16px;
+  color:#fff;
+  background:linear-gradient(transparent, rgba(30,24,20,.72));
+  text-shadow:0 1px 8px rgba(0,0,0,.3);
+}
+
+.article-photo img{
+  width:100%;
+  border-radius:16px;
+  background:#e8e1d8;
+}
+
+.article-photo figcaption{
+  margin-top:9px;
+  padding:0 3px;
+}
+
+.article-photo-grid{
+  display:grid;
+  grid-template-columns:repeat(2, minmax(0,1fr));
+  gap:18px;
+  margin:28px 0 34px;
+}
+
+.article-photo-grid .article-photo{
+  margin:0;
+}
+
+.article-photo-grid img{
+  aspect-ratio:4 / 5;
+  object-fit:cover;
+}
+
+.article-photo-wide img{
+  width:100%;
+  height:420px;
+  object-fit:cover;
+  object-position:center 48%;
+}
+
+.article-photo-landscape{
+  max-width:560px;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+.article-photo-landscape img{
+  width:100%;
+  max-height:620px;
+  object-fit:cover;
+}
+
+.lisbon-pastel-article .article-body > section{
+  scroll-margin-top:88px;
+}
+
+.lisbon-pastel-article #name-difference,
+.lisbon-pastel-article #how-to-choose,
+.lisbon-pastel-article #cinnamon{
+  position:relative;
+  margin:42px -26px 0;
+  padding:1px 26px 18px;
+  border:1px solid rgba(49,95,120,.105);
+  border-radius:18px;
+  background:
+    linear-gradient(135deg, rgba(255,255,255,.8), rgba(237,243,245,.72));
+}
+
+.lisbon-pastel-article #name-difference::after,
+.lisbon-pastel-article #how-to-choose::after,
+.lisbon-pastel-article #cinnamon::after{
+  content:"";
+  position:absolute;
+  right:18px;
+  top:18px;
+  width:34px;
+  height:34px;
+  opacity:.28;
+  border:1px solid var(--lisbon-blue);
+  transform:rotate(45deg);
+  pointer-events:none;
+}
+
+@media(max-width:760px){
+  .lisbon-pastel-article .article-head{
+    margin-left:-10px;
+    margin-right:-10px;
+    padding:28px 20px 20px;
+    border-radius:18px;
+  }
+
+  .article-hero-media img{
+    height:500px;
+  }
+
+  .article-photo-grid{
+    grid-template-columns:1fr;
+    gap:26px;
+  }
+
+  .article-photo-grid img{
+    aspect-ratio:4 / 5;
+  }
+
+  .article-photo-wide img{
+    height:360px;
+  }
+
+  .lisbon-pastel-article #name-difference,
+  .lisbon-pastel-article #how-to-choose,
+  .lisbon-pastel-article #cinnamon{
+    margin-left:-10px;
+    margin-right:-10px;
+    padding-left:18px;
+    padding-right:18px;
+  }
+}
+
+@media(max-width:480px){
+  .article-hero-media img{
+    height:440px;
+  }
+
+  .article-photo-wide img{
+    height:320px;
+  }
+}
