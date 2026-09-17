@@ -689,3 +689,247 @@ body{
     max-width:680px;
   }
 }
+/* ==================================================
+   首頁｜精品旅遊文章圖卡
+================================================== */
+
+.travel-journal {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 92px 28px 110px;
+}
+
+.travel-journal__heading {
+  max-width: 680px;
+  margin-bottom: 38px;
+}
+
+.travel-journal__eyebrow {
+  margin: 0 0 12px;
+  color: #9a7551;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+}
+
+.travel-journal__heading h2 {
+  margin: 0;
+  color: #292621;
+  font-family: Georgia, "Times New Roman", "Noto Serif TC", serif;
+  font-size: clamp(2rem, 4vw, 3.35rem);
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: 0.01em;
+}
+
+.travel-journal__heading > p:last-child {
+  margin: 17px 0 0;
+  color: #777068;
+  font-size: 0.98rem;
+  line-height: 1.8;
+}
+
+.travel-card-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 26px;
+}
+
+.travel-card {
+  position: relative;
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid rgba(85, 70, 54, 0.13);
+  border-radius: 22px;
+  background: #27231f;
+  box-shadow: 0 16px 40px rgba(50, 40, 30, 0.11);
+}
+
+.travel-card__link {
+  position: relative;
+  display: block;
+  min-height: 500px;
+  overflow: hidden;
+  color: #fff;
+  text-decoration: none;
+  isolation: isolate;
+}
+
+.travel-card__image {
+  position: absolute;
+  inset: 0;
+  z-index: -3;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transform: scale(1);
+  transition: transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* 暖黑霧面：保留照片，但讓文字更清楚 */
+.travel-card__shade {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(31, 27, 23, 0.08) 18%,
+      rgba(31, 27, 23, 0.22) 48%,
+      rgba(25, 21, 18, 0.88) 100%
+    ),
+    linear-gradient(
+      90deg,
+      rgba(65, 49, 34, 0.14),
+      rgba(21, 19, 17, 0.05)
+    );
+  transition: background 450ms ease;
+}
+
+.travel-card__content {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 38px 36px 34px;
+}
+
+.travel-card__location {
+  margin: 0 0 13px;
+  color: #ead5bc;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+}
+
+.travel-card__content h3 {
+  max-width: 490px;
+  margin: 0;
+  color: #fffaf2;
+  font-family: Georgia, "Times New Roman", "Noto Serif TC", serif;
+  font-size: clamp(1.35rem, 2.2vw, 1.9rem);
+  font-weight: 500;
+  line-height: 1.42;
+  letter-spacing: 0.015em;
+  text-wrap: balance;
+  text-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
+}
+
+.travel-card__read {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  margin-top: 22px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid rgba(255, 245, 230, 0.6);
+  color: #fff7eb;
+  font-size: 0.84rem;
+  letter-spacing: 0.08em;
+}
+
+.travel-card__read span {
+  transition: transform 300ms ease;
+}
+
+/* 滑鼠移入互動 */
+.travel-card:hover .travel-card__image {
+  transform: scale(1.05);
+}
+
+.travel-card:hover .travel-card__read span {
+  transform: translateX(5px);
+}
+
+.travel-card:hover .travel-card__shade {
+  background:
+    linear-gradient(
+      180deg,
+      rgba(31, 27, 23, 0.03) 15%,
+      rgba(31, 27, 23, 0.18) 46%,
+      rgba(25, 21, 18, 0.91) 100%
+    ),
+    linear-gradient(
+      90deg,
+      rgba(65, 49, 34, 0.1),
+      rgba(21, 19, 17, 0.02)
+    );
+}
+
+/* 鍵盤操作時保留清楚的選取框 */
+.travel-card__link:focus-visible {
+  outline: 3px solid #b88b5e;
+  outline-offset: -5px;
+}
+
+/* 平板 */
+@media (max-width: 900px) {
+  .travel-journal {
+    padding: 72px 22px 88px;
+  }
+
+  .travel-card-grid {
+    gap: 20px;
+  }
+
+  .travel-card__link {
+    min-height: 430px;
+  }
+
+  .travel-card__content {
+    padding: 30px 26px 28px;
+  }
+}
+
+/* 手機 */
+@media (max-width: 680px) {
+  .travel-journal {
+    padding: 58px 18px 72px;
+  }
+
+  .travel-journal__heading {
+    margin-bottom: 28px;
+  }
+
+  .travel-journal__heading h2 {
+    font-size: 2rem;
+  }
+
+  .travel-journal__heading > p:last-child {
+    font-size: 0.92rem;
+  }
+
+  .travel-card-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .travel-card {
+    border-radius: 18px;
+  }
+
+  .travel-card__link {
+    min-height: 420px;
+  }
+
+  .travel-card__content {
+    padding: 30px 24px 27px;
+  }
+
+  .travel-card__content h3 {
+    font-size: 1.5rem;
+  }
+}
+
+/* 尊重使用者的減少動畫設定 */
+@media (prefers-reduced-motion: reduce) {
+  .travel-card__image,
+  .travel-card__read span {
+    transition: none;
+  }
+
+  .travel-card:hover .travel-card__image {
+    transform: none;
+  }
+}
