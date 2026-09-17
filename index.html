@@ -147,33 +147,101 @@
 </div>
 </section>
 
-<section class="section latest-section" id="latest" aria-labelledby="latest-title">
-  <div class="section-heading">
-    <div>
-      <div class="hero-kicker">Europe Travel Stories</div>
-      <h2 id="latest-title">歐洲旅行中的城市記憶</h2>
-    </div>
-    <p>從威尼斯水巷到里斯本街角，記錄親自走過的歐洲城市與品嘗過的風味，也整理自由行住宿、交通、美食與行程靈感。</p>
+<!-- ===== 最新文章圖卡 START ===== -->
+<section
+  class="travel-journal"
+  id="latest"
+  aria-labelledby="latest-title"
+>
+  <div class="travel-journal__heading">
+    <p class="travel-journal__eyebrow">
+      EUROPE TRAVEL STORIES
+    </p>
+
+    <h2 id="latest-title">
+      歐洲旅行中的城市記憶
+    </h2>
+
+    <p>
+      從威尼斯水巷到里斯本街角，記錄親自走過的歐洲城市與品嘗過的風味，
+      也整理自由行住宿、交通、美食與行程靈感。
+    </p>
   </div>
 
-      <div class="card-grid">
-        <a class="card article-card" href="/italy/venice-travel-guide/">
-          <div class="card-number" aria-hidden="true">01</div>
-          <div class="eyebrow">Italy · Venice</div>
-          <h3>威尼斯自由行攻略｜住宿、2天行程與交通整理</h3>
-          <p>實住 Mestre、走訪威尼斯約 3 天後，整理第一次自由行最需要先決定的住宿、天數與移動方式。</p>
-          <span class="card-link">閱讀義大利文章 <span aria-hidden="true">→</span></span>
-        </a>
+  <div class="travel-card-grid">
 
-        <a class="card article-card" href="/portugal/lisbon-pastel-de-nata/">
-          <div class="card-number" aria-hidden="true">02</div>
-          <div class="eyebrow">Portugal · Lisbon</div>
-          <h3>里斯本蛋塔推薦｜葡萄牙3家名店實吃比較</h3>
-          <p>比較 Pastéis de Belém、Manteigaria 與 Fábrica da Nata，從塔皮、內餡到咖啡與酒款搭配一次整理。</p>
-          <span class="card-link">閱讀葡萄牙文章 <span aria-hidden="true">→</span></span>
-        </a>
-      </div>
-    </section>
+    <!-- 威尼斯文章卡 -->
+    <article class="travel-card">
+      <a
+        class="travel-card__link"
+        href="/italy/venice-travel-guide/"
+        aria-label="閱讀威尼斯自由行攻略"
+      >
+        <img
+          class="travel-card__image"
+          src="/assets/images/venice-grand-canal-article-card.jpeg"
+          alt="威尼斯大運河與聖母安康聖殿景色"
+          loading="lazy"
+          decoding="async"
+        >
+
+        <div class="travel-card__shade"></div>
+
+        <div class="travel-card__content">
+          <p class="travel-card__location">
+            ITALY · VENICE
+          </p>
+
+          <h3>
+            威尼斯自由行攻略｜住宿、2天行程與交通整理
+          </h3>
+
+          <span class="travel-card__read">
+            閱讀文章
+            <span aria-hidden="true">→</span>
+          </span>
+        </div>
+      </a>
+    </article>
+
+
+    <!-- 葡萄牙蛋塔文章卡 -->
+    <article class="travel-card">
+      <a
+        class="travel-card__link"
+        href="/portugal/lisbon-pastel-de-nata/"
+        aria-label="閱讀里斯本蛋塔推薦文章"
+      >
+        <img
+          class="travel-card__image"
+          src="/assets/images/lisbon-pastel-de-nata-card.jpeg"
+          alt="里斯本黃色電車與葡萄牙街景"
+          loading="lazy"
+          decoding="async"
+        >
+
+        <div class="travel-card__shade"></div>
+
+        <div class="travel-card__content">
+          <p class="travel-card__location">
+            PORTUGAL · LISBON
+          </p>
+
+          <h3>
+            里斯本蛋塔推薦｜葡萄牙3家名店實吃比較
+          </h3>
+
+          <span class="travel-card__read">
+            閱讀文章
+            <span aria-hidden="true">→</span>
+          </span>
+        </div>
+      </a>
+    </article>
+
+  </div>
+</section>
+<!-- ===== 最新文章圖卡 END ===== -->
   </main>
 
   <footer class="site-footer">
