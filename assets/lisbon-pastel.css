@@ -1,17 +1,25 @@
 /* Rafael Travel Notes
    Lisbon Pastel de Nata article theme
-   Version: 2026-09-17-v2
+   Version: 2026-09-17-v4
 */
 
 .lisbon-pastel-article{
   --lisbon-blue:#315f78;
   --lisbon-wine:#7f463d;
   --custard:#c88a3d;
+  /* 原創蛋塔線稿：側視酥皮與俯視玫瑰窗，可直接隨 CSS 載入 */
+  --pastel-side:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 220 160'%3E%3Cg fill='none' stroke='%237f463d' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cellipse cx='110' cy='43' rx='76' ry='30'/%3E%3Cellipse cx='110' cy='43' rx='57' ry='19' fill='%23c88a3d' fill-opacity='.13'/%3E%3Cpath d='M34 43l19 82q57 29 114 0l19-82M51 61q59 29 118 0M55 79q55 27 110 0M59 98q51 24 102 0M64 116q46 20 92 0'/%3E%3Cpath d='M59 60l13 65M82 68l8 66M110 72v68M138 68l-8 66M161 60l-13 65' opacity='.78'/%3E%3Cpath d='M72 40q13-12 26 0 13-12 26 0 13-12 26 0' stroke='%23c88a3d' opacity='.72'/%3E%3C/g%3E%3C/svg%3E");
+  --pastel-top:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 160 160'%3E%3Cg fill='none' stroke='%237f463d' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='80' cy='80' r='59'/%3E%3Ccircle cx='80' cy='80' r='43' stroke-dasharray='7 7'/%3E%3Ccircle cx='80' cy='80' r='29' fill='%23c88a3d' fill-opacity='.13' stroke='%23c88a3d'/%3E%3Cpath d='M80 21v17M80 122v17M21 80h17M122 80h17M38 38l12 12M110 110l12 12M122 38l-12 12M50 110l-12 12' opacity='.72'/%3E%3Cpath d='M62 78q8-13 18 0 10-13 19 0M66 91q14 9 28 0' stroke='%23c88a3d' opacity='.68'/%3E%3C/g%3E%3C/svg%3E");
   background-color:#f8f5ef;
   background-image:
+    var(--pastel-top),
+    var(--pastel-side),
     radial-gradient(circle at 7% 17%, transparent 0 108px, rgba(200,138,61,.09) 109px 111px, transparent 112px),
     radial-gradient(circle at 94% 54%, transparent 0 142px, rgba(127,70,61,.07) 143px 145px, transparent 146px),
     repeating-linear-gradient(90deg, rgba(127,70,61,.022) 0 1px, transparent 1px 15px);
+  background-repeat:repeat-y,repeat-y,no-repeat,no-repeat,repeat;
+  background-position:left 18px top 180px,right 12px top 360px,0 0,0 0,0 0;
+  background-size:70px 70px,105px 76px,auto,auto,auto;
 }
 
 .lisbon-pastel-article .article-wrap{
@@ -152,11 +160,117 @@
 
 .lisbon-pastel-article .article-body > section{
   scroll-margin-top:88px;
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+  margin:38px -26px 0;
+  padding:27px 26px 23px;
+  border:1px solid rgba(127,70,61,.115);
+  border-radius:21px;
+  background-color:rgba(255,253,249,.74);
+  background-image:
+    var(--pastel-top),
+    repeating-linear-gradient(90deg,rgba(127,70,61,.022) 0 1px,transparent 1px 17px),
+    linear-gradient(135deg,rgba(255,255,255,.84),rgba(246,237,225,.64));
+  background-repeat:no-repeat,repeat,no-repeat;
+  background-position:right 18px bottom 13px,0 0,0 0;
+  background-size:58px 58px,auto,auto;
+  box-shadow:0 14px 34px rgba(73,55,39,.045);
+}
+
+.lisbon-pastel-article .article-body > section > *{
+  position:relative;
+  z-index:1;
+}
+
+/* 手繪蛋塔側視線稿：主要出現在奇數段落右上角 */
+.lisbon-pastel-article .article-body > section:nth-of-type(odd)::before{
+  content:"";
+  position:absolute;
+  z-index:0;
+  right:-22px;
+  top:-18px;
+  width:188px;
+  height:138px;
+  opacity:.18;
+  background:var(--pastel-side) center/contain no-repeat;
+  transform:rotate(4deg);
+  pointer-events:none;
+}
+
+/* 葡式磁磚與歐式窗花：偶數段落使用較俐落的菱形線條 */
+.lisbon-pastel-article .article-body > section:nth-of-type(even)::before{
+  content:"";
+  position:absolute;
+  z-index:0;
+  right:-18px;
+  top:-18px;
+  width:166px;
+  height:166px;
+  opacity:.22;
+  background:
+    var(--pastel-top) center/118px 118px no-repeat,
+    linear-gradient(45deg,transparent 46%,rgba(127,70,61,.14) 47% 49%,transparent 50%),
+    linear-gradient(-45deg,transparent 46%,rgba(200,138,61,.13) 47% 49%,transparent 50%);
+  background-size:118px 118px,28px 28px,28px 28px;
+  transform:rotate(8deg);
+  pointer-events:none;
+}
+
+/* 紅棕色酥皮條紋與細緻的古典底邊 */
+.lisbon-pastel-article .article-body > section::after{
+  content:"";
+  position:absolute;
+  z-index:0;
+  left:0;
+  bottom:0;
+  width:100%;
+  height:9px;
+  opacity:.68;
+  background:
+    linear-gradient(to right,
+      rgba(127,70,61,.33) 0 11%,
+      transparent 11% 13%,
+      rgba(200,138,61,.29) 13% 20%,
+      transparent 20% 80%,
+      rgba(200,138,61,.18) 80% 87%,
+      transparent 87% 89%,
+      rgba(127,70,61,.24) 89% 100%);
+  pointer-events:none;
+}
+
+.lisbon-pastel-article .article-body > section:nth-of-type(3n){
+  border-left:5px double rgba(127,70,61,.28);
+  background-image:
+    var(--pastel-side),
+    repeating-linear-gradient(90deg,rgba(127,70,61,.032) 0 2px,transparent 2px 18px),
+    linear-gradient(145deg,rgba(248,238,224,.78),rgba(255,255,255,.79));
+  background-repeat:no-repeat,repeat,no-repeat;
+  background-position:right 4px bottom 4px,0 0,0 0;
+  background-size:94px 68px,auto,auto;
 }
 
 .lisbon-pastel-article .article-body h2{
   position:relative;
-  padding-bottom:15px;
+  padding:0 58px 15px 0;
+}
+
+/* 小型蛋塔／玫瑰窗徽章，讓每一節都有一致的文章識別 */
+.lisbon-pastel-article .article-body h2::before{
+  content:"";
+  position:absolute;
+  right:7px;
+  top:2px;
+  width:34px;
+  height:34px;
+  border-radius:50%;
+  border:1px solid rgba(127,70,61,.28);
+  background:
+    var(--pastel-top) center/31px 31px no-repeat,
+    rgba(255,250,242,.52);
+  box-shadow:
+    0 0 0 4px rgba(200,138,61,.045),
+    inset 0 0 0 3px rgba(255,255,255,.48);
 }
 
 .lisbon-pastel-article .article-body h2::after{
@@ -179,14 +293,11 @@
 .lisbon-pastel-article #name-difference,
 .lisbon-pastel-article #how-to-choose,
 .lisbon-pastel-article #cinnamon{
-  position:relative;
-  margin:42px -26px 0;
-  padding:1px 26px 18px;
-  border:1px solid rgba(127,70,61,.12);
-  border-radius:18px;
   background:
-    repeating-linear-gradient(90deg,rgba(127,70,61,.025) 0 1px,transparent 1px 15px),
-    linear-gradient(135deg,rgba(255,255,255,.84),rgba(241,229,223,.64));
+    var(--pastel-side) right 4px bottom 5px/88px 64px no-repeat,
+    radial-gradient(circle at 93% 13%,transparent 0 37px,rgba(200,138,61,.12) 38px 39px,transparent 40px),
+    repeating-linear-gradient(90deg,rgba(127,70,61,.035) 0 1px,transparent 1px 15px),
+    linear-gradient(135deg,rgba(255,255,255,.86),rgba(241,229,223,.69));
 }
 
 .lisbon-pastel-article #name-difference::after,
@@ -198,10 +309,64 @@
   top:18px;
   width:34px;
   height:34px;
-  opacity:.3;
+  opacity:.24;
   border:1px solid var(--lisbon-wine);
   transform:rotate(45deg);
   pointer-events:none;
+}
+
+/* 目錄、表格與 FAQ 也延續葡萄牙磁磚和酒紅線條 */
+.lisbon-pastel-article .toc{
+  position:relative;
+  overflow:hidden;
+  border-color:rgba(127,70,61,.18);
+  background:
+    linear-gradient(45deg,transparent 47%,rgba(49,95,120,.045) 48% 50%,transparent 51%) 0 0/30px 30px,
+    rgba(255,255,255,.83);
+}
+
+.lisbon-pastel-article .table-wrap{
+  border:1px solid rgba(127,70,61,.13);
+  border-radius:14px;
+  background:rgba(255,255,255,.66);
+  box-shadow:0 9px 24px rgba(73,55,39,.04);
+}
+
+.lisbon-pastel-article .faq details{
+  border-left:3px solid rgba(127,70,61,.26);
+  background:
+    repeating-linear-gradient(90deg,rgba(200,138,61,.022) 0 1px,transparent 1px 16px),
+    rgba(255,255,255,.72);
+}
+
+.lisbon-pastel-article .article-photo{
+  position:relative;
+}
+
+.lisbon-pastel-article .article-photo::before,
+.lisbon-pastel-article .article-photo::after{
+  content:"";
+  position:absolute;
+  z-index:2;
+  width:30px;
+  height:30px;
+  pointer-events:none;
+}
+
+.lisbon-pastel-article .article-photo::before{
+  left:-5px;
+  top:-5px;
+  border-left:1px solid rgba(127,70,61,.42);
+  border-top:1px solid rgba(127,70,61,.42);
+  border-radius:7px 0 0;
+}
+
+.lisbon-pastel-article .article-photo::after{
+  right:-5px;
+  bottom:24px;
+  border-right:1px solid rgba(200,138,61,.45);
+  border-bottom:1px solid rgba(200,138,61,.45);
+  border-radius:0 0 7px;
 }
 
 @media(min-width:1000px){
@@ -230,15 +395,20 @@
     right:-112px;
     width:72px;
     height:78%;
-    background:
-      radial-gradient(circle,transparent 0 18px,rgba(200,138,61,.14) 19px 20px,transparent 21px),
-      radial-gradient(circle,transparent 0 27px,rgba(127,70,61,.12) 28px 29px,transparent 30px);
-    background-size:72px 170px;
+    opacity:.24;
+    background-image:var(--pastel-side),var(--pastel-top);
+    background-position:center 18px,center 105px;
+    background-size:72px 53px,54px 54px;
     background-repeat:repeat-y;
   }
 }
 
 @media(max-width:760px){
+  .lisbon-pastel-article{
+    background-size:42px 42px,64px 47px,auto,auto,auto;
+    background-position:left -15px top 190px,right -24px top 390px,0 0,0 0,0 0;
+  }
+
   .lisbon-pastel-article .article-head{
     margin-left:-10px;
     margin-right:-10px;
@@ -261,6 +431,38 @@
     margin-right:-10px;
     padding-left:18px;
     padding-right:18px;
+  }
+
+  .lisbon-pastel-article .article-body > section{
+    margin-left:-10px;
+    margin-right:-10px;
+    padding:23px 18px 21px;
+    border-radius:17px;
+  }
+
+  .lisbon-pastel-article .article-body > section:nth-of-type(odd)::before,
+  .lisbon-pastel-article .article-body > section:nth-of-type(even)::before{
+    opacity:.13;
+  }
+
+  .lisbon-pastel-article .article-body > section{
+    background-size:46px 46px,auto,auto;
+    background-position:right 9px bottom 9px,0 0,0 0;
+  }
+
+  .lisbon-pastel-article .article-body > section:nth-of-type(3n){
+    background-size:72px 52px,auto,auto;
+    background-position:right 3px bottom 5px,0 0,0 0;
+  }
+
+  .lisbon-pastel-article .article-body h2{
+    padding-right:44px;
+  }
+
+  .lisbon-pastel-article .article-body h2::before{
+    right:1px;
+    width:28px;
+    height:28px;
   }
 }
 
