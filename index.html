@@ -68,8 +68,8 @@
   rel="stylesheet"
 >
 
-<link rel="stylesheet" href="/assets/style.css">
-</head>
+<link rel="stylesheet" href="/assets/style.css?v=20260918-map1">
+<script src="/assets/journey-map.js?v=20260918-map1" defer></script>
 </head>
 <body>
   <header class="site-header">
@@ -315,6 +315,153 @@
   </div>
 </section>
 <!-- ===== 最新文章圖卡 END ===== -->
+
+<!-- ===== 互動歐洲旅程地圖 START ===== -->
+<section
+  class="europe-journey"
+  id="journey-map"
+  aria-labelledby="journey-map-title"
+  data-journey-map
+>
+  <div class="europe-journey__heading">
+    <p class="europe-journey__script" aria-hidden="true">
+      Carnet de voyage
+    </p>
+
+    <p class="europe-journey__eyebrow">
+      JOURNEY ACROSS EUROPE
+    </p>
+
+    <h2 id="journey-map-title">
+      沿著旅程，打開歐洲城市筆記
+    </h2>
+
+    <p class="europe-journey__intro">
+      從威尼斯水巷、里斯本街角到波多杜羅河岸，
+      點選地圖上的城市，閱讀我實際走過的歐洲旅行故事。
+    </p>
+  </div>
+
+  <div class="europe-journey__canvas">
+    <div class="journey-map-stage" aria-label="歐洲城市文章互動地圖">
+      <span class="journey-map-stage__compass" aria-hidden="true">N</span>
+
+      <img
+        class="journey-map-stage__map"
+        src="/assets/europe-editorial-map.svg"
+        alt="歐洲地圖，標示里斯本、波多與威尼斯"
+        loading="lazy"
+        decoding="async"
+      >
+
+      <button
+        class="journey-marker journey-marker--lisbon is-active"
+        type="button"
+        style="--marker-x:23.67%; --marker-y:89.98%; --marker-delay:.24s"
+        data-city="lisbon"
+        data-status="published"
+        data-country="PORTUGAL"
+        data-city-label="LISBON"
+        data-kicker="TRAVEL STORY"
+        data-title="里斯本蛋塔推薦｜葡萄牙3家名店實吃比較"
+        data-summary="走進百年蛋塔名店與里斯本街角，整理三家人氣店舖的口感、環境與實際品嘗心得。"
+        data-image="/assets/images/lisbon-pastel-de-nata/lisbon-pastel-de-nata-card.jpeg"
+        data-image-alt="里斯本黃色電車與葡萄牙街景"
+        data-url="/portugal/lisbon-pastel-de-nata/"
+        aria-label="顯示里斯本旅行文章"
+        aria-pressed="true"
+      >
+        <span class="journey-marker__halo" aria-hidden="true"></span>
+        <span class="journey-marker__dot" aria-hidden="true"></span>
+        <span class="journey-marker__label">LISBON</span>
+      </button>
+
+      <button
+        class="journey-marker journey-marker--porto is-coming"
+        type="button"
+        style="--marker-x:24.43%; --marker-y:85.48%; --marker-delay:.36s"
+        data-city="porto"
+        data-status="coming-soon"
+        data-country="PORTUGAL"
+        data-city-label="PORTO"
+        data-kicker="NEXT STORY"
+        data-title="Taylor’s 酒窖參觀與波特酒品飲"
+        data-summary="從加亞新城的上坡交通、酒窖導覽到波特酒品飲，下一篇將整理完整的實際參訪經驗。"
+        data-image="/assets/images/rafael-porto-douro-river.jpg.jpg"
+        data-image-alt="葡萄牙波多杜羅河岸與歷史城區"
+        data-url=""
+        aria-label="顯示準備中的波多旅行文章"
+        aria-pressed="false"
+      >
+        <span class="journey-marker__halo" aria-hidden="true"></span>
+        <span class="journey-marker__dot" aria-hidden="true"></span>
+        <span class="journey-marker__label">PORTO</span>
+      </button>
+
+      <button
+        class="journey-marker journey-marker--venice"
+        type="button"
+        style="--marker-x:55.69%; --marker-y:77.15%; --marker-delay:.12s"
+        data-city="venice"
+        data-status="published"
+        data-country="ITALY"
+        data-city-label="VENICE"
+        data-kicker="TRAVEL STORY"
+        data-title="威尼斯自由行攻略｜住宿、2天行程與交通整理"
+        data-summary="從住在本島或 Mestre 的選擇，到兩天行程、機場交通與水上移動方式，一次整理行前重點。"
+        data-image="/assets/images/venice-grand-canal-article-card.jpeg"
+        data-image-alt="威尼斯大運河與聖母安康聖殿景色"
+        data-url="/italy/venice-travel-guide/"
+        aria-label="顯示威尼斯自由行文章"
+        aria-pressed="false"
+      >
+        <span class="journey-marker__halo" aria-hidden="true"></span>
+        <span class="journey-marker__dot" aria-hidden="true"></span>
+        <span class="journey-marker__label">VENICE</span>
+      </button>
+    </div>
+
+    <div class="journey-city-selector" role="group" aria-label="選擇旅行城市">
+      <button type="button" data-city-target="lisbon" aria-pressed="true">LISBON</button>
+      <button type="button" data-city-target="porto" aria-pressed="false">PORTO</button>
+      <button type="button" data-city-target="venice" aria-pressed="false">VENICE</button>
+    </div>
+
+    <article class="journey-story-card" aria-live="polite">
+      <div class="journey-story-card__media">
+        <img
+          class="journey-story-card__image"
+          src="/assets/images/lisbon-pastel-de-nata/lisbon-pastel-de-nata-card.jpeg"
+          alt="里斯本黃色電車與葡萄牙街景"
+          loading="lazy"
+          decoding="async"
+        >
+        <div class="journey-story-card__shade" aria-hidden="true"></div>
+        <p class="journey-story-card__location">PORTUGAL · LISBON</p>
+      </div>
+
+      <div class="journey-story-card__body">
+        <p class="journey-story-card__kicker">TRAVEL STORY</p>
+        <h3 class="journey-story-card__title">
+          里斯本蛋塔推薦｜葡萄牙3家名店實吃比較
+        </h3>
+        <p class="journey-story-card__summary">
+          走進百年蛋塔名店與里斯本街角，整理三家人氣店舖的口感、環境與實際品嘗心得。
+        </p>
+        <a
+          class="journey-story-card__action"
+          href="/portugal/lisbon-pastel-de-nata/"
+        >閱讀文章 →</a>
+      </div>
+    </article>
+  </div>
+
+  <div class="europe-journey__legend" aria-label="地圖圖例">
+    <span><i class="legend-dot legend-dot--published"></i>文章已上線</span>
+    <span><i class="legend-dot legend-dot--coming"></i>下一篇旅程</span>
+  </div>
+</section>
+<!-- ===== 互動歐洲旅程地圖 END ===== -->
   </main>
 
   <footer class="site-footer">
