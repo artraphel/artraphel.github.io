@@ -68,7 +68,7 @@
   rel="stylesheet"
 >
 
-<link rel="stylesheet" href="/assets/style.css?v=20260918-map1">
+<link rel="stylesheet" href="/assets/style.css?v=20260918-chart3">
 <script src="/assets/journey-map.js?v=20260918-map1" defer></script>
 </head>
 <body>
@@ -344,7 +344,62 @@
 
   <div class="europe-journey__canvas">
     <div class="journey-map-stage" aria-label="歐洲城市文章互動地圖">
-      <span class="journey-map-stage__compass" aria-hidden="true">N</span>
+      <!-- 古典海圖裝飾：經緯弧線 -->
+      <span class="journey-map-stage__chart-lines" aria-hidden="true"></span>
+
+      <!-- 葡萄牙大航海時代意象：古典航線 -->
+      <svg
+        class="journey-nautical-routes"
+        viewBox="0 0 1000 620"
+        preserveAspectRatio="none"
+        aria-hidden="true"
+      >
+        <path class="journey-route journey-route--main" d="M112 515 C246 575 378 498 463 462 C505 444 542 456 557 478"></path>
+        <path class="journey-route journey-route--echo" d="M88 544 C214 610 365 541 445 495"></path>
+        <circle cx="112" cy="515" r="3"></circle>
+        <circle cx="557" cy="478" r="3"></circle>
+      </svg>
+
+      <!-- 八向航海羅盤玫瑰 -->
+      <span class="journey-compass" aria-hidden="true">
+        <svg viewBox="0 0 100 100" role="presentation">
+          <circle class="journey-compass__ring" cx="50" cy="50" r="42"></circle>
+          <circle class="journey-compass__ring journey-compass__ring--inner" cx="50" cy="50" r="31"></circle>
+          <path class="journey-compass__minor" d="M50 13 L55 43 L50 50 L45 43 Z M87 50 L57 55 L50 50 L57 45 Z M50 87 L45 57 L50 50 L55 57 Z M13 50 L43 45 L50 50 L43 55 Z"></path>
+          <path class="journey-compass__diagonal" d="M24 24 L46 43 L50 50 L43 46 Z M76 24 L57 46 L50 50 L54 43 Z M76 76 L54 57 L50 50 L57 54 Z M24 76 L43 54 L50 50 L46 57 Z"></path>
+          <path class="journey-compass__north" d="M50 6 L57 43 L50 50 L43 43 Z"></path>
+          <circle class="journey-compass__center" cx="50" cy="50" r="3.2"></circle>
+          <text x="50" y="4">N</text>
+          <text x="96" y="53">E</text>
+          <text x="50" y="99">S</text>
+          <text x="4" y="53">W</text>
+        </svg>
+      </span>
+
+      <!-- 低透明度帆船線稿，呼應葡萄牙大航海時代 -->
+      <span class="journey-voyage-ship" aria-hidden="true">
+        <svg viewBox="0 0 240 160" role="presentation">
+          <path class="ship-wave" d="M12 139 C30 132 46 146 64 139 C82 132 98 146 116 139 C134 132 150 146 168 139 C186 132 202 146 228 137"></path>
+          <path class="ship-hull" d="M35 116 C76 125 151 126 210 111 C197 132 172 142 121 143 C76 143 48 134 35 116 Z"></path>
+          <path class="ship-deck" d="M51 115 L194 111 M72 105 L182 105"></path>
+          <path class="ship-mast" d="M112 113 L112 24 M160 111 L160 45 M76 112 L76 55"></path>
+          <path class="ship-rigging" d="M112 25 L53 113 M112 25 L195 112 M160 46 L191 110 M76 56 L47 114 M76 56 L112 25"></path>
+          <path class="ship-sail ship-sail--wine" d="M106 35 C85 44 82 67 84 91 C94 84 102 77 106 66 Z"></path>
+          <path class="ship-sail" d="M118 33 C143 45 151 69 148 94 C136 85 125 76 118 61 Z"></path>
+          <path class="ship-sail" d="M155 53 C174 63 181 79 180 98 C171 92 164 86 155 76 Z"></path>
+          <path class="ship-sail" d="M71 63 C56 72 51 87 54 101 C62 96 68 90 71 80 Z"></path>
+          <path class="ship-flag" d="M112 24 C126 19 134 25 143 21 L143 33 C132 37 123 30 112 35 Z"></path>
+          <circle class="ship-port" cx="85" cy="125" r="2.5"></circle>
+          <circle class="ship-port" cx="111" cy="128" r="2.5"></circle>
+          <circle class="ship-port" cx="137" cy="127" r="2.5"></circle>
+          <circle class="ship-port" cx="163" cy="123" r="2.5"></circle>
+        </svg>
+        <small>MARE ATLANTICVM</small>
+      </span>
+
+      <span class="journey-map-stage__era" aria-hidden="true">
+        NAVEGAÇÕES · XV–XVI
+      </span>
 
       <img
         class="journey-map-stage__map"
