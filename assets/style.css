@@ -1252,6 +1252,8 @@ body{
   aspect-ratio: 1000 / 620;
   min-width: 0;
   isolation: isolate;
+  overflow: hidden;
+  border-radius: 24px;
 }
 
 .journey-map-stage::before {
@@ -1264,6 +1266,20 @@ body{
   filter: blur(8px);
 }
 
+.journey-map-stage::after {
+  content: "EUROPA";
+  position: absolute;
+  top: 9%;
+  right: 7%;
+  z-index: 0;
+  color: rgba(116, 63, 59, 0.055);
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(2.7rem, 6vw, 5.7rem);
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  pointer-events: none;
+}
+
 .journey-map-stage__chart-lines {
   position: absolute;
   inset: 13% 4% 8% 2%;
@@ -1272,6 +1288,12 @@ body{
   border-radius: 50%;
   pointer-events: none;
   transform: rotate(-8deg);
+}
+
+.journey-map-stage__chart-lines {
+  box-shadow:
+    0 0 0 34px rgba(181, 154, 106, 0.018),
+    0 0 0 68px rgba(116, 63, 59, 0.012);
 }
 
 .journey-map-stage__chart-lines::before,
@@ -1297,12 +1319,45 @@ body{
 }
 
 .journey-map-stage__map {
+  position: relative;
+  z-index: 2;
   width: 100%;
   height: 100%;
   object-fit: contain;
   opacity: 0;
   transform: translateY(12px);
   transition: opacity 800ms ease, transform 900ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.journey-nautical-routes {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.journey-nautical-routes .journey-route {
+  fill: none;
+  stroke-linecap: round;
+}
+
+.journey-route--main {
+  stroke: rgba(116, 63, 59, 0.17);
+  stroke-width: 1.7;
+  stroke-dasharray: 5 8;
+}
+
+.journey-route--echo {
+  stroke: rgba(181, 154, 106, 0.13);
+  stroke-width: 1.2;
+  stroke-dasharray: 2 10;
+}
+
+.journey-nautical-routes circle {
+  fill: rgba(181, 154, 106, 0.42);
 }
 
 .europe-journey.is-in-view .journey-map-stage__map {
@@ -1316,10 +1371,100 @@ body{
   left: 5%;
   z-index: 3;
   display: block;
-  width: 78px;
-  height: 78px;
+  width: 88px;
+  height: 88px;
   color: var(--journey-gold);
   filter: drop-shadow(0 5px 10px rgba(91, 67, 42, 0.08));
+}
+
+.journey-voyage-ship {
+  position: absolute;
+  bottom: 5.5%;
+  left: 2.5%;
+  z-index: 3;
+  display: block;
+  width: clamp(104px, 18vw, 158px);
+  color: var(--journey-gold);
+  opacity: 0.28;
+  pointer-events: none;
+  transform: rotate(-2deg);
+  filter: drop-shadow(0 5px 8px rgba(80, 58, 35, 0.04));
+}
+
+.journey-voyage-ship svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.journey-voyage-ship path,
+.journey-voyage-ship circle {
+  vector-effect: non-scaling-stroke;
+}
+
+.ship-wave,
+.ship-hull,
+.ship-deck,
+.ship-mast,
+.ship-rigging {
+  fill: none;
+  stroke: #8e744f;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.ship-wave { stroke-width: 1.05; }
+.ship-hull { stroke-width: 1.2; }
+.ship-deck,
+.ship-mast { stroke-width: 1; }
+.ship-rigging { stroke-width: 0.58; }
+
+.ship-sail {
+  fill: rgba(181, 154, 106, 0.14);
+  stroke: rgba(142, 116, 79, 0.8);
+  stroke-width: 0.75;
+}
+
+.ship-sail--wine {
+  fill: rgba(116, 63, 59, 0.12);
+  stroke: rgba(116, 63, 59, 0.68);
+}
+
+.ship-flag {
+  fill: rgba(116, 63, 59, 0.38);
+  stroke: rgba(116, 63, 59, 0.58);
+  stroke-width: 0.7;
+}
+
+.ship-port {
+  fill: rgba(116, 63, 59, 0.46);
+}
+
+.journey-voyage-ship small {
+  display: block;
+  margin-top: -5px;
+  color: rgba(116, 63, 59, 0.68);
+  font-family: "Cormorant Garamond", serif;
+  font-size: 0.58rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-align: center;
+}
+
+.journey-map-stage__era {
+  position: absolute;
+  right: 5%;
+  bottom: 3%;
+  z-index: 3;
+  padding-top: 5px;
+  border-top: 1px solid rgba(181, 154, 106, 0.25);
+  color: rgba(116, 63, 59, 0.48);
+  font-family: "Cormorant Garamond", serif;
+  font-size: 0.55rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  pointer-events: none;
 }
 
 .journey-compass svg {
@@ -1456,13 +1601,14 @@ body{
 }
 
 .journey-marker--lisbon .journey-marker__label {
+  top: 70%;
   right: 23px;
   left: auto;
 }
 
 .journey-marker--porto .journey-marker__label {
-  top: -8px;
-  right: 11px;
+  top: -12px;
+  right: 5px;
   left: auto;
   transform: translateY(-100%);
 }
@@ -1716,6 +1862,31 @@ body{
     left: 4%;
     width: 56px;
     height: 56px;
+  }
+
+  .journey-voyage-ship {
+    bottom: 4%;
+    left: 1%;
+    width: 94px;
+    opacity: 0.23;
+  }
+
+  .journey-voyage-ship small {
+    font-size: 0.45rem;
+    letter-spacing: 0.14em;
+  }
+
+  .journey-map-stage__era {
+    right: 3%;
+    bottom: 1.5%;
+    font-size: 0.45rem;
+    letter-spacing: 0.14em;
+  }
+
+  .journey-map-stage::after {
+    top: 8%;
+    right: 2%;
+    font-size: 2.6rem;
   }
 
   .journey-marker {
