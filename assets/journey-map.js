@@ -9,6 +9,9 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   const markers = Array.from(section.querySelectorAll(".journey-marker"));
+  const countryHighlights = Array.from(
+    section.querySelectorAll("[data-country-highlight]")
+  );
   const citySelectors = Array.from(section.querySelectorAll("[data-city-target]"));
   const card = section.querySelector(".journey-story-card");
   const image = card.querySelector(".journey-story-card__image");
@@ -21,10 +24,19 @@ document.addEventListener("DOMContentLoaded", function () {
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
   function showCity(marker) {
+    const activeCountry = marker.dataset.country.toLowerCase();
+
     markers.forEach(function (item) {
       const isActive = item === marker;
       item.classList.toggle("is-active", isActive);
       item.setAttribute("aria-pressed", String(isActive));
+    });
+
+    countryHighlights.forEach(function (country) {
+      country.classList.toggle(
+        "is-active",
+        country.dataset.countryHighlight === activeCountry
+      );
     });
 
     citySelectors.forEach(function (item) {
