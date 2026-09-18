@@ -68,8 +68,8 @@
   rel="stylesheet"
 >
 
-<link rel="stylesheet" href="/assets/style.css?v=20260918-chart4">
-<script src="/assets/journey-map.js?v=20260918-map1" defer></script>
+<link rel="stylesheet" href="/assets/style.css?v=20260918-chart5">
+<script src="/assets/journey-map.js?v=20260918-map2" defer></script>
 </head>
 <body>
   <header class="site-header">
@@ -351,7 +351,7 @@
       <svg
         class="journey-nautical-routes"
         viewBox="0 0 1000 620"
-        preserveAspectRatio="none"
+        preserveAspectRatio="xMidYMid meet"
         aria-hidden="true"
       >
         <path class="journey-route journey-route--main" d="M112 515 C246 575 378 498 463 462 C505 444 542 456 557 478"></path>
@@ -409,10 +409,29 @@
         decoding="async"
       >
 
+      <!-- 選取城市時，以淡酒紅標示所屬國家 -->
+      <svg
+        class="journey-country-highlights"
+        viewBox="0 0 1000 620"
+        preserveAspectRatio="xMidYMid meet"
+        aria-hidden="true"
+      >
+        <path
+          class="journey-country-highlight"
+          data-country-highlight="portugal"
+          d="M238.3,521.5L249.8,516.8L253.5,522.6L273.6,521.5L277.8,527.4L270.9,530.6L270.7,539.6L268.3,541.3L267.7,546.7L261.2,547.7L267.2,554.5L263.1,561.9L268.2,565.2L260.6,572.4L261.9,576.0L255.9,578.9L248.0,577.3L240.3,578.5L242.6,569.9L241.2,563.0L234.5,562.0L230.9,557.8L232.1,550.4L238.1,546.2L242.3,534.6L241.9,529.7L238.9,525.5L238.3,521.5Z"
+        ></path>
+        <path
+          class="journey-country-highlight"
+          data-country-highlight="italy"
+          d="M604.8,563.4L599.4,572.2L601.6,575.6L598.5,581.3L558.7,570.3L560.8,564.6L578.2,565.6L604.8,563.4Z M510.6,529.4L519.6,537.7L517.5,552.8L510.7,552.1L504.6,555.9L498.9,552.9L498.3,539.1L494.9,532.4L503.1,533.0L510.6,529.4Z M557.9,461.5L579.2,464.8L577.6,471.1L581.2,476.4L569.3,474.6L557.1,479.0L558.0,485.2L556.1,488.7L561.0,495.0L575.0,501.1L582.5,511.1L599.1,520.7L610.8,520.6L614.5,523.2L610.3,525.5L634.6,533.3L647.4,539.3L649.0,541.5L646.2,545.6L637.9,540.2L624.9,538.3L618.6,545.8L629.4,550.0L627.7,555.9L621.4,556.6L613.4,566.2L607.2,567.0L607.3,563.6L610.3,557.6L613.6,555.2L603.2,542.9L597.0,541.4L592.6,536.5L583.0,534.3L576.5,529.7L565.5,528.9L540.2,515.9L530.0,509.0L525.4,497.1L505.8,491.6L498.9,493.3L490.3,499.0L484.1,499.8L485.8,494.6L477.7,493.0L473.9,483.4L479.1,479.6L474.7,474.9L475.3,471.4L481.7,474.1L488.9,473.5L497.3,469.2L499.9,471.2L507.0,470.8L510.2,465.7L521.2,467.3L527.8,465.1L529.0,459.9L538.0,461.7L539.8,459.3L554.5,457.0L557.9,461.5Z"
+        ></path>
+      </svg>
+
       <button
         class="journey-marker journey-marker--lisbon is-active"
         type="button"
-        style="--marker-x:23.67%; --marker-y:89.98%; --marker-delay:.12s"
+        style="--marker-x:23.67%; --marker-y:83.05%; --marker-delay:.12s"
         data-city="lisbon"
         data-status="published"
         data-country="PORTUGAL"
@@ -434,7 +453,7 @@
       <button
         class="journey-marker journey-marker--porto is-coming"
         type="button"
-        style="--marker-x:24.43%; --marker-y:85.48%; --marker-delay:.24s"
+        style="--marker-x:24.43%; --marker-y:79.33%; --marker-delay:.24s"
         data-city="porto"
         data-status="coming-soon"
         data-country="PORTUGAL"
@@ -456,7 +475,7 @@
       <button
         class="journey-marker journey-marker--venice"
         type="button"
-        style="--marker-x:55.69%; --marker-y:77.15%; --marker-delay:.36s"
+        style="--marker-x:55.69%; --marker-y:72.44%; --marker-delay:.36s"
         data-city="venice"
         data-status="published"
         data-country="ITALY"
