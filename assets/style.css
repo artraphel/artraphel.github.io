@@ -1162,6 +1162,20 @@ body{
    首頁｜互動歐洲旅程地圖
 ================================================== */
 
+.home-main {
+  display: flex;
+  flex-direction: column;
+}
+
+.home-main > * {
+  width: 100%;
+}
+
+.home-main .editorial-hero { order: 1; }
+.home-main .literary-signature { order: 2; }
+.home-main .europe-journey { order: 3; }
+.home-main .travel-journal { order: 4; }
+
 .europe-journey {
   --journey-paper: #f4efe7;
   --journey-ink: #26231f;
@@ -1250,6 +1264,38 @@ body{
   filter: blur(8px);
 }
 
+.journey-map-stage__chart-lines {
+  position: absolute;
+  inset: 13% 4% 8% 2%;
+  z-index: 1;
+  border: 1px solid rgba(181, 154, 106, 0.1);
+  border-radius: 50%;
+  pointer-events: none;
+  transform: rotate(-8deg);
+}
+
+.journey-map-stage__chart-lines::before,
+.journey-map-stage__chart-lines::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+}
+
+.journey-map-stage__chart-lines::before {
+  inset: 20% -8%;
+  border-top: 1px dashed rgba(116, 63, 59, 0.1);
+  transform: rotate(15deg);
+}
+
+.journey-map-stage__chart-lines::after {
+  top: -9%;
+  bottom: -9%;
+  left: 49%;
+  width: 38%;
+  border-left: 1px solid rgba(181, 154, 106, 0.08);
+  transform: rotate(9deg);
+}
+
 .journey-map-stage__map {
   width: 100%;
   height: 100%;
@@ -1264,32 +1310,68 @@ body{
   transform: translateY(0);
 }
 
-.journey-map-stage__compass {
+.journey-compass {
   position: absolute;
-  top: 7%;
-  left: 7%;
-  z-index: 2;
-  display: grid;
-  width: 31px;
-  height: 31px;
-  place-items: center;
-  border: 1px solid rgba(181, 154, 106, 0.5);
-  border-radius: 50%;
-  color: #8e744f;
-  font-family: "Cormorant Garamond", serif;
-  font-size: 0.72rem;
-  letter-spacing: 0.08em;
+  top: 5%;
+  left: 5%;
+  z-index: 3;
+  display: block;
+  width: 78px;
+  height: 78px;
+  color: var(--journey-gold);
+  filter: drop-shadow(0 5px 10px rgba(91, 67, 42, 0.08));
 }
 
-.journey-map-stage__compass::after {
-  content: "";
-  position: absolute;
-  bottom: -9px;
-  width: 1px;
-  height: 13px;
-  background: var(--journey-gold);
-  transform: rotate(24deg);
-  transform-origin: top;
+.journey-compass svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.journey-compass__ring {
+  fill: rgba(255, 253, 249, 0.18);
+  stroke: rgba(181, 154, 106, 0.56);
+  stroke-width: 1;
+}
+
+.journey-compass__ring--inner {
+  fill: none;
+  stroke: rgba(116, 63, 59, 0.22);
+  stroke-dasharray: 2.5 3.5;
+}
+
+.journey-compass__minor {
+  fill: rgba(181, 154, 106, 0.36);
+  stroke: rgba(142, 116, 79, 0.58);
+  stroke-width: 0.7;
+}
+
+.journey-compass__diagonal {
+  fill: rgba(116, 63, 59, 0.12);
+  stroke: rgba(116, 63, 59, 0.3);
+  stroke-width: 0.55;
+}
+
+.journey-compass__north {
+  fill: rgba(116, 63, 59, 0.72);
+  stroke: rgba(116, 63, 59, 0.88);
+  stroke-width: 0.8;
+}
+
+.journey-compass__center {
+  fill: #f8f3eb;
+  stroke: rgba(116, 63, 59, 0.7);
+  stroke-width: 1;
+}
+
+.journey-compass text {
+  fill: #8e744f;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-anchor: middle;
 }
 
 .journey-marker {
@@ -1629,11 +1711,11 @@ body{
     margin: 0 auto;
   }
 
-  .journey-map-stage__compass {
+  .journey-compass {
     top: 5%;
-    left: 5%;
-    width: 27px;
-    height: 27px;
+    left: 4%;
+    width: 56px;
+    height: 56px;
   }
 
   .journey-marker {

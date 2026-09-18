@@ -3,6 +3,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
   if (!section) return;
 
+  const journal = document.querySelector(".travel-journal");
+  if (journal && journal.parentNode === section.parentNode) {
+    section.parentNode.insertBefore(section, journal);
+  }
+
   const markers = Array.from(section.querySelectorAll(".journey-marker"));
   const citySelectors = Array.from(section.querySelectorAll("[data-city-target]"));
   const card = section.querySelector(".journey-story-card");
