@@ -1249,8 +1249,8 @@ body{
 
 .journey-map-stage {
   position: relative;
-  /* 原始海圖比例偏寬；稍微增加高度，讓歐洲輪廓在桌機 100% 時更自然 */
-  aspect-ratio: 1000 / 690;
+  /* 4:3 海圖舞台；內部地圖維持原始比例，不再拉伸國家輪廓 */
+  aspect-ratio: 4 / 3;
   min-width: 0;
   isolation: isolate;
   overflow: hidden;
@@ -1324,8 +1324,7 @@ body{
   z-index: 2;
   width: 100%;
   height: 100%;
-  /* 配合較高舞台輕微舒展南北向，避免地圖看起來過扁 */
-  object-fit: fill;
+  object-fit: contain;
   object-position: center;
   opacity: 0;
   transform: translateY(12px);
@@ -1340,6 +1339,38 @@ body{
   height: 100%;
   overflow: visible;
   pointer-events: none;
+}
+
+.journey-country-highlights {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.journey-country-highlight {
+  fill: rgba(116, 63, 59, 0);
+  stroke: rgba(116, 63, 59, 0);
+  stroke-width: 1.8;
+  stroke-linejoin: round;
+  opacity: 0;
+  vector-effect: non-scaling-stroke;
+  filter: drop-shadow(0 5px 10px rgba(79, 43, 40, 0));
+  transition:
+    fill 420ms ease,
+    stroke 420ms ease,
+    opacity 420ms ease,
+    filter 420ms ease;
+}
+
+.journey-country-highlight.is-active {
+  fill: rgba(116, 63, 59, 0.17);
+  stroke: rgba(116, 63, 59, 0.76);
+  opacity: 1;
+  filter: drop-shadow(0 5px 10px rgba(79, 43, 40, 0.12));
 }
 
 .journey-nautical-routes .journey-route {
@@ -1600,7 +1631,7 @@ body{
   letter-spacing: 0.18em;
   white-space: nowrap;
   transform: translateY(-50%);
-  transition: color 250ms ease, background 250ms ease;
+  transition: color 420ms ease, background 420ms ease, box-shadow 420ms ease;
 }
 
 .journey-marker--lisbon .journey-marker__label {
@@ -1634,6 +1665,7 @@ body{
 .journey-marker.is-active .journey-marker__label {
   color: #fffaf3;
   background: var(--journey-wine);
+  box-shadow: 0 5px 15px rgba(86, 45, 42, 0.18);
 }
 
 .journey-marker.is-active .journey-marker__halo {
@@ -1676,7 +1708,7 @@ body{
 }
 
 .journey-story-card.is-changing {
-  animation: journey-card-change 360ms ease both;
+  animation: journey-card-change 420ms ease both;
 }
 
 @keyframes journey-card-change {
@@ -1820,7 +1852,7 @@ body{
   }
 
   .journey-map-stage {
-    aspect-ratio: 1000 / 705;
+    aspect-ratio: 4 / 3;
   }
 
   .journey-story-card__media {
@@ -1862,7 +1894,7 @@ body{
   .journey-map-stage {
     width: 100%;
     margin: 0 auto;
-    aspect-ratio: 1000 / 735;
+    aspect-ratio: 4 / 3;
   }
 
   .journey-compass {
@@ -1967,6 +1999,7 @@ body{
 
 @media (prefers-reduced-motion: reduce) {
   .journey-map-stage__map,
+  .journey-country-highlight,
   .journey-marker,
   .journey-marker__halo,
   .journey-story-card,
