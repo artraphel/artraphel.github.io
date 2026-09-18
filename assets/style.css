@@ -1158,6 +1158,576 @@ body{
   }
 }
 
+/* ==================================================
+   首頁｜互動歐洲旅程地圖
+================================================== */
+
+.europe-journey {
+  --journey-paper: #f4efe7;
+  --journey-ink: #26231f;
+  --journey-wine: #743f3b;
+  --journey-gold: #b59a6a;
+  --journey-line: #c8bcaa;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 104px 28px 118px;
+  border-top: 1px solid rgba(116, 63, 59, 0.13);
+}
+
+.europe-journey__heading {
+  max-width: 720px;
+  margin-bottom: 42px;
+}
+
+.europe-journey__script {
+  margin: 0 0 -2px;
+  color: #9a7551;
+  font-family: "Parisienne", cursive;
+  font-size: clamp(1.55rem, 2.5vw, 2rem);
+  line-height: 1.2;
+}
+
+.europe-journey__eyebrow {
+  margin: 0 0 11px;
+  color: var(--journey-wine);
+  font-family: "Cormorant Garamond", serif;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+}
+
+.europe-journey__heading h2 {
+  margin: 0;
+  color: var(--journey-ink);
+  font-family: "Cormorant Garamond", "Noto Serif TC", serif;
+  font-size: clamp(2.05rem, 4.2vw, 3.55rem);
+  font-weight: 500;
+  line-height: 1.22;
+  letter-spacing: 0.01em;
+  text-wrap: balance;
+}
+
+.europe-journey__intro {
+  max-width: 650px;
+  margin: 18px 0 0;
+  color: #746d65;
+  font-size: 0.98rem;
+  line-height: 1.9;
+}
+
+.europe-journey__canvas {
+  display: grid;
+  grid-template-columns: minmax(0, 1.55fr) minmax(300px, 0.78fr);
+  gap: 28px;
+  align-items: center;
+  padding: 42px;
+  overflow: hidden;
+  border: 1px solid rgba(116, 63, 59, 0.13);
+  border-radius: 30px;
+  background:
+    radial-gradient(circle at 13% 18%, rgba(181, 154, 106, 0.11), transparent 27%),
+    radial-gradient(circle at 86% 80%, rgba(116, 63, 59, 0.07), transparent 29%),
+    linear-gradient(145deg, rgba(255, 253, 249, 0.88), rgba(240, 232, 221, 0.93));
+  box-shadow:
+    0 28px 70px rgba(62, 48, 34, 0.09),
+    inset 0 1px 0 rgba(255, 255, 255, 0.88);
+}
+
+.journey-map-stage {
+  position: relative;
+  aspect-ratio: 1000 / 620;
+  min-width: 0;
+  isolation: isolate;
+}
+
+.journey-map-stage::before {
+  content: "";
+  position: absolute;
+  inset: 5% 2%;
+  z-index: -1;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(255, 255, 255, 0.64), transparent 68%);
+  filter: blur(8px);
+}
+
+.journey-map-stage__map {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 800ms ease, transform 900ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.europe-journey.is-in-view .journey-map-stage__map {
+  opacity: 0.94;
+  transform: translateY(0);
+}
+
+.journey-map-stage__compass {
+  position: absolute;
+  top: 7%;
+  left: 7%;
+  z-index: 2;
+  display: grid;
+  width: 31px;
+  height: 31px;
+  place-items: center;
+  border: 1px solid rgba(181, 154, 106, 0.5);
+  border-radius: 50%;
+  color: #8e744f;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+}
+
+.journey-map-stage__compass::after {
+  content: "";
+  position: absolute;
+  bottom: -9px;
+  width: 1px;
+  height: 13px;
+  background: var(--journey-gold);
+  transform: rotate(24deg);
+  transform-origin: top;
+}
+
+.journey-marker {
+  position: absolute;
+  top: var(--marker-y);
+  left: var(--marker-x);
+  z-index: 4;
+  width: 28px;
+  height: 28px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.55);
+  transition:
+    opacity 450ms ease var(--marker-delay),
+    transform 450ms cubic-bezier(0.22, 1, 0.36, 1) var(--marker-delay);
+}
+
+.europe-journey.is-in-view .journey-marker {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.journey-marker__halo,
+.journey-marker__dot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: block;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.journey-marker__halo {
+  width: 28px;
+  height: 28px;
+  border: 1px solid rgba(116, 63, 59, 0.32);
+  background: rgba(244, 239, 231, 0.34);
+  transition: width 300ms ease, height 300ms ease, border-color 300ms ease;
+}
+
+.journey-marker__dot {
+  width: 10px;
+  height: 10px;
+  border: 2px solid #fffaf3;
+  background: var(--journey-wine);
+  box-shadow: 0 3px 10px rgba(63, 36, 33, 0.3);
+}
+
+.journey-marker.is-coming .journey-marker__halo {
+  border-color: rgba(181, 154, 106, 0.58);
+}
+
+.journey-marker.is-coming .journey-marker__dot {
+  border: 2px solid var(--journey-gold);
+  background: var(--journey-paper);
+  box-shadow: 0 3px 10px rgba(102, 77, 44, 0.2);
+}
+
+.journey-marker__label {
+  position: absolute;
+  top: 50%;
+  left: 23px;
+  display: block;
+  padding: 2px 6px 3px;
+  border-radius: 4px;
+  color: #3c342d;
+  background: rgba(247, 243, 236, 0.8);
+  box-shadow: 0 2px 8px rgba(70, 54, 38, 0.07);
+  font-family: "Cormorant Garamond", serif;
+  font-size: 0.67rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.18em;
+  white-space: nowrap;
+  transform: translateY(-50%);
+  transition: color 250ms ease, background 250ms ease;
+}
+
+.journey-marker--lisbon .journey-marker__label {
+  right: 23px;
+  left: auto;
+}
+
+.journey-marker--porto .journey-marker__label {
+  top: -8px;
+  right: 11px;
+  left: auto;
+  transform: translateY(-100%);
+}
+
+.europe-journey.is-in-view .journey-marker:hover,
+.europe-journey.is-in-view .journey-marker:focus-visible,
+.europe-journey.is-in-view .journey-marker.is-active {
+  transform: translate(-50%, -50%) scale(1.15);
+  outline: none;
+}
+
+.journey-marker:hover .journey-marker__halo,
+.journey-marker:focus-visible .journey-marker__halo,
+.journey-marker.is-active .journey-marker__halo {
+  width: 38px;
+  height: 38px;
+  border-color: rgba(116, 63, 59, 0.68);
+}
+
+.journey-marker.is-active .journey-marker__label {
+  color: #fffaf3;
+  background: var(--journey-wine);
+}
+
+.journey-marker.is-active .journey-marker__halo {
+  animation: journey-marker-glow 850ms ease-out 1;
+}
+
+.europe-journey.is-in-view .journey-marker.is-coming:not(.is-active) .journey-marker__halo {
+  animation: journey-next-glow 900ms ease-out 650ms 1;
+}
+
+.journey-city-selector {
+  display: none;
+}
+
+@keyframes journey-marker-glow {
+  0% { box-shadow: 0 0 0 0 rgba(116, 63, 59, 0.32); }
+  100% { box-shadow: 0 0 0 14px rgba(116, 63, 59, 0); }
+}
+
+@keyframes journey-next-glow {
+  0% { box-shadow: 0 0 0 0 rgba(181, 154, 106, 0); }
+  35% { box-shadow: 0 0 0 0 rgba(181, 154, 106, 0.34); }
+  100% { box-shadow: 0 0 0 15px rgba(181, 154, 106, 0); }
+}
+
+.journey-story-card {
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid rgba(91, 69, 48, 0.14);
+  border-radius: 22px;
+  background: rgba(255, 253, 249, 0.93);
+  box-shadow: 0 18px 45px rgba(55, 42, 30, 0.13);
+  transform: translateY(0);
+  transition: transform 350ms ease, box-shadow 350ms ease;
+}
+
+.journey-story-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 52px rgba(55, 42, 30, 0.16);
+}
+
+.journey-story-card.is-changing {
+  animation: journey-card-change 360ms ease both;
+}
+
+@keyframes journey-card-change {
+  0% { opacity: 0; transform: translateY(6px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.journey-story-card__media {
+  position: relative;
+  height: 205px;
+  overflow: hidden;
+  background: #d9cec0;
+}
+
+.journey-story-card__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 650ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.journey-story-card:hover .journey-story-card__image {
+  transform: scale(1.03);
+}
+
+.journey-story-card__shade {
+  position: absolute;
+  inset: 38% 0 0;
+  background: linear-gradient(transparent, rgba(27, 23, 20, 0.62));
+  pointer-events: none;
+}
+
+.journey-story-card__location {
+  position: absolute;
+  right: 20px;
+  bottom: 15px;
+  left: 20px;
+  margin: 0;
+  color: #fffaf2;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 0.76rem;
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.34);
+}
+
+.journey-story-card__body {
+  padding: 25px 25px 27px;
+}
+
+.journey-story-card__kicker {
+  margin: 0 0 8px;
+  color: var(--journey-gold);
+  font-family: "Cormorant Garamond", serif;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+}
+
+.journey-story-card__title {
+  margin: 0;
+  color: var(--journey-ink);
+  font-family: "Cormorant Garamond", "Noto Serif TC", serif;
+  font-size: 1.4rem;
+  font-weight: 600;
+  line-height: 1.42;
+  text-wrap: balance;
+}
+
+.journey-story-card__summary {
+  margin: 12px 0 0;
+  color: #746d65;
+  font-size: 0.86rem;
+  line-height: 1.75;
+}
+
+.journey-story-card__action {
+  display: inline-block;
+  margin-top: 18px;
+  padding-bottom: 3px;
+  border-bottom: 1px solid rgba(116, 63, 59, 0.42);
+  color: var(--journey-wine);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+}
+
+.journey-story-card__action:not(.is-disabled):hover {
+  border-color: var(--journey-wine);
+}
+
+.journey-story-card__action.is-disabled {
+  border-bottom-style: dashed;
+  color: #9a8464;
+  cursor: default;
+}
+
+.europe-journey__legend {
+  display: flex;
+  justify-content: flex-end;
+  gap: 22px;
+  margin-top: 17px;
+  color: #817970;
+  font-size: 0.75rem;
+}
+
+.europe-journey__legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.legend-dot {
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+}
+
+.legend-dot--published {
+  border: 2px solid #fffaf3;
+  background: var(--journey-wine);
+  box-shadow: 0 0 0 1px var(--journey-wine);
+}
+
+.legend-dot--coming {
+  border: 2px solid var(--journey-gold);
+  background: transparent;
+}
+
+@media (max-width: 900px) {
+  .europe-journey {
+    padding: 84px 22px 96px;
+  }
+
+  .europe-journey__canvas {
+    grid-template-columns: minmax(0, 1.25fr) minmax(280px, 0.75fr);
+    gap: 20px;
+    padding: 28px;
+  }
+
+  .journey-story-card__media {
+    height: 180px;
+  }
+
+  .journey-story-card__body {
+    padding: 22px;
+  }
+}
+
+@media (max-width: 720px) {
+  .europe-journey {
+    padding: 68px 18px 80px;
+  }
+
+  .europe-journey__heading {
+    margin-bottom: 28px;
+  }
+
+  .europe-journey__script {
+    font-size: 1.65rem;
+  }
+
+  .europe-journey__heading h2 {
+    font-size: 2.12rem;
+  }
+
+  .europe-journey__intro {
+    font-size: 0.92rem;
+  }
+
+  .europe-journey__canvas {
+    display: block;
+    padding: 22px 16px 18px;
+    border-radius: 22px;
+  }
+
+  .journey-map-stage {
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .journey-map-stage__compass {
+    top: 5%;
+    left: 5%;
+    width: 27px;
+    height: 27px;
+  }
+
+  .journey-marker {
+    width: 32px;
+    height: 32px;
+  }
+
+  .journey-marker__label {
+    padding: 2px 5px 3px;
+    font-size: 0.58rem;
+    letter-spacing: 0.13em;
+  }
+
+  .journey-marker--lisbon .journey-marker__label {
+    right: 22px;
+  }
+
+  .journey-marker--porto .journey-marker__label {
+    top: -5px;
+    right: 8px;
+  }
+
+  .journey-story-card {
+    margin-top: 22px;
+    border-radius: 18px;
+  }
+
+  .journey-city-selector {
+    display: flex;
+    justify-content: center;
+    gap: 7px;
+    margin: 5px 0 0;
+  }
+
+  .journey-city-selector button {
+    padding: 7px 10px 6px;
+    border: 1px solid rgba(116, 63, 59, 0.2);
+    border-radius: 999px;
+    color: #6e655c;
+    background: rgba(255, 253, 249, 0.66);
+    font-family: "Cormorant Garamond", serif;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+  }
+
+  .journey-city-selector button.is-active {
+    border-color: var(--journey-wine);
+    color: #fffaf3;
+    background: var(--journey-wine);
+  }
+
+  .journey-story-card__media {
+    height: 220px;
+  }
+
+  .journey-story-card__body {
+    padding: 24px 22px 25px;
+  }
+
+  .journey-story-card__title {
+    font-size: 1.45rem;
+  }
+
+  .europe-journey__legend {
+    justify-content: flex-start;
+    margin: 15px 3px 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .journey-map-stage__map,
+  .journey-marker,
+  .journey-marker__halo,
+  .journey-story-card,
+  .journey-story-card__image {
+    transition: none;
+    animation: none;
+  }
+
+  .journey-map-stage__map,
+  .journey-marker {
+    opacity: 1;
+  }
+
+  .journey-map-stage__map {
+    transform: none;
+  }
+
+  .journey-marker {
+    transform: translate(-50%, -50%);
+  }
+}
+
 /* 尊重使用者的減少動畫設定 */
 @media (prefers-reduced-motion: reduce) {
   .travel-card__image,
