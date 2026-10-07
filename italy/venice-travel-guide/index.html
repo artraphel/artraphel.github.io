@@ -86,9 +86,224 @@
     ]
   }
   </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&amp;family=Noto+Sans+TC:wght@400;500;600;700&amp;family=Noto+Serif+TC:wght@500;600;700&amp;family=Parisienne&amp;display=swap" rel="stylesheet">
+
+  <style>
+  /* Venice journal: typography and outline matched to the Porto article. */
+  html { scroll-padding-top: 100px; }
+  .venice-journal {
+    --accent: #783e49;
+    --text: #292727;
+    --muted: #706960;
+    --surface: #fffdf9;
+    color: var(--text);
+    font-size: 16px;
+    line-height: 1.95;
+  }
+  .venice-journal .article-wrap {
+    max-width: 1120px;
+    padding: 54px 28px 90px;
+  }
+  .venice-journal .breadcrumbs {
+    font-size: 12px;
+    margin-bottom: 28px;
+  }
+  .venice-journal .breadcrumbs a { text-decoration: none; }
+  .venice-journal .article-head { max-width: 920px; }
+  .venice-journal .hero-kicker {
+    font-family: "Cormorant Garamond", Georgia, serif;
+    color: var(--accent);
+    font-size: 14px;
+    letter-spacing: .18em;
+    margin: 0 0 20px;
+    padding: 0;
+  }
+  .venice-journal .article-head h1 {
+    font-family: "Noto Serif TC", Georgia, serif;
+    font-weight: 600;
+    font-size: clamp(28px, 3.4vw, 43px);
+    line-height: 1.6;
+    letter-spacing: .025em;
+    margin: 0 0 20px;
+    text-wrap: balance;
+  }
+  .venice-journal .script-note {
+    font-family: "Parisienne", "Brush Script MT", cursive;
+    font-size: 37px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--accent);
+    margin: 9px 0 22px;
+  }
+  .venice-journal .article-deck {
+    color: var(--muted);
+    font-size: 16px;
+    line-height: 1.95;
+    margin: 0 0 22px;
+  }
+  .venice-journal .meta {
+    gap: 10px 24px;
+    font-size: 12px;
+    padding: 15px 0;
+    margin: 25px 0 40px;
+  }
+  .venice-journal .journal-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 230px;
+    gap: 40px;
+    align-items: start;
+  }
+  .venice-journal .article-body { min-width: 0; }
+  .venice-journal .article-body h2 {
+    font-family: "Noto Serif TC", Georgia, serif;
+    font-size: 25px;
+    font-weight: 600;
+    line-height: 1.65;
+    margin: 54px 0 20px;
+    border-top: 1px solid var(--line);
+    padding-top: 28px;
+    text-wrap: balance;
+  }
+  .venice-journal .article-body > section:first-child h2 {
+    margin-top: 0;
+    padding-top: 0;
+    border-top: 0;
+  }
+  .venice-journal .article-body h3 {
+    font-size: 18px;
+    line-height: 1.7;
+    margin: 32px 0 14px;
+  }
+  .venice-journal .article-body p { margin: 0 0 22px; }
+  .venice-journal .article-body li { margin: 10px 0; }
+  .venice-journal .article-body li::marker { color: var(--accent); }
+  .venice-journal .article-body a { overflow-wrap: anywhere; }
+  .venice-journal .article-body strong,
+  .venice-journal .answer-first { font-weight: 600; }
+  .venice-journal .table-wrap {
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: var(--surface);
+    margin: 22px 0 28px;
+  }
+  .venice-journal table {
+    border: 0;
+    font-size: 14px;
+    line-height: 1.85;
+  }
+  .venice-journal th, .venice-journal td { padding: 16px 18px; }
+  .venice-journal th { font-weight: 600; color: #533a36; }
+  .venice-journal tr:last-child td { border-bottom: 0; }
+  .venice-journal .toc {
+    position: sticky;
+    top: 94px;
+    max-height: calc(100dvh - 118px);
+    overflow-y: auto;
+    scrollbar-width: thin;
+    background: transparent;
+    border: 0;
+    border-top: 2px solid var(--accent);
+    border-radius: 0;
+    padding: 15px 0 0;
+    margin: 0;
+    font-size: 12px;
+    line-height: 1.8;
+  }
+  .venice-journal .toc-label {
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: .04em;
+    display: block;
+    color: var(--accent);
+  }
+  .venice-journal .toc-caption {
+    display: block;
+    font-size: 11px;
+    letter-spacing: .08em;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+  .venice-journal .toc ol {
+    list-style: none;
+    margin: 15px 0 0;
+    padding: 0;
+    counter-reset: toc;
+  }
+  .venice-journal .toc li {
+    counter-increment: toc;
+    border-bottom: 1px solid var(--line);
+    margin: 0;
+  }
+  .venice-journal .toc a {
+    display: flex;
+    gap: 10px;
+    padding: 11px 0;
+    text-decoration: none;
+    color: var(--muted);
+  }
+  .venice-journal .toc a::before {
+    content: counter(toc, decimal-leading-zero);
+    font-family: Georgia, serif;
+    color: #a1857c;
+    flex: 0 0 18px;
+  }
+  .venice-journal .toc a:hover { color: var(--accent); }
+  .venice-journal a:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 4px;
+  }
+  @media (max-width: 950px) {
+    .venice-journal .journal-layout { display: flex; flex-direction: column; }
+    .venice-journal .toc {
+      order: -1;
+      position: static;
+      width: 100%;
+      max-height: none;
+      overflow: visible;
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: var(--surface);
+    }
+    .venice-journal .toc ol {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0 20px;
+    }
+    .venice-journal .article-body { width: 100%; }
+    .venice-journal .article-head { max-width: none; }
+  }
+  @media (max-width: 600px) {
+    .venice-journal .article-wrap { padding: 30px 20px 60px; }
+    .venice-journal .article-head h1 { font-size: 27px; line-height: 1.65; }
+    .venice-journal .script-note { font-size: 32px; }
+    .venice-journal .meta { gap: 7px 15px; }
+    .venice-journal .toc ol { display: block; }
+    .venice-journal .article-body h2 { font-size: 22px; margin-top: 40px; }
+    .venice-journal .journal-layout { gap: 28px; }
+    .venice-journal .table-wrap table { min-width: 550px; }
+    .venice-journal th, .venice-journal td { padding: 13px 14px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+  }
+  @media print {
+    .venice-journal .toc, .venice-journal .nav-links { display: none; }
+    .venice-journal .journal-layout { display: block; }
+    .venice-journal .article-wrap { padding: 15px; }
+    .venice-journal .site-header { position: static; }
+    .venice-journal .table-wrap { overflow: visible; }
+    .venice-journal .article-body h2 { break-after: avoid; }
+  }
+  </style>
+
 </head>
 
-<body>
+<body class="venice-journal">
   <header class="site-header">
     <nav class="nav" aria-label="主選單">
       <a class="brand" href="/">Rafael Travel Notes</a>
@@ -106,6 +321,7 @@
       <header class="article-head">
         <div class="hero-kicker">Italy · Venice</div>
         <h1>威尼斯自由行攻略｜住本島還是 Mestre？2天行程、交通、景點與入城費整理</h1>
+        <p class="script-note" lang="en">Getting lost in Venice, finding little stories.</p>
         <p class="article-deck">第一次規劃威尼斯自由行，住宿地點、停留天數與交通方式往往比排景點更重要。我實際在威尼斯停留約 3 天，住宿選在 Mestre 火車站附近，每天往返本島，也花了大量時間步行探索水道與巷弄。若第一次造訪，我會建議安排 <strong>2 個完整白天</strong>，再依住宿預算、是否前往離島與航班位置決定交通方式。</p>
         <div class="meta">
           <span>作者：Rafael</span>
@@ -114,22 +330,9 @@
         </div>
       </header>
 
-      <nav class="toc" aria-label="文章目錄">
-        <strong>文章目錄</strong>
-        <ul>
-          <li><a href="#days">威尼斯自由行安排幾天適合呢？</a></li>
-          <li><a href="#stay">威尼斯住宿推薦住本島還是島外Mestre？</a></li>
-          <li><a href="#transport">威尼斯本島交通與水上巴士的安排建議</a></li>
-          <li><a href="#airports">Marco Polo 與 Treviso 2座機場怎麼選？</a></li>
-          <li><a href="#spring">去威尼斯旅遊適合的季節</a></li>
-          <li><a href="#safety">威尼斯獨旅安全嗎？相關扒手注意事項</a></li>
-          <li><a href="#food">威尼斯美食推薦</a></li>
-          <li><a href="#access-fee">2026 入城費</a></li>
-          <li><a href="#tips">第一次去威尼斯的實用小提醒</a></li>
-          <li><a href="#faq">威尼斯自由行FAQ</a></li>
-        </ul>
-      </nav>
 
+
+      <div class="journal-layout">
       <div class="article-body">
         <section id="days">
           <h2>威尼斯自由行安排幾天適合？2個完整白天最剛好</h2>
@@ -234,7 +437,7 @@
         </section>
 
         <section id="food">
-        <h2 id="food">威尼斯自由行吃什麼？Gelato、海鮮料理與 Spritz 推薦</h2>
+        <h2>威尼斯自由行吃什麼？Gelato、海鮮料理與 Spritz 推薦</h2>
 
 <p>
   <strong>威尼斯美食很適合直接穿插在散步行程中享用，從 Gelato、炸海鮮、墨魚義大利麵到當地常見的 Spritz，都是我這趟旅行印象較深刻的味道。</strong>
@@ -245,6 +448,7 @@
   Suso Gelato 是不少旅客會造訪的店，我自己也有吃過；但實際比較後，我反而更喜歡 Gelateria Gallonetto，當時品嚐的限定口味很有記憶點。
 </p>
 
+<div class="table-wrap">
 <table>
   <thead>
     <tr>
@@ -280,6 +484,7 @@
     </tr>
   </tbody>
 </table>
+</div>
 
 <h3>Trattoria Storica：巷弄裡較幽靜的威尼斯小餐館</h3>
 
@@ -290,6 +495,8 @@
 <p>
   一個人旅行時，走累了買份炸海鮮、找個適合休息的位置看看水道，我反而覺得比趕下一個景點更舒服。
 </p>
+
+        </section>
 
         <section id="access-fee">
           <h2>2026威尼斯還需要入城費嗎？</h2>
@@ -372,6 +579,24 @@
         <footer class="article-footer">
           <p><a href="/">← 回到 Rafael Travel Notes 首頁</a></p>
         </footer>
+      </div>
+
+      <aside class="toc" aria-label="文章目錄">
+        <span class="toc-label" lang="en">In this journal</span>
+        <span class="toc-caption">威尼斯旅行筆記 · 文章綱要</span>
+        <ol>
+          <li><a href="#days">停留天數與兩天行程</a></li>
+          <li><a href="#stay">本島與 Mestre 住宿比較</a></li>
+          <li><a href="#transport">步行、水上巴士與貢多拉</a></li>
+          <li><a href="#airports">Marco Polo 與 Treviso 機場</a></li>
+          <li><a href="#spring">適合季節與春季散步</a></li>
+          <li><a href="#safety">獨旅安全與防扒提醒</a></li>
+          <li><a href="#food">威尼斯美食推薦</a></li>
+          <li><a href="#access-fee">2026 威尼斯入城費</a></li>
+          <li><a href="#tips">第一次造訪的實用提醒</a></li>
+          <li><a href="#faq">威尼斯自由行 FAQ</a></li>
+        </ol>
+      </aside>
       </div>
     </article>
   </main>
