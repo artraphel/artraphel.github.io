@@ -1,0 +1,33 @@
+/* Spain collection and shared navigation additions · 2026-10-15 */
+.site-header .nav{flex-wrap:wrap}
+.site-header .nav-links a[aria-current="page"]{color:#783e49}
+.spain-skip{position:absolute;left:20px;top:-100px;z-index:100;background:#fffdf9;padding:10px 16px}
+.spain-skip:focus{top:12px}
+.spain-page{max-width:1120px;margin:0 auto;padding:44px 28px 80px;color:#302c29}
+.spain-crumbs{font-size:12px;color:#706960;margin:0 0 35px}
+.spain-crumbs a{text-decoration:none}
+.spain-head{max-width:780px;margin:0 0 38px}
+.spain-script{font-family:"Parisienne",cursive;color:#783e49;font-size:38px;margin:0 0 8px}
+.spain-eyebrow{font-family:"Cormorant Garamond",Georgia,serif;letter-spacing:.15em;color:#783e49;font-size:13px;margin:0 0 15px}
+.spain-head h1{font-family:"Noto Serif TC",serif;font-size:clamp(28px,4vw,42px);font-weight:600;line-height:1.6;margin:10px 0 20px}
+.spain-head>p:last-child{color:#706960;line-height:1.95}
+.spain-feature{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);border:1px solid #e3ded6;border-radius:20px;overflow:hidden;background:#fffdf9;box-shadow:0 12px 36px #3926200a}
+.spain-feature__image{display:block;align-self:start}
+.spain-feature__image img{width:100%;height:auto;display:block}
+.spain-feature__body{padding:clamp(24px,3vw,42px);align-self:center}
+.spain-feature h2{font-family:"Noto Serif TC",serif;font-size:clamp(22px,2.4vw,29px);font-weight:600;line-height:1.65;margin:0 0 20px}
+.spain-feature h2 a{text-decoration:none}
+.spain-feature__body>p:not(.spain-eyebrow){font-size:14px;line-height:1.95;color:#706960}
+.spain-read{display:inline-block;color:#783e49;text-decoration:none;border-bottom:1px solid #783e4960;padding-bottom:5px;font-size:14px;margin-top:12px}
+.spain-planning{margin-top:70px}
+.spain-planning h2{font-family:"Noto Serif TC",serif;font-size:25px;font-weight:600;line-height:1.65}
+.spain-planning-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;margin-top:28px}
+.spain-planning-grid>div{border-top:1px solid #d5c5b6;padding-top:20px}
+.spain-planning-grid span{font-family:"Cormorant Garamond",serif;font-size:27px;color:#a48678}
+.spain-planning-grid h3{font-size:17px;font-weight:600;margin:12px 0}
+.spain-planning-grid p{color:#706960;font-size:14px;line-height:1.95}
+.spain-planning-grid a{font-size:13px;color:#783e49;text-underline-offset:4px}
+.spain-return{border-top:1px solid #e3ded6;padding-top:28px;margin-top:55px;color:#783e49;font-size:14px}
+.spain-page a:focus-visible{outline:2px solid #783e49;outline-offset:5px}
+.granada-journal .site-footer-inner,.spain-collection .site-footer-inner{max-width:1064px;margin:auto;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+@media(max-width:680px){.site-header .nav{row-gap:10px;padding-top:15px;padding-bottom:15px}.site-header .brand{flex-basis:100%}.site-header .nav-links{justify-content:flex-start;gap:10px 19px}.spain-page{padding:30px 20px 60px}.spain-feature{grid-template-columns:minmax(0,1fr)}.spain-feature__body{padding:26px}.spain-planning-grid{grid-template-columns:minmax(0,1fr);gap:24px}.spain-planning{margin-top:48px}}

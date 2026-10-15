@@ -142,3 +142,7 @@
 @media (prefers-reduced-motion: reduce) {
   .europe-journey *, .europe-journey *::before, .europe-journey *::after { animation: none !important; transition: none !important; }
 }
+
+/* Granada sits southeast of Portugal; label extends right, below the marker. */
+.europe-journey .journey-marker--granada .journey-marker__label{left:15px;top:19px;right:auto;transform:none}
+@media(max-width:420px){.europe-journey .journey-marker--granada .journey-marker__label{left:10px;top:18px}}
