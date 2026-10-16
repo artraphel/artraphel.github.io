@@ -1,0 +1,35 @@
+/* France collection and shared navigation additions · 2026-10-15 */
+.site-header .nav{flex-wrap:wrap}
+.site-header .nav-links a[aria-current="page"]{color:#783e49}
+.france-skip{position:absolute;left:20px;top:-100px;z-index:100;background:#fffdf9;padding:10px 16px}
+.france-skip:focus{top:12px}
+.france-page{max-width:1120px;margin:0 auto;padding:44px 28px 80px;color:#302c29}
+.france-crumbs{font-size:12px;color:#706960;margin:0 0 35px}
+.france-crumbs a{text-decoration:none}
+.france-head{max-width:780px;margin:0 0 38px}
+.france-script{font-family:"Parisienne",cursive;color:#783e49;font-size:38px;margin:0 0 8px}
+.france-eyebrow{font-family:"Cormorant Garamond",Georgia,serif;letter-spacing:.15em;color:#783e49;font-size:13px;margin:0 0 15px}
+.france-head h1{font-family:"Noto Serif TC",serif;font-size:clamp(28px,4vw,42px);font-weight:600;line-height:1.6;margin:10px 0 20px}
+.france-head>p:last-child{color:#706960;line-height:1.95}
+.france-feature{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);border:1px solid #e3ded6;border-radius:20px;overflow:hidden;background:#fffdf9;box-shadow:0 12px 36px #3926200a}
+.france-feature__image{display:block;align-self:start}
+.france-feature__image img{width:100%;height:auto;display:block}
+.france-feature__body{padding:clamp(24px,3vw,42px);align-self:center}
+.france-feature h2{font-family:"Noto Serif TC",serif;font-size:clamp(22px,2.4vw,29px);font-weight:600;line-height:1.65;margin:0 0 20px}
+.france-feature h2 a{text-decoration:none}
+.france-feature__body>p:not(.france-eyebrow){font-size:14px;line-height:1.95;color:#706960}
+.france-read{display:inline-block;color:#783e49;text-decoration:none;border-bottom:1px solid #783e4960;padding-bottom:5px;font-size:14px;margin-top:12px}
+.france-planning{margin-top:70px}
+.france-planning h2{font-family:"Noto Serif TC",serif;font-size:25px;font-weight:600;line-height:1.65}
+.france-planning-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;margin-top:28px}
+.france-planning-grid>div{border-top:1px solid #d5c5b6;padding-top:20px}
+.france-planning-grid span{font-family:"Cormorant Garamond",serif;font-size:27px;color:#a48678}
+.france-planning-grid h3{font-size:17px;font-weight:600;margin:12px 0}
+.france-planning-grid p{color:#706960;font-size:14px;line-height:1.95}
+.france-planning-grid a{font-size:13px;color:#783e49;text-underline-offset:4px}
+.france-return{border-top:1px solid #e3ded6;padding-top:28px;margin-top:55px;color:#783e49;font-size:14px}
+.france-page a:focus-visible{outline:2px solid #783e49;outline-offset:5px}
+.eze-journal .site-footer-inner,.france-collection .site-footer-inner{max-width:1064px;margin:auto;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+@media(max-width:680px){.site-header .nav{row-gap:10px;padding-top:15px;padding-bottom:15px}.site-header .brand{flex-basis:100%}.site-header .nav-links{justify-content:flex-start;gap:10px 19px}.france-page{padding:30px 20px 60px}.france-feature{grid-template-columns:minmax(0,1fr)}.france-feature__body{padding:26px}.france-planning-grid{grid-template-columns:minmax(0,1fr);gap:24px}.france-planning{margin-top:48px}}
+
+.france-feature__image img{height:auto;aspect-ratio:4/3;object-fit:cover}.france-collection .footer-inner{max-width:1064px;margin:auto;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}

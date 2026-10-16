@@ -1,0 +1,5 @@
+/* Eze addition, scoped to homepage cards and map labels. */
+.travel-card--eze .travel-card__image{object-position:50% 72%}
+.europe-journey .journey-marker--eze .journey-marker__label{left:auto;right:24px;top:24px;transform:none}
+.europe-journey .journey-story-card__image[src*="/eze/"]{object-position:center 65%}
+@media(max-width:420px){.europe-journey .journey-marker--eze .journey-marker__label{right:18px;top:24px}}
