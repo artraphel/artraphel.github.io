@@ -1,0 +1,75 @@
+/* Load last. Decoration only; map geometry and article content remain intact. */
+main > .journal-embellished { position: relative; isolation: isolate; }
+.journal-gilt {
+  position: absolute; top: 155px; width: 76px; height: 390px;
+  display: block; pointer-events: none; user-select: none; z-index: 0;
+  opacity: 0; translate: 0 16px;
+  transition: opacity 1.2s ease, translate 1.4s cubic-bezier(.2,.6,.3,1);
+  filter: drop-shadow(0 1px 0 #fff9e9);
+}
+.journal-gilt svg { display: block; width: 100%; height: 100%; overflow: visible; }
+.journal-gilt--left { left: -66px; }
+.journal-gilt--right { right: -66px; transform: scaleX(-1); }
+.journal-gilt.gilt-visible { opacity: .78; translate: 0 0; }
+.travel-journal > .journal-gilt { top: 210px; height: 460px; }
+.journal-embellished > .europe-journey__heading,
+.journal-embellished > .travel-journal__heading,
+.journal-embellished > .europe-journey__canvas,
+.journal-embellished > .travel-card-grid { position: relative; z-index: 1; }
+.europe-journey__canvas { position: relative; }
+.chart-corner { position: absolute; width: 82px; height: 82px; color: #b08a61; opacity: .66; pointer-events: none; z-index: 4; }
+.chart-corner svg { display: block; width: 100%; height: 100%; }
+.chart-corner--tl { top: 8px; left: 8px; }
+.chart-corner--tr { top: 8px; right: 8px; transform: scaleX(-1); }
+.chart-corner--bl { bottom: 8px; left: 8px; transform: scaleY(-1); }
+.chart-corner--br { bottom: 8px; right: 8px; transform: scale(-1); }
+.gilt-arrived .chart-corner { animation: gilt-warmth 2.8s ease both; }
+@keyframes gilt-warmth { 0% { opacity: .3; } 42% { opacity: .95; color: #d5b27d; } 100% { opacity: .66; } }
+.europe-journey .journey-voyage-ship.has-tides { opacity: .64; left: 1%; bottom: 6%; transform: none; }
+.has-tides .ship-vessel { transform-box: view-box; transform-origin: 50% 80%; animation: journal-ship-sway 6.5s ease-in-out infinite; }
+.has-tides .ship-wave { animation: journal-sea-breathe 4.8s ease-in-out infinite; transform-origin: center; }
+.has-tides .ship-wave--echo { stroke-width: .65; opacity: .5; animation-delay: -1.6s; }
+.has-tides .ship-wave--1 { opacity: .28; animation-delay: -3.2s; }
+.has-tides .ship-flag { transform-box: fill-box; transform-origin: left center; animation: journal-pennant 4s ease-in-out infinite; }
+.has-tides small { opacity: .8; }
+.journey-map-stage:not(.tides-visible) .has-tides * { animation-play-state: paused; }
+@media (hover: hover) and (pointer: fine) {
+  .journey-map-stage:hover .has-tides .ship-wave { stroke: #ad8056; }
+}
+@keyframes journal-ship-sway { 0%,100% { transform: translateY(1px) rotate(-1.8deg); } 50% { transform: translateY(-5px) rotate(1.7deg); } }
+@keyframes journal-sea-breathe { 0%,100% { transform: translateX(-2px) scaleX(.96); opacity: .3; } 50% { transform: translateX(3px) scaleX(1.025); opacity: .74; } }
+@keyframes journal-pennant { 0%,100% { transform: skewY(-3deg) scaleX(.96); } 50% { transform: skewY(3deg) scaleX(1.02); } }
+/* Keep scrollwork in the existing page margins at every desktop width. */
+@media (min-width: 1101px) and (max-width: 1479px) {
+  main > .journal-embellished { padding-left: 72px; padding-right: 72px; }
+  .journal-gilt--left { left: 6px; }
+  .journal-gilt--right { right: 6px; }
+  .journal-gilt { width: 52px; }
+}
+@media (min-width: 821px) and (max-width: 1100px) {
+  main > .journal-embellished { padding-left: 48px; padding-right: 48px; }
+  .journal-gilt { width: 34px; height: 300px; }
+  .journal-gilt--left { left: 5px; }
+  .journal-gilt--right { right: 5px; }
+  .chart-corner { width: 62px; height: 62px; }
+}
+@media (max-width: 820px) {
+  .journal-gilt { top: 24px; width: 29px; height: 94px; }
+  .journal-gilt--left { left: 10px; }
+  .journal-gilt--right { right: 10px; }
+  .journal-gilt.gilt-visible { opacity: .65; }
+  .travel-journal > .journal-gilt { top: 16px; height: 94px; }
+  .journal-embellished > .europe-journey__heading,
+  .journal-embellished > .travel-journal__heading { padding-top: 58px; }
+  .chart-corner { width: 43px; height: 43px; opacity: .55; }
+  .chart-corner--tl,.chart-corner--tr { top: 4px; }
+  .chart-corner--bl,.chart-corner--br { bottom: 4px; }
+  .chart-corner--tl,.chart-corner--bl { left: 4px; }
+  .chart-corner--tr,.chart-corner--br { right: 4px; }
+  .europe-journey .journey-voyage-ship.has-tides { opacity: .58; bottom: 6%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .journal-gilt { opacity: .72; translate: none; transition: none; }
+  .journal-embellished .chart-corner,
+  .has-tides .ship-vessel,.has-tides .ship-wave,.has-tides .ship-flag { animation: none !important; }
+}
