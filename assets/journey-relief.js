@@ -39,7 +39,7 @@
       const preload = new Image();
       preload.onload = () => {
         map.src = reliefURL.href;
-        map.alt = '奶油米色歐洲淺浮雕海圖，標示里斯本、波多、格拉納達、埃茲與威尼斯；地形為裝飾性示意';
+        map.alt = '奶油米色歐洲淺浮雕海圖，標示里斯本、波多、塞維亞、格拉納達、埃茲、威尼斯與羅馬；地形為裝飾性示意';
         section.classList.add('has-relief');
       };
       preload.src = reliefURL.href;

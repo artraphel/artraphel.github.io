@@ -15,15 +15,16 @@
     const compact = matchMedia('(max-width: 820px)');
     const reduced = matchMedia('(prefers-reduced-motion: reduce)');
     const selectors = [...section.querySelectorAll('[data-city-target]')];
-    const nativeNames = {lisbon:'Lisboa', porto:'Porto', venice:'Venezia', eze:'Èze', granada:'Granada'};
-    const cityPoints = {lisbon:[236.7,557.9], porto:[244.3,530], venice:[556.9,478.3]};
+    const nativeNames = {lisbon:'Lisboa', porto:'Porto', venice:'Venezia', eze:'Èze', granada:'Granada', rome:'Roma'};
+    const cityPoints = {lisbon:[236.7,557.9], porto:[244.3,530], venice:[556.9,478.3], rome:[559.6,521.8]};
     // Approaches stay at sea; the fine dotted connector leads to the city itself.
     const routes = {
       lisbon:[[95,520],[135,535],[170,552],[203,560]],
       porto:[[110,480],[145,487],[180,503],[212,522]],
       venice:[[615,515],[604,510],[580,497],[566,490]],
       eze:[[391,565],[418,551],[452,539],[480,526]],
-      granada:[[416,607],[384,611],[352,610],[325,601]]
+      granada:[[416,607],[384,611],[352,610],[325,601]],
+      rome:[[445,590],[486,602],[531,565],[547,531]]
     };
     const deck = document.createElement('div');
     deck.className = 'postcard-deck'; deck.setAttribute('role','region');

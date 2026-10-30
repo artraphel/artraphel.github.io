@@ -1,0 +1,40 @@
+@font-face{font-family:"Parisienne";font-style:normal;font-weight:400;font-display:swap;src:url("/assets/rome/parisienne.ttf") format("truetype");}
+.rome-guide .rome-script-note{font-family:"Parisienne",cursive;font-weight:400;font-size:clamp(30px,4vw,37px);line-height:1.6;color:#783e49;letter-spacing:0;margin:9px 0 22px;padding:0 0 18px;border-bottom:1px solid #ddd3c5;}
+.rome-guide .rome-header h1{margin-bottom:12px;}
+/* 只作用於 .rome-guide，避免影響網站其他區塊。 */
+.rome-guide{--rome-ink:#302923;--rome-muted:#766c63;--rome-wine:#7b3045;--rome-gold:#b4935d;--rome-paper:#fffdf9;box-sizing:border-box;max-width:980px;margin:0 auto;padding:clamp(20px,4vw,56px) clamp(16px,3vw,38px);background:var(--rome-paper);color:var(--rome-ink);font-family:system-ui,-apple-system,BlinkMacSystemFont,"PingFang TC","Microsoft JhengHei",sans-serif;font-size:17px;line-height:1.95;overflow-wrap:anywhere;}
+.rome-guide *{box-sizing:border-box;}
+.rome-guide .rome-kicker{color:var(--rome-gold);font-family:Georgia,"Times New Roman",serif;font-size:13px;letter-spacing:.28em;margin:0 0 14px;}
+.rome-guide h1,.rome-guide h2,.rome-guide h3{font-family:"Noto Serif TC","Songti TC","PMingLiU",serif;font-weight:700;line-height:1.5;color:var(--rome-ink);text-wrap:pretty;}
+.rome-guide h1{font-size:clamp(27px,3.9vw,40px);margin:0 0 26px;letter-spacing:.025em;}
+.rome-guide h2{font-size:clamp(23px,2.8vw,29px);margin:56px 0 22px;padding-top:22px;border-top:1px solid #d8c6a6;scroll-margin-top:96px;}
+.rome-guide h3{font-size:clamp(20px,2.3vw,23px);margin:34px 0 15px;scroll-margin-top:96px;}
+.rome-guide p{margin:0 0 20px;}
+.rome-guide strong{font-weight:700;}
+.rome-guide a{color:var(--rome-wine);text-decoration-line:underline;text-decoration-color:#cbb1b8;text-underline-offset:4px;transition:color .2s ease,text-decoration-color .2s ease;}
+.rome-guide a:hover{color:#a34a60;text-decoration-color:var(--rome-gold);}
+.rome-guide a:focus-visible,.rome-guide summary:focus-visible{outline:3px solid var(--rome-wine);outline-offset:5px;}
+.rome-guide ul,.rome-guide ol{padding-left:1.5em;margin:0 0 26px;}
+.rome-guide li{padding-left:.15em;margin:9px 0;}
+.rome-guide .rome-intro{font-size:18px;}
+.rome-guide .rome-photo{margin:28px auto 38px;width:100%;min-width:0;}
+.rome-guide .rome-photo--portrait{max-width:600px;}
+.rome-guide .rome-photo>a{display:block;text-decoration:none;}
+.rome-guide .rome-photo img{display:block;width:100%;max-width:100%;height:auto;border-radius:5px;background:#eae2d8;}
+.rome-guide figcaption{margin-top:11px;color:var(--rome-muted);font-size:14px;line-height:1.8;text-align:center;padding:0 6px;}
+.rome-guide .rome-gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;align-items:start;margin:28px 0 38px;}
+.rome-guide .rome-gallery .rome-photo{max-width:none;margin:0;}
+.rome-guide .rome-toc{background:#f5f0e7;border:1px solid #e5d9c7;border-radius:5px;padding:18px 22px;margin:32px 0 42px;}
+.rome-guide .rome-toc summary{font-family:"Noto Serif TC","Songti TC",serif;font-size:20px;font-weight:700;cursor:pointer;color:var(--rome-wine);}
+.rome-guide .rome-toc ol{margin:14px 0 0;padding-left:1.4em;}
+.rome-guide .rome-toc li{font-size:15px;line-height:1.7;margin:9px 0;}
+.rome-guide .rome-table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:24px 0 30px;border:1px solid #e2d6c5;border-radius:4px;}
+.rome-guide table{width:100%;min-width:580px;border-collapse:collapse;font-size:15px;line-height:1.8;margin:0;}
+.rome-guide th{background:#f0e8dc;color:#4e3d30;text-align:left;font-weight:700;}
+.rome-guide th,.rome-guide td{padding:15px 17px;vertical-align:top;border-bottom:1px solid #e5ded3;}
+.rome-guide tbody tr:nth-child(even){background:#faf7f2;}
+.rome-guide tbody tr:last-child td{border-bottom:0;}
+.rome-guide .rome-section--2:last-child{margin-top:50px;padding:1px 25px 12px;background:#f6f0e6;border-bottom:2px solid var(--rome-gold);}
+.rome-guide .rome-section--2:last-child h2{border-top:0;margin-top:24px;}
+@media(max-width:600px){.rome-guide{font-size:16px;line-height:1.95;padding:24px 16px;}.rome-guide .rome-intro{font-size:16px;}.rome-guide h2{margin-top:42px;padding-top:20px;}.rome-guide .rome-gallery{grid-template-columns:1fr;gap:28px;}.rome-guide .rome-photo{margin-top:23px;margin-bottom:30px;}.rome-guide .rome-toc{padding:16px;}.rome-guide .rome-section--2:last-child{padding-left:16px;padding-right:16px;}.rome-guide th,.rome-guide td{padding:12px;}}
+@media(prefers-reduced-motion:reduce){.rome-guide a{transition:none;}}
