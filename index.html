@@ -289,6 +289,8 @@
  .has-ocean-swell .ocean-wave{opacity:.35}
 }
 </style>
+  <link rel="stylesheet" href="/assets/travel-finder.css?v=20261105-hover6">
+  <script src="/assets/travel-finder.js?v=20261105-hover6" defer></script>
 </head>
 
 <body>
@@ -306,9 +308,7 @@
           分享給想到歐洲自由行的旅客參考第一手旅行經驗。
         </p>
 
-        <a class="hero-cta" href="/italy/venice-travel-guide/">
-          閱讀第一篇：威尼斯自由行
-        </a>
+        <a class="hero-cta tf-open tf-surprise tf-hero-invite" href="#latest" data-tf-open><svg class="tf-flight-scene" viewBox="0 0 92 64" fill="none" aria-hidden="true"><path class="tf-flight-trail" d="M3 53c23 6 29-10 18-14-12-4-13 17 2 16 16-1 19-15 23-22" stroke="currentColor" stroke-width=".9"/><g class="tf-plane"><path d="m30 28 45-17-13 42-13-16-19-9Z"/><path class="tf-plane-fold" d="m49 37 26-26-33 22 7 4Z"/><path d="m49 37 26-26M49 37l-2 12 8-5"/></g><g class="tf-plane-spark" stroke="currentColor" stroke-width=".7"><path d="m79 43 2 5 5 2-5 2-2 5-2-5-5-2 5-2Z"/><path d="M13 15v8m-4-4h8"/></g></svg><span class="tf-mail-copy"><span class="tf-surprise-en" lang="en">A postcard, just for you</span><span class="tf-surprise-title">寄給我一段旅行推薦</span><span class="tf-surprise-help">搜尋城市・翻閱明信片・偶遇旅行靈感</span></span><span class="tf-mail-arrow" aria-hidden="true">↗</span></a><small class="tf-hover-hint"><span class="tf-hover-desktop">滑鼠輕停，讓一張明信片帶你出發。</span><span class="tf-hover-touch">輕點邀請卡，開啟你的旅行靈感。</span></small>
       </div>
 
       <div
@@ -440,6 +440,49 @@
         </p>
       </div>
 
+<dialog class="tf-dialog" id="travel-finder-dialog" aria-labelledby="wander-title"><div class="tf-dialog-surface"><div class="tf-dialog-toolbar"><span>RAFAEL · A CABINET OF EUROPEAN MEMORIES</span><button type="button" class="tf-dialog-close" aria-label="關閉旅行索引">關閉 ×</button></div><section class="travel-finder" data-travel-finder aria-labelledby="wander-title" hidden>
+  <div class="tf-intro">
+    <p class="tf-eyebrow"><span aria-hidden="true">✧</span> THE TRAVEL CABINET · RAFAEL <span class="tf-edition">EUROPE / VOL. 01</span></p>
+    <div class="tf-layout">
+      <div class="tf-copy">
+        <p class="tf-script" lang="en">Where shall we wander?</p>
+        <h2 id="wander-title">翻找一段，想去的風景。</h2>
+        <p class="tf-description">循著海風、石巷建築到一杯波特酒，<br>尋找屬於你的歐洲靈感。</p>
+        <form class="tf-form" role="search" aria-label="搜尋旅行文章">
+          <label class="tf-search-label" for="travel-finder-query">你想往哪裡去？ <span lang="en">A PLACE, A MEMORY</span></label>
+          <div class="tf-search"><svg class="tf-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.4 15.4 5 5"/></svg><input id="travel-finder-query" type="search" placeholder="試試：埃茲、Porto、宮殿、蛋塔…" autocomplete="off" maxlength="100" aria-controls="travel-article-grid"><button class="tf-submit" type="submit">尋找風景 <span aria-hidden="true">↗</span></button></div>
+        </form>
+        <div class="tf-countries" role="group" aria-label="依國家篩選文章">
+          <button class="is-active" type="button" data-tf-country="all" aria-pressed="true"><span class="tf-country-native">All journeys</span><span class="tf-country-zh">全部旅行</span><span class="tf-country-count">7</span></button>
+          <button type="button" data-tf-country="italy" aria-pressed="false"><span class="tf-country-native" lang="it">Italia</span><span class="tf-country-zh">義大利</span><span class="tf-country-count">2</span></button>
+          <button type="button" data-tf-country="spain" aria-pressed="false"><span class="tf-country-native" lang="es">España</span><span class="tf-country-zh">西班牙</span><span class="tf-country-count">2</span></button>
+          <button type="button" data-tf-country="france" aria-pressed="false"><span class="tf-country-native" lang="fr">France</span><span class="tf-country-zh">法國</span><span class="tf-country-count">1</span></button>
+          <button type="button" data-tf-country="portugal" aria-pressed="false"><span class="tf-country-native" lang="pt">Portugal</span><span class="tf-country-zh">葡萄牙</span><span class="tf-country-count">2</span></button>
+        </div>
+        <div class="tf-moods" role="group" aria-label="依旅行靈感篩選"><span>循著靈感走</span><button type="button" data-tf-mood="sea" aria-pressed="false">海風與水岸</button><button type="button" data-tf-mood="stone" aria-pressed="false">石巷與建築</button><button type="button" data-tf-mood="taste" aria-pressed="false">風味收藏</button></div>
+        <button type="button" class="tf-surprise"><svg class="tf-flight-scene" viewBox="0 0 92 64" fill="none" aria-hidden="true"><path class="tf-flight-trail" d="M3 53c23 6 29-10 18-14-12-4-13 17 2 16 16-1 19-15 23-22" stroke="currentColor" stroke-width=".9"/><g class="tf-plane"><path d="m30 28 45-17-13 42-13-16-19-9Z"/><path class="tf-plane-fold" d="m49 37 26-26-33 22 7 4Z"/><path d="m49 37 26-26M49 37l-2 12 8-5"/></g><g class="tf-plane-spark" stroke="currentColor" stroke-width=".7"><path d="m79 43 2 5 5 2-5 2-2 5-2-5-5-2 5-2Z"/><path d="M13 15v8m-4-4h8"/></g></svg><span class="tf-mail-copy"><span class="tf-surprise-en" lang="en">A postcard, just for you</span><span class="tf-surprise-title">寄給我一段旅行推薦</span><span class="tf-surprise-help">輕寄一張明信片，讓風景為你帶路。</span></span><span class="tf-mail-arrow" aria-hidden="true">↗</span></button>
+        <p class="tf-delivery" role="status" aria-live="polite">也許，下一段喜歡的風景就在這裡。</p>
+      </div>
+      <div class="tf-art" aria-label="可翻面的旅行明信片">
+        <div class="tf-orbit" aria-hidden="true"></div>
+        <span class="tf-art-note" aria-hidden="true">a little curiosity,<br>a beautiful detour.</span>
+        <figure class="tf-small-photo" aria-hidden="true"><img src="/assets/images/taylors-port-cellar-visit.jpg" alt="" width="220" height="270" loading="lazy"><figcaption>notes from Porto</figcaption></figure>
+        <div class="tf-postcard">
+          <button class="tf-flip" type="button" aria-pressed="false" aria-label="翻面閱讀 Èze 的旅行短箋"><span class="tf-flipper"><span class="tf-front"><img class="tf-feature-image" src="/assets/images/eze/eze-hero-800.webp" alt="從埃茲山城眺望地中海" width="800" height="600"><span class="tf-photo-action">輕點明信片，翻看故事 ↶</span></span><span class="tf-back" aria-hidden="true"><span class="tf-back-label">DEAR TRAVELLER,</span><span class="tf-back-city">Èze</span><span class="tf-letter-note">沿著石巷，遇見地中海的藍。</span><span class="tf-signature">With love, Rafael</span><span class="tf-back-hint">再點一下，回到風景 ↶</span></span></span></button>
+          <span class="tf-postcard-meta"><span class="tf-feature-city">Èze</span><span class="tf-feature-country">FRANCE</span></span>
+        </div>
+        <div class="tf-stamp" aria-hidden="true"><span>RAFAEL’S</span><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width=".8"><circle cx="20" cy="20" r="14"/><path d="m20 2 4 14 14 4-14 4-4 14-4-14L2 20l14-4Z"/></svg><span>TRAVEL NOTES</span></div>
+        <p class="tf-art-caption"><span class="tf-feature-number">03</span><span class="tf-feature-note">石巷盡頭，是整片地中海。</span></p>
+        <a class="tf-read" href="/france/eze-village-day-trip/">走進這段旅行 <span aria-hidden="true">↗</span></a>
+        <div class="tf-card-controls"><button type="button" class="tf-again">再寄一張 ↻</button><button type="button" class="tf-share" aria-label="分享目前明信片的文章"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="5" cy="10" r="2"/><circle cx="15" cy="4" r="2"/><circle cx="15" cy="16" r="2"/><path d="m7 9 6-4m-6 6 6 4"/></svg>分享這段旅行</button></div><p class="tf-share-status" role="status" aria-live="polite"></p><div class="tf-share-fallback" hidden><label class="tf-sr" for="tf-share-url">目前文章連結</label><input id="tf-share-url" class="tf-share-url" readonly><button type="button" class="tf-copy-link">複製連結</button></div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="tf-results-bar" hidden><p class="tf-results-count" role="status" aria-live="polite" aria-atomic="true"></p><button type="button" class="tf-reset" hidden>重看全部筆記 ↺</button></div>
+<div class="tf-empty" hidden><span aria-hidden="true">✧</span><h3>這段旅程，還在路上。</h3><p>目前沒有符合的文章。換個城市、主題或國家，再找找靈感。</p><button type="button" class="tf-empty-reset">翻閱全部旅行筆記 ↗</button></div>
+
+<div data-tf-dialog-results></div></div></dialog>
       <div class="travel-card-grid">
         <article class="travel-card travel-card--rome"><a class="travel-card__link" href="/italy/rome-travel-guide/" aria-label="閱讀羅馬兩天自由行攻略"><img class="travel-card__image" src="/assets/rome/trevi-home-cover.webp" width="1477" height="1108" alt="從窗邊欣賞羅馬特雷維噴泉全景" loading="lazy" decoding="async"><div class="travel-card__shade" aria-hidden="true"></div><div class="travel-card__content"><p class="travel-card__location">ITALY · ROME</p><h3>義大利羅馬兩天自由行攻略｜必訪景點、競技場購票與人氣美食推薦</h3><span class="travel-card__read">閱讀文章 <span aria-hidden="true">→</span></span></div></a></article>
 
