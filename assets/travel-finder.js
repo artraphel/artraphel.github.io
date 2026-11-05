@@ -97,7 +97,7 @@
       feature(item,true);delivery.textContent=`明信片已寄達：${item.label}。輕點照片，翻看背面的故事。`;
     }
     function clear(){clearTimeout(inputTimer);country='all';mood='';input.value='';render();}
-    countries.forEach(b=>{const count=b.dataset.tfCountry==='all'?cards.length:cards.filter(c=>c.country===b.dataset.tfCountry).length;b.querySelector('.tf-country-count').textContent=count;b.disabled=!count;b.addEventListener('click',()=>{clearTimeout(inputTimer);country=b.dataset.tfCountry;render();});});
+    countries.forEach(b=>{const count=b.dataset.tfCountry==='all'?cards.length:cards.filter(c=>c.country===b.dataset.tfCountry).length;b.querySelector('.tf-country-count').textContent=count;b.disabled=!count;b.addEventListener('click',()=>{clearTimeout(inputTimer);country=b.dataset.tfCountry;render();if(visible.length)feature(visible[0],true);});});
     moodButtons.forEach(b=>b.addEventListener('click',()=>{clearTimeout(inputTimer);mood=mood===b.dataset.tfMood?'':b.dataset.tfMood;render();}));
     input.addEventListener('input',()=>{clearTimeout(inputTimer);if(!composing)inputTimer=setTimeout(render,120);});
     input.addEventListener('compositionstart',()=>{composing=true;clearTimeout(inputTimer);});input.addEventListener('compositionend',()=>{composing=false;clearTimeout(inputTimer);render();});
