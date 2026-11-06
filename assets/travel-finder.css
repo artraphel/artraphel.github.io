@@ -92,3 +92,16 @@
 .tf-hover-hint{display:block;margin-top:12px;font:10px/1.8 'Noto Serif TC',serif;letter-spacing:.07em;color:#9b8257}.tf-hover-desktop{display:none}@media(hover:hover) and (pointer:fine){.tf-hover-desktop{display:inline}.tf-hover-touch{display:none}}
 @media(max-width:700px){.hero-copy .hero-cta.tf-hero-invite{max-width:440px;padding:21px 18px;gap:12px;min-height:114px}.hero-copy .tf-hero-invite .tf-flight-scene{width:47px;height:48px}.hero-copy .tf-hero-invite .tf-surprise-title{font-size:14px;letter-spacing:.03em}.hero-copy .tf-hero-invite .tf-surprise-en{font-size:16px}.hero-copy .tf-hero-invite .tf-surprise-help{font-size:9px}.tf-hover-hint{font-size:9px;letter-spacing:.02em}}
 @media(prefers-reduced-motion:reduce){.tf-hero-invite:hover .tf-plane,.tf-hero-invite:focus-visible .tf-plane{animation:none!important}}
+
+/* Quiet postcard actions: one baseline, one divider, one share symbol. */
+.tf-art-actions{position:absolute;left:32px;right:32px;bottom:-4px;display:flex;align-items:center;justify-content:space-between;gap:15px;padding:12px 0 0;border-top:1px solid #c5b49388}
+.tf-art-actions .tf-read{position:static;display:inline-flex;align-items:center;flex:1;gap:0;padding:7px 0;margin:0;border:0;font:500 12px/1.7 'Noto Serif TC',serif;letter-spacing:.055em;white-space:nowrap;transition:color .2s}
+.tf-art-actions .tf-card-controls{position:static;display:flex;align-items:center;justify-content:flex-end;flex:none;gap:12px;padding-left:15px;border-left:1px solid #c5b49366}
+.tf-art-actions .tf-again{display:inline-flex;align-items:center;gap:7px;padding:7px 0;font:11px/1.7 'Noto Serif TC',serif;color:#8c7552;white-space:nowrap;letter-spacing:.03em;transition:color .2s}
+.tf-art-actions .tf-again svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1;transition:transform .3s}
+.tf-art-actions .tf-share{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;flex:none;border:1px solid #b9a37a66;border-radius:50%;background:transparent;padding:0;color:#92774b;transition:border-color .2s,background .2s,color .2s}
+.tf-art-actions .tf-share svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:1.05}.tf-art-actions .tf-share:hover{background:#c5b18c12;border-color:#a58b58;color:#742d42}.tf-art-actions .tf-again:hover{color:#742d42}.tf-art-actions .tf-again:hover svg{transform:translateY(-2px)}.tf-art-actions .tf-read:hover{color:#9d6b51!important}
+.tf-art.is-empty .tf-art-actions{visibility:hidden}
+@media(max-width:700px){.tf-art-actions{left:24px;right:24px;gap:11px;bottom:-4px}.tf-art-actions .tf-read{font-size:11px;letter-spacing:.03em}.tf-art-actions .tf-card-controls{gap:10px;padding-left:12px}.tf-art-actions .tf-again{font-size:10px;gap:6px}.tf-art-actions .tf-share{width:33px;height:33px}}
+@media(max-width:370px){.tf-art-actions{left:17px;right:17px;gap:9px}.tf-art-actions .tf-card-controls{gap:8px;padding-left:9px}.tf-art-actions .tf-read{letter-spacing:0}.tf-art-actions .tf-again{letter-spacing:0}}
+@media(prefers-reduced-motion:reduce){.tf-art-actions *{transition:none!important}}
