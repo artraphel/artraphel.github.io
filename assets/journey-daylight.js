@@ -25,17 +25,17 @@ landscape.innerHTML=`
   <radialGradient id="jm-dawn-disc" cx="38%" cy="30%" r="75%"><stop stop-color="#fff3c8"/><stop offset=".6" stop-color="#e9c17b"/><stop offset="1" stop-color="#c89b55"/></radialGradient>
   <linearGradient id="jm-mountain" x2="0" y2="1"><stop stop-color="#c5b28e"/><stop offset="1" stop-color="#eee5d2"/></linearGradient>
   <linearGradient id="jm-forest" x2="0" y2="1"><stop stop-color="#a7aa8f"/><stop offset="1" stop-color="#d9d3b8"/></linearGradient>
-  <linearGradient id="jm-land-fade" x2="0" y2="1"><stop offset=".58" stop-color="white"/><stop offset="1" stop-color="black"/></linearGradient>
+  <linearGradient id="jm-land-fade" x2="0" y2="1"><stop offset=".78" stop-color="white"/><stop offset="1" stop-color="black"/></linearGradient>
   <mask id="jm-land-mask"><rect width="400" height="230" fill="url(#jm-land-fade)"/></mask>
   <linearGradient id="jm-mist-white"><stop stop-color="#fffcf2" stop-opacity="0"/><stop offset=".38" stop-color="#fffcf2" stop-opacity=".95"/><stop offset=".65" stop-color="#fffcf2" stop-opacity=".8"/><stop offset="1" stop-color="#fffcf2" stop-opacity="0"/></linearGradient>
  </defs>
  <g mask="url(#jm-land-mask)">
   <g class="jm-dawn-sun"><circle cx="255" cy="89" r="85" fill="url(#jm-dawn-halo)"/><circle cx="255" cy="89" r="28" fill="url(#jm-dawn-disc)"/><path d="M239 72Q251 63 266 72Q250 66 239 72" fill="#fff8dc" opacity=".7"/></g>
-  <path d="M0 178L48 145L83 158L129 118L172 143L215 102L265 143L300 121L345 151L400 137V230H0Z" fill="#d8ccb3"/>
-  <path d="M0 188L55 168L102 137L146 164L213 124L255 157L309 139L359 172L400 158V230H0Z" fill="url(#jm-mountain)"/>
-  <path d="M167 153L213 124L235 143L212 132L202 143L196 141Z" fill="#f4ead5" opacity=".8"/>
-  <path d="M0 204Q95 173 164 187T295 177T400 187V230H0Z" fill="#b7b99d"/>
-  <g class="jm-pines" fill="url(#jm-forest)"></g>
+  <path d="M0 183Q66 159 125 174T249 165T400 174V230H0Z" fill="#d9d8c3"/>
+  <g class="jm-forest-far" fill="#bbc3ae"/>
+  <path d="M0 204Q72 180 148 195T276 183T400 193V230H0Z" fill="#d0d1b8"/>
+  <g class="jm-forest-middle" fill="#a8b69c"/>
+  <g class="jm-pines" fill="#81977f"/>
   <g class="jm-valley-mist jm-valley-mist--left" fill="url(#jm-mist-white)"><ellipse cx="178" cy="154" rx="190" ry="19"/><ellipse cx="225" cy="187" rx="200" ry="17"/></g>
   <g class="jm-valley-mist jm-valley-mist--right" fill="url(#jm-mist-white)"><ellipse cx="250" cy="164" rx="192" ry="23"/><ellipse cx="160" cy="201" rx="200" ry="16"/></g>
  </g>
@@ -59,18 +59,46 @@ landscape.innerHTML=`
  </g>
 </svg>`;
 sky.prepend(landscape);
-for(const [x,y,h] of [[34,195,22],[58,188,28],[79,190,20],[107,185,32],[133,191,25],[164,190,19],[285,188,25],[307,184,34],[331,187,26],[350,192,22],[375,193,30]]){
- const tree=document.createElementNS(svgNS,'path');const w=h*.36;
- tree.setAttribute('d',`M${x} ${y-h}L${x-w*.64} ${y-h*.53}H${x-w*.34}L${x-w} ${y-h*.15}H${x-1}V${y+2}H${x+1}V${y-h*.15}H${x+w}L${x+w*.34} ${y-h*.53}H${x+w*.64}Z`);
- sky.querySelector('.jm-pines').append(tree);
+
+// Each row has a different seed, scale and ground line: a low boreal canopy.
+for(const [selector,count,base,scale,seed]of [['.jm-forest-far',37,180,1,7],['.jm-forest-middle',28,199,1.4,17],['.jm-pines',17,215,1.9,29]]){
+ for(let n=0;n<count;n++){
+  const x=7+n*390/(count-1),wave=Math.sin(n*seed)*.5+.5,h=(13+wave*17)*scale,y=base+Math.sin(n*.7)*5,w=h*.28;
+  const tree=document.createElementNS(svgNS,'path');let d=`M${x} ${y-h}`;
+  for(let k=1;k<=5;k++){const yy=y-h+k*h*.175,ww=w*k/5;d+=`Q${x-ww*.4} ${yy-h*.045} ${x-ww} ${yy}L${x-ww*.38} ${yy}`;}
+  d+=`L${x-1} ${y}H${x+1}`;
+  for(let k=5;k>=1;k--){const yy=y-h+k*h*.175,ww=w*k/5;d+=`L${x+ww*.38} ${yy}H${x+ww}Q${x+ww*.4} ${yy-h*.045} ${x+ww*.27} ${yy-h*.12}`;}
+  tree.setAttribute('d',d+'Z');tree.setAttribute('opacity',String(.55+wave*.35));sky.querySelector(selector).append(tree);
+ }
 }
-function syncScenePlayback(){const visible=root.classList.contains('jm-motion-visible')&&!document.hidden;sceneAnimations.forEach(a=>{if(a.playState!=='finished')visible?a.play():a.pause();});}
+// Canvas 2D fog sprites are painted once, then moved on softly undulating paths.
+const fogCanvas=document.createElement('canvas');fogCanvas.className='jm-flowing-mist';sky.append(fogCanvas);
+const fogCtx=fogCanvas.getContext('2d');let fogFrame=0,fogTime=0,fogLast=0,fogPaint=0,fogWidth=1,fogHeight=1;
+const mistSprite=document.createElement('canvas');mistSprite.width=700;mistSprite.height=160;
+const spriteCtx=mistSprite.getContext('2d');
+if(fogCtx&&spriteCtx){
+ for(let n=0;n<9;n++){const x=45+n*76,y=76+Math.sin(n*2.7)*17;const g=spriteCtx.createRadialGradient(x,y,1,x,y,78);g.addColorStop(0,'rgba(255,254,246,.35)');g.addColorStop(.45,'rgba(255,254,246,.19)');g.addColorStop(1,'rgba(255,254,246,0)');spriteCtx.fillStyle=g;spriteCtx.fillRect(x-80,y-80,160,160);}
+ root.classList.add('jm-canvas-mist-ready');
+ function fitFog(){fogWidth=stage.clientWidth;fogHeight=stage.clientHeight;const dpr=Math.min(window.devicePixelRatio||1,1.5);fogCanvas.width=Math.round(fogWidth*dpr);fogCanvas.height=Math.round(fogHeight*dpr);fogCtx.setTransform(dpr,0,0,dpr,0,0);drawFog();}
+ function drawFog(){fogCtx.clearRect(0,0,fogWidth,fogHeight);const t=fogTime;
+  for(let n=0;n<5;n++){const span=fogWidth*1.05,cycle=(t*(.018+n*.003)+n*.21)%1;const x=(n%2?1-cycle:cycle)*(fogWidth+span)-span,y=fogHeight*(.16+n*.075)+Math.sin(t*.28+n)*fogHeight*.018;fogCtx.globalAlpha=(.6-n*.06)*(t<18?1-t/50:.64);fogCtx.drawImage(mistSprite,x,y,span,fogHeight*(.14+n*.009));}
+ }
+ function tickFog(now){fogFrame=0;const running=current==='morning'&&root.classList.contains('jm-motion-visible')&&!document.hidden&&!reduce.matches;if(!running){fogLast=0;return;}if(fogLast)fogTime+=Math.min((now-fogLast)/1000,.1);fogLast=now;if(now-fogPaint>33){drawFog();fogPaint=now;}fogFrame=requestAnimationFrame(tickFog);}
+ function resumeFog(){const running=current==='morning'&&root.classList.contains('jm-motion-visible')&&!document.hidden&&!reduce.matches;if(running&&!fogFrame){fogLast=0;fogFrame=requestAnimationFrame(tickFog);}else if(!running){cancelAnimationFrame(fogFrame);fogFrame=0;fogLast=0;if(current==='morning')drawFog();}}
+ sky.resumeFog=resumeFog;sky.restartFog=()=>{fogTime=0;drawFog();};
+ new ResizeObserver(fitFog).observe(stage);fitFog();
+}
+// Apply the same display correction to the map, borders, routes and city points.
+const atlasPlane=document.createElement('div');atlasPlane.className='jm-atlas-plane';const atlasPins=document.createElement('div');atlasPins.className='jm-atlas-plane jm-atlas-pins';
+for(const el of [...stage.children])if(el.matches('.journey-map-stage__map,.journey-country-highlights'))atlasPlane.append(el);else if(el.matches('.journey-nautical-routes,.journey-marker,.voyage-vessel-anchor,.journey-voyage-ship'))atlasPins.append(el);
+stage.prepend(atlasPlane,atlasPins);
+function syncScenePlayback(){sky.resumeFog?.();const visible=root.classList.contains('jm-motion-visible')&&!document.hidden;sceneAnimations.forEach(a=>{if(a.playState!=='finished')visible?a.play():a.pause();});}
 function sceneMotion(next){
- sceneAnimations.forEach(a=>a.cancel());sceneAnimations=[];
+ sceneAnimations.forEach(a=>a.cancel());sceneAnimations=[];sky.restartFog?.();
  if(reduce.matches||!Element.prototype.animate)return;
  const play=(selector,frames,options)=>{const a=sky.querySelector(selector).animate(frames,{fill:'forwards',easing:'cubic-bezier(.25,.55,.25,1)',...options});sceneAnimations.push(a);};
  if(next==='morning'){
-  play('.jm-dawn-sun',[{transform:'translateY(105px)',opacity:.4},{transform:'translateY(0)',opacity:1}],{duration:14000});
+  const arc=Array.from({length:41},(_,n)=>{const t=n/40,u=1-t;return {offset:t,transform:`translate(${u*u*-58+2*u*t*-37}px,${u*u*105+2*u*t*15}px)`,opacity:.45+.55*t};});play('.jm-dawn-sun',arc,{duration:16000,easing:'linear'});
   play('.jm-valley-mist--left',[{transform:'translateX(16px)',opacity:1},{transform:'translateX(-115px)',opacity:.12}],{duration:16000});
   play('.jm-valley-mist--right',[{transform:'translateX(-12px)',opacity:1},{transform:'translateX(115px)',opacity:.08}],{duration:18000});
   play('.jm-fog',[{opacity:1},{opacity:.7,offset:.35},{opacity:.18}],{duration:18000});

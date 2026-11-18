@@ -45,3 +45,17 @@
 @media(prefers-reduced-motion:reduce){.jm-landscapes>svg{transition:none}.jm-sea-ripples{animation:none}.jm-valley-mist{opacity:.2}.jm-morning .jm-fog{opacity:.22}}
 
 .jm-landscapes>svg{mask-image:linear-gradient(to right,transparent,#000 16%,#000 87%,transparent)}
+
+/* Boreal forest study; the mist keeps flowing after sunrise. */
+.jm-flowing-mist{position:absolute;inset:0;width:100%;height:100%;opacity:0;pointer-events:none;transition:opacity 1.2s}
+.jm-morning .jm-flowing-mist{opacity:1}.jm-canvas-mist-ready.jm-morning .jm-fog{display:none}
+.jm-morning .jm-dawn-scene{opacity:.85}.jm-valley-mist{filter:blur(3px)}
+.jm-atlas-plane{position:absolute;inset:0;transform:scale(.86,1.06);transform-origin:50% 50%;z-index:1}
+.europe-journey .jm-atlas-plane .journey-marker{transform:translate(-50%,-50%) scale(1.16279,.9434)!important}
+.europe-journey .jm-atlas-plane .journey-marker__label{white-space:nowrap}
+.europe-journey .journey-map-stage__map{filter:drop-shadow(0 2px 2px #9b846c15)}
+@media(prefers-reduced-motion:reduce){.jm-flowing-mist{transition:none}.jm-morning .jm-flowing-mist{opacity:.5}}
+
+.jm-atlas-pins{z-index:6;pointer-events:none}.jm-atlas-pins .journey-marker{pointer-events:auto}
+
+.europe-journey .jm-atlas-pins .journey-marker--seville .journey-marker__label{left:26px;top:-26px;right:auto;transform:none}

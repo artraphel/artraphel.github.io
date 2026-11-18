@@ -2,7 +2,7 @@
 (() => {
   'use strict';
   const scriptURL = document.currentScript && document.currentScript.src;
-  const reliefURL = new URL('europe-relief-map.svg?v=20260920-relief1', scriptURL || new URL('/assets/journey-relief.js', location.href));
+  const reliefURL = new URL('europe-relief-map.svg?v=20261118-nordic1', scriptURL || new URL('/assets/journey-relief.js', location.href));
   function init() {
     const section = document.querySelector('[data-journey-map]');
     if (!section || section.dataset.reliefReady) return;
