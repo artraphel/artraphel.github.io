@@ -16,6 +16,7 @@
     const countries = [...root.querySelectorAll('[data-tf-country]')];
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const countryInfo = {
+      monaco: ['摩納哥 摩纳哥 摩那哥 蒙地卡羅 蒙特卡羅 monaco monte-carlo monte carlo', '摩納哥', 'MONACO'],
       italy: ['義大利 意大利 義大利自由行 italy italian italia', '義大利', 'ITALIA'],
       spain: ['西班牙 spain spanish españa espana', '西班牙', 'ESPAÑA'],
       france: ['法國 南法 蔚藍海岸 france french côte d’azur cote azur', '法國', 'FRANCE'],
@@ -23,6 +24,7 @@
     };
     // Optional city aliases and editorial captions. New cards still work without them.
     const cityInfo = {
+      monaco: ['摩納哥 摩纳哥 蒙地卡羅 蒙特卡羅 monaco monte-carlo monte carlo casino 賭場 f1 formula 1 一級方程式 賽車 髮夾彎 fairmont 法拉利 ferrari 尼斯 nice 海港 遊艇 王宮 老城 海洋博物館', 'Monte-Carlo', '在賭場的華麗與海港的蔚藍之間，慢慢散步。'],
       rome: ['羅馬 roma rome 永恆之城 梵蒂岡 競技場 特雷維 噴泉 萬神殿', 'Roma', '在永恆之城，遇見日常的浪漫。'],
       seville: ['塞維亞 塞維利亞 賽維亞 seville sevilla 西班牙廣場 王宮 都市陽傘', 'Sevilla', '把安達魯西亞的陽光，收進記憶。'],
       eze: ['埃茲 艾茲 埃兹 eze èze 尼斯 nice 熱帶花園 異國花園 中世紀 石巷 地中海 尼采', 'Èze', '石巷盡頭，是整片地中海。'],
@@ -50,8 +52,8 @@
     if (!cards.length) return;
     let country='all', mood='', visible=cards, lastFeatured=cards.find(i=>i.city==='eze')||cards[0], inputTimer, composing=false;
     let remaining=[], flightTimer;
-    const moods={rome:['stone','taste'],seville:['stone'],eze:['sea','stone'],granada:['stone'],venice:['sea','stone'],lisbon:['taste'],porto:['sea','taste']};
-    const letters={rome:'跟著噴泉的水聲走進羅馬，把廣場、古蹟與一口甜點，收進同一天的記憶。',seville:'在廣場與庭園之間，留一點時間給塞維亞的光，也留給老城緩慢的日常。',eze:'沿著中世紀石巷往上走。石牆之間，地中海的藍正等著與你相遇。',granada:'從庭院倒影走向雕花拱窗，讓格拉納達的流水與光，慢慢留在記憶裡。',venice:'轉過一條水巷，風景便換了模樣。在威尼斯，偶爾迷路也是旅行的一部分。',lisbon:'從一顆蛋塔開始認識里斯本，酥皮與奶香之間，也藏著城市的生活節奏。',porto:'走過酒窖，再坐進花園。把波多的午後，留給杯中的波特酒與遠處的城市。'};
+    const moods={monaco:['sea','stone'],rome:['stone','taste'],seville:['stone'],eze:['sea','stone'],granada:['stone'],venice:['sea','stone'],lisbon:['taste'],porto:['sea','taste']};
+    const letters={monaco:'從蒙地卡羅賭場的雕花與鏡面倒影，走向 F1 髮夾彎與港口。把摩納哥的一天，留給海風、老城和地中海的藍。',rome:'跟著噴泉的水聲走進羅馬，把廣場、古蹟與一口甜點，收進同一天的記憶。',seville:'在廣場與庭園之間，留一點時間給塞維亞的光，也留給老城緩慢的日常。',eze:'沿著中世紀石巷往上走。石牆之間，地中海的藍正等著與你相遇。',granada:'從庭院倒影走向雕花拱窗，讓格拉納達的流水與光，慢慢留在記憶裡。',venice:'轉過一條水巷，風景便換了模樣。在威尼斯，偶爾迷路也是旅行的一部分。',lisbon:'從一顆蛋塔開始認識里斯本，酥皮與奶香之間，也藏著城市的生活節奏。',porto:'走過酒窖，再坐進花園。把波多的午後，留給杯中的波特酒與遠處的城市。'};
     const art=root.querySelector('.tf-art'), flip=root.querySelector('.tf-flip'), delivery=root.querySelector('.tf-delivery');
     const surprise=root.querySelector('.tf-surprise'), again=root.querySelector('.tf-again');
     const moodButtons=[...root.querySelectorAll('[data-tf-mood]')];

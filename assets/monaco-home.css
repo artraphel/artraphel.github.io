@@ -1,0 +1,31 @@
+/* Monaco joins the existing cabinet and coastal chart, without changing its artwork. */
+.travel-card--monaco .travel-card__image{object-position:50% 48%}
+.europe-journey .journey-story-card__image[src*="monte-carlo-casino"]{object-position:50% 48%}
+/* Six countries, including All journeys. Allow room for each stamp on small screens. */
+.tf-countries{grid-template-columns:repeat(6,minmax(0,1fr))}
+@media(max-width:680px){.tf-countries{grid-template-columns:repeat(3,minmax(0,1fr))}}
+/* Neighbouring places share a tiny stretch of coast. Keep the geographic dots,
+   and separate their clickable labels with fine leader lines. */
+.europe-journey .journey-marker--eze,
+.europe-journey .journey-marker--monaco{pointer-events:none}
+.europe-journey .journey-marker--eze .journey-marker__label,
+.europe-journey .journey-marker--monaco .journey-marker__label{
+  pointer-events:auto;display:flex;align-items:center;justify-content:center;min-height:30px;
+  padding:7px 10px;box-sizing:border-box;transform:none
+}
+.europe-journey .journey-marker--eze .journey-marker__label{left:0;right:auto;top:38px}
+.europe-journey .journey-marker--monaco .journey-marker__label{left:auto;right:29px;top:-37px}
+.europe-journey.is-in-view .journey-marker--eze:is(:hover,:focus-visible,.is-active),
+.europe-journey.is-in-view .journey-marker--monaco:is(:hover,:focus-visible,.is-active){transform:translate(-50%,-50%)}
+.europe-journey .journey-marker--eze::before,
+.europe-journey .journey-marker--monaco::before{
+  content:"";position:absolute;top:50%;left:50%;width:31px;height:1px;
+  background:#937064;opacity:.65;transform-origin:0 50%;pointer-events:none
+}
+.europe-journey .journey-marker--eze::before{width:25px;transform:rotate(90deg)}
+.europe-journey .journey-marker--monaco::before{width:40px;transform:rotate(-130deg)}
+.europe-journey .journey-monaco-locator.is-active{fill:#783e4966;stroke:#783e49;stroke-width:1}
+@media(max-width:420px){
+  .europe-journey .journey-marker--eze .journey-marker__label{left:0;right:auto;top:38px}
+  .europe-journey .journey-marker--monaco .journey-marker__label{right:27px;top:-37px}
+}
