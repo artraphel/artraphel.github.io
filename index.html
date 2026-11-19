@@ -14,7 +14,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>歐洲自由行攻略與城市旅遊筆記｜Rafael Travel Notes</title>
-  <meta name="description" content="Rafael 分享親訪法國、義大利、西班牙、葡萄牙等歐洲城市的自由行攻略，整理住宿選擇、交通方式、行程安排推薦、在地美食與第一手旅遊經驗。">
+  <meta name="description" content="Rafael 分享親訪摩納哥、法國、義大利、西班牙、葡萄牙等歐洲城市的自由行攻略，整理住宿選擇、交通方式、行程安排推薦、在地美食與第一手旅遊經驗。">
   <link rel="canonical" href="https://artraphel.github.io/">
 
   <meta property="og:type" content="website">
@@ -45,7 +45,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Parisienne&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="/assets/style.css?v=20260918-chart5">
-  <!-- 2026-10-22: city postcards include Sevilla; bundled here for one-file upload. -->
+  <!-- City postcards and coastal voyages · Monaco added 2026-11-19. -->
 <script>
 /* Rafael · interactive postcards and coastal voyages. No dependencies. */
 (() => {
@@ -64,8 +64,8 @@
     const compact = matchMedia('(max-width: 820px)');
     const reduced = matchMedia('(prefers-reduced-motion: reduce)');
     const selectors = [...section.querySelectorAll('[data-city-target]')];
-    const nativeNames = {lisbon:'Lisboa', porto:'Porto', venice:'Venezia', eze:'Èze', granada:'Granada', seville:'Sevilla', rome:'Roma'};
-    const cityPoints = {lisbon:[236.7,557.9], porto:[244.3,530], venice:[556.9,478.3], rome:[559.6,521.8]};
+    const nativeNames = {lisbon:'Lisboa', porto:'Porto', venice:'Venezia', eze:'Èze', granada:'Granada', seville:'Sevilla', rome:'Roma', monaco:'Monte-Carlo'};
+    const cityPoints = {lisbon:[236.7,557.9], porto:[244.3,530], venice:[556.9,478.3], rome:[559.6,521.8], monaco:[484.0,498.8]};
     // Approaches stay at sea; the fine dotted connector leads to the city itself.
     const routes = {
       lisbon:[[95,520],[135,535],[170,552],[203,560]],
@@ -74,7 +74,8 @@
       eze:[[391,565],[418,551],[452,539],[480,526]],
       granada:[[416,607],[384,611],[352,610],[325,601]],
       seville:[[166,590],[207,605],[249,610],[275,589]],
-      rome:[[445,590],[486,602],[531,565],[547,531]]
+      rome:[[445,590],[486,602],[531,565],[547,531]],
+      monaco:[[391,565],[423,553],[461,539],[490,524]]
     };
     const deck = document.createElement('div');
     deck.className = 'postcard-deck'; deck.setAttribute('role','region');
@@ -224,7 +225,7 @@
 
 </script>
   <link rel="stylesheet" href="/assets/journey-relief.css?v=20261016-eze1">
-  <script src="/assets/journey-relief.js?v=20261118-nordic1" defer></script>
+  <script src="/assets/journey-relief.js?v=20261119-monaco1" defer></script>
 <link rel="stylesheet" href="/assets/spain.css?v=20261015-granada1">
 <link rel="stylesheet" href="/assets/site-navigation.css?v=20261016-eze1">
 <link rel="stylesheet" href="/assets/france-home.css?v=20261016-eze1">
@@ -290,13 +291,14 @@
 }
 </style>
   <link rel="stylesheet" href="/assets/travel-finder.css?v=20261106-refined8">
-  <script src="/assets/travel-finder.js?v=20261106-refined8" defer></script>
+  <script src="/assets/travel-finder.js?v=20261119-monaco1" defer></script>
 <link rel="stylesheet" href="/assets/journey-daylight.css?v=20261118-4">
 <script src="/assets/journey-daylight.js?v=20261118-4" defer></script>
+  <link rel="stylesheet" href="/assets/monaco-home.css?v=20261119-monaco1">
 </head>
 
 <body>
-  <header class="site-header"><nav class="nav" aria-label="主選單"><a class="brand" href="/">Rafael Travel Notes</a><div class="nav-links"><a href="/#latest">最新文章</a><a href="/italy/">義大利</a><a href="/portugal/">葡萄牙</a><a href="/spain/">西班牙</a><a href="/france/">法國</a></div></nav></header>
+  <header class="site-header"><nav class="nav" aria-label="主選單"><a class="brand" href="/">Rafael Travel Notes</a><div class="nav-links"><a href="/#latest">最新文章</a><a href="/italy/">義大利</a><a href="/portugal/">葡萄牙</a><a href="/spain/">西班牙</a><a href="/france/">法國</a><a href="/monaco/">摩納哥</a></div></nav></header>
 
   <main>
     <section class="hero editorial-hero">
@@ -437,7 +439,7 @@
         </h2>
 
         <p>
-          從塞維亞的廣場、格拉納達的宮殿，到威尼斯水巷與里斯本街角，記錄親自走過的歐洲城市與品嘗過的風味，
+          從蒙地卡羅的賭場、塞維亞的廣場，到威尼斯水巷與里斯本街角，記錄親自走過的歐洲城市與品嘗過的風味，
           也整理自由行住宿、交通、美食與行程靈感。
         </p>
       </div>
@@ -452,10 +454,11 @@
         <p class="tf-description">循著海風、石巷建築到一杯波特酒，<br>尋找屬於你的歐洲靈感。</p>
         <form class="tf-form" role="search" aria-label="搜尋旅行文章">
           <label class="tf-search-label" for="travel-finder-query">你想往哪裡去？ <span lang="en">A PLACE, A MEMORY</span></label>
-          <div class="tf-search"><svg class="tf-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.4 15.4 5 5"/></svg><input id="travel-finder-query" type="search" placeholder="試試：埃茲、Porto、宮殿、蛋塔…" autocomplete="off" maxlength="100" aria-controls="travel-article-grid"><button class="tf-submit" type="submit">尋找風景 <span aria-hidden="true">↗</span></button></div>
+          <div class="tf-search"><svg class="tf-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.4 15.4 5 5"/></svg><input id="travel-finder-query" type="search" placeholder="試試：摩納哥、F1、Porto、蛋塔…" autocomplete="off" maxlength="100" aria-controls="travel-article-grid"><button class="tf-submit" type="submit">尋找風景 <span aria-hidden="true">↗</span></button></div>
         </form>
         <div class="tf-countries" role="group" aria-label="依國家篩選文章">
-          <button class="is-active" type="button" data-tf-country="all" aria-pressed="true"><span class="tf-country-native">All journeys</span><span class="tf-country-zh">全部旅行</span><span class="tf-country-count">7</span></button>
+          <button class="is-active" type="button" data-tf-country="all" aria-pressed="true"><span class="tf-country-native">All journeys</span><span class="tf-country-zh">全部旅行</span><span class="tf-country-count">8</span></button>
+          <button type="button" data-tf-country="monaco" aria-pressed="false"><span class="tf-country-native" lang="fr">Monaco</span><span class="tf-country-zh">摩納哥</span><span class="tf-country-count">1</span></button>
           <button type="button" data-tf-country="italy" aria-pressed="false"><span class="tf-country-native" lang="it">Italia</span><span class="tf-country-zh">義大利</span><span class="tf-country-count">2</span></button>
           <button type="button" data-tf-country="spain" aria-pressed="false"><span class="tf-country-native" lang="es">España</span><span class="tf-country-zh">西班牙</span><span class="tf-country-count">2</span></button>
           <button type="button" data-tf-country="france" aria-pressed="false"><span class="tf-country-native" lang="fr">France</span><span class="tf-country-zh">法國</span><span class="tf-country-count">1</span></button>
@@ -485,6 +488,13 @@
 
 <div data-tf-dialog-results></div></div></dialog>
       <div class="travel-card-grid">
+        <article class="travel-card travel-card--monaco" data-search="摩納哥 蒙地卡羅 蒙特卡羅 蒙地卡罗 摩纳哥 Monaco Monte-Carlo Monte Carlo Casino F1 Formula 1 一級方程式 賽車 法拉利 Ferrari 髮夾彎 尼斯 Nice 蔚藍海岸 海港 遊艇 老城 王宮 海洋博物館">
+          <a class="travel-card__link" href="/monaco/monaco-day-trip/" aria-label="閱讀摩納哥一日遊｜6大景點推薦、F1賽道散步與尼斯出發交通">
+            <img class="travel-card__image" src="/monaco/monaco-day-trip/images/monte-carlo-casino-blue-sky-card.webp" width="1086" height="811" alt="藍天映襯蒙地卡羅賭場立面，雕花雙塔與鐵藝雨棚展現摩納哥的華麗細節" loading="lazy" decoding="async">
+            <div class="travel-card__shade" aria-hidden="true"></div>
+            <div class="travel-card__content"><p class="travel-card__location">MONACO · MONTE-CARLO</p><h3>摩納哥一日遊｜6大景點推薦、F1賽道散步與尼斯出發交通</h3><span class="travel-card__read">閱讀文章 <span aria-hidden="true">→</span></span></div>
+          </a>
+        </article>
         <article class="travel-card travel-card--rome"><a class="travel-card__link" href="/italy/rome-travel-guide/" aria-label="閱讀羅馬兩天自由行攻略"><img class="travel-card__image" src="/assets/rome/trevi-home-cover.webp" width="1477" height="1108" alt="從窗邊欣賞羅馬特雷維噴泉全景" loading="lazy" decoding="async"><div class="travel-card__shade" aria-hidden="true"></div><div class="travel-card__content"><p class="travel-card__location">ITALY · ROME</p><h3>義大利羅馬兩天自由行攻略｜必訪景點、競技場購票與人氣美食推薦</h3><span class="travel-card__read">閱讀文章 <span aria-hidden="true">→</span></span></div></a></article>
 
         <article class="travel-card travel-card--seville">
@@ -584,7 +594,7 @@
         </h2>
 
         <p class="europe-journey__intro">
-          從羅馬古蹟、威尼斯水巷、里斯本街角到波多杜羅河岸，
+          從蒙地卡羅賭場、羅馬古蹟、威尼斯水巷，到波多杜羅河岸，
           點選地圖上的城市，閱讀我實際走過的歐洲旅行故事。
         </p>
       </div>
@@ -648,7 +658,7 @@
           <img
             class="journey-map-stage__map"
             src="/assets/europe-editorial-map.svg"
-            alt="歐洲地圖，標示里斯本、波多、塞維亞、格拉納達、埃茲、威尼斯與羅馬"
+            alt="歐洲地圖，標示里斯本、波多、塞維亞、格拉納達、埃茲、摩納哥、威尼斯與羅馬"
             loading="lazy"
             decoding="async"
           >
@@ -659,6 +669,7 @@
             preserveAspectRatio="xMidYMid meet"
             aria-hidden="true"
           >
+<circle class="journey-country-highlight journey-monaco-locator" data-country-highlight="monaco" cx="484.0" cy="498.8" r="3.5"></circle>
 <path class="journey-country-highlight" data-country-highlight="france" d="M515.8,518.3L510.9,527.4L504.1,525.0L500.7,517.1L503.7,512.7L513.3,508.1L515.8,518.3Z M426.7,413.5L437.1,420.0L444.8,418.9L457.8,425.1L465.5,426.0L472.5,429.5L494.0,432.0L486.5,441.1L484.6,450.5L480.5,452.7L473.7,451.5L474.2,454.8L463.2,462.0L463.0,467.8L470.2,465.8L475.3,471.4L474.7,474.9L479.1,479.6L473.9,483.4L477.7,493.0L485.8,494.6L484.1,499.8L470.6,506.7L441.1,503.4L419.4,507.3L417.7,514.5L400.4,516.1L383.6,510.7L378.2,513.3L350.7,507.8L344.8,503.1L352.5,495.8L355.3,471.1L339.9,457.7L328.9,451.1L306.1,446.1L304.6,436.5L323.9,433.6L349.0,437.0L344.3,421.8L358.4,427.6L393.1,417.0L397.6,405.7L410.7,402.8L412.8,407.7L419.8,408.0L426.7,413.5Z"></path>
             <path
               class="journey-country-highlight"
@@ -744,6 +755,8 @@
           </button>
 
 <button class="journey-marker journey-marker--eze" type="button" style="--marker-x:48.30%;--marker-y:75.20%;--marker-delay:.40s" data-city="eze" data-map-x="483.0" data-map-y="499.0" data-status="published" data-country="FRANCE" data-city-label="ÈZE" data-kicker="TRAVEL STORY" data-title="南法埃茲山城一日遊｜尼斯交通、石巷與地中海景觀" data-summary="從海邊沿尼采之路走上山城，欣賞熱帶花園與石造巷弄，再留一段海景下午茶；整理尼斯出發交通與省力走法。" data-image="/assets/images/eze/eze-hero-800.webp" data-image-alt="從埃茲熱帶花園俯瞰石造山城屋頂、植物與地中海海灣" data-url="/france/eze-village-day-trip/" aria-label="顯示南法埃茲山城一日遊文章" aria-pressed="false"><span class="journey-marker__halo" aria-hidden="true"></span><span class="journey-marker__dot" aria-hidden="true"></span><span class="journey-marker__label">ÈZE</span></button>
+<button class="journey-marker journey-marker--monaco" type="button" style="--marker-x:48.40%;--marker-y:80.45%;--marker-delay:.44s" data-city="monaco" data-map-x="484.0" data-map-y="498.8" data-status="published" data-country="MONACO" data-city-label="MONTE-CARLO" data-kicker="TRAVEL STORY" data-title="摩納哥一日遊｜6大景點推薦、F1賽道散步與尼斯出發交通" data-summary="從蒙地卡羅賭場的雕花立面走到 F1 髮夾彎，再登上摩納哥老城眺望地中海；整理尼斯出發交通與一日遊散步路線。" data-image="/monaco/monaco-day-trip/images/monte-carlo-casino-blue-sky-card.webp" data-image-alt="藍天映襯蒙地卡羅賭場立面，雕花雙塔與鐵藝雨棚展現摩納哥的華麗細節" data-url="/monaco/monaco-day-trip/" aria-label="顯示摩納哥蒙地卡羅一日遊文章" aria-pressed="false"><span class="journey-marker__halo" aria-hidden="true"></span><span class="journey-marker__dot" aria-hidden="true"></span><span class="journey-marker__label">MONACO</span></button>
+
 <button class="journey-marker journey-marker--granada" type="button" style="--marker-x:31.94%;--marker-y:85.347%;--marker-delay:.48s" data-city="granada" data-map-x="319.4" data-map-y="575.1" data-status="published" data-country="SPAIN" data-city-label="GRANADA" data-kicker="TRAVEL STORY" data-title="阿爾罕布拉宮一日遊｜門票、庭院與塞維亞跟團心得" data-summary="從塞維亞搭巴士前往格拉納達，上午走訪阿爾拜辛區、下午參觀宮殿與花園，整理門票選擇與住宿取捨。" data-image="/assets/images/granada-alhambra/alhambra-partal-palace-gardens.webp" data-image-alt="阿爾罕布拉宮帕塔爾宮的五拱門廊、水池與花園" data-url="/spain/granada-alhambra-day-trip/" aria-label="顯示格拉納達阿爾罕布拉宮一日遊文章" aria-pressed="false"><span class="journey-marker__halo" aria-hidden="true"></span><span class="journey-marker__dot" aria-hidden="true"></span><span class="journey-marker__label">GRANADA</span></button>
 
           <!-- 塞維亞：與格拉納達並列的安達魯西亞旅行筆記 -->
@@ -792,6 +805,7 @@
             VENICE
           </button>
         <button type="button" data-city-target="eze" aria-pressed="false">ÈZE</button>
+        <button type="button" data-city-target="monaco" aria-pressed="false">MONACO</button>
 <button type="button" data-city-target="granada" aria-pressed="false">GRANADA</button>
 <button type="button" data-city-target="seville" aria-pressed="false">SEVILLE</button>
 <button type="button" data-city-target="rome" aria-pressed="false">ROME</button>
@@ -835,6 +849,7 @@
         </a>
         <a href="/spain/" style="color:inherit;text-underline-offset:4px">瀏覽西班牙旅行文章 →</a>
 <a href="/france/" style="color:inherit;text-underline-offset:4px">瀏覽法國旅行文章 →</a>
+<a href="/monaco/" style="color:inherit;text-underline-offset:4px">瀏覽摩納哥旅行文章 →</a>
       </div>
     </section>
   </main>
