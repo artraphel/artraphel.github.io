@@ -1,0 +1,17 @@
+/* Rafael · approved botanical artwork, progressive SVG line reveal. */
+.rf-floral-page{overflow-x:clip}
+.hero-carousel.rf-floral-host{isolation:isolate;overflow:visible}
+.rf-floral-ornament{position:absolute;inset:0;z-index:-1;pointer-events:none!important;user-select:none}
+.rf-photo-art{position:absolute;width:140%;height:auto;aspect-ratio:1;left:-4%;top:50%;transform:translateY(-50%);opacity:.8;overflow:visible}
+.rf-trace{stroke-dasharray:1;stroke-dashoffset:0}
+.rf-trace-finish{opacity:1}
+.rf-floral-ready .rf-trace{stroke-dashoffset:1}
+.rf-floral-ready .rf-trace-finish{opacity:0}
+.rf-floral-revealed .rf-trace{animation:rf-line-draw var(--rf-duration,3s) cubic-bezier(.3,.15,.35,1) var(--rf-delay,0s) both}
+.rf-floral-revealed .rf-trace-finish{animation:rf-line-finish 2.4s ease 11s both}
+@keyframes rf-line-draw{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
+@keyframes rf-line-finish{from{opacity:0}to{opacity:1}}
+@media(min-width:901px){.hero-carousel.rf-floral-host{right:48px;width:46%}}
+@media(max-width:900px){.hero-carousel.rf-floral-host{width:calc(100% - 42px)}.rf-photo-art{width:130%;left:10%;opacity:.68}}
+@media(max-width:600px){.hero-carousel.rf-floral-host{width:calc(100% - 30px)}.rf-photo-art{width:158%;left:-4%;opacity:.62}}
+@media(prefers-reduced-motion:reduce){.rf-floral-ready .rf-trace{stroke-dashoffset:0!important;animation:none!important}.rf-floral-ready .rf-trace-finish{opacity:1!important;animation:none!important}}
