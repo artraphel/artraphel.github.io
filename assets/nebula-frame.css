@@ -1,4 +1,4 @@
-/* Rafael · nebula v3 · layered grey-blue mist, champagne and wine dust */
+/* Rafael · nebula v4 · layered grey-blue mist, champagne and wine dust */
 .rf-nebula-host {
   --rf-nebula-strength: .82;
   --rf-nebula-duration: 15s;
@@ -201,4 +201,36 @@
 /* A static mist remains when the visitor requests reduced movement. */
 @media (prefers-reduced-motion: reduce) {
   .rf-nebula-dust { animation: none !important; }
+}
+
+/* v4: extend the same local fluid motion throughout the travel-story gallery. */
+#latest.rf-nebula-gallery {
+  --rf-nebula-strength: .76;
+}
+#latest.rf-nebula-gallery > .rf-nebula-layer {
+  inset: -20px -28px;
+  border-radius: 28px;
+  /* Vapour reaches row gaps while remaining lighter behind the centre text. */
+  --rf-nebula-opening: linear-gradient(90deg, #000 0%, #000 13%, rgba(0,0,0,.30) 37%, rgba(0,0,0,.25) 63%, #000 87%, #000 100%);
+}
+#latest.rf-nebula-gallery > .rf-nebula-layer::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: var(--rf-nebula-image);
+  background-size: 100% 440px;
+  background-repeat: repeat-y;
+  opacity: .38;
+}
+#latest.rf-nebula-gallery.rf-nebula-fluid-ready > .rf-nebula-layer::before {
+  display: none;
+}
+@media (max-width:680px) {
+  #latest.rf-nebula-gallery { --rf-nebula-strength: .64; }
+  #latest.rf-nebula-gallery > .rf-nebula-layer { inset: -14px -10px; }
+}
+
+#latest.rf-nebula-gallery > .rf-nebula-layer {
+  -webkit-mask-image: var(--rf-nebula-opening), linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent), linear-gradient(0deg, transparent, #000 36px, #000 calc(100% - 36px), transparent);
+  mask-image: var(--rf-nebula-opening), linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent), linear-gradient(0deg, transparent, #000 36px, #000 calc(100% - 36px), transparent);
 }

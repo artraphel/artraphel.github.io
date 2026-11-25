@@ -1,4 +1,4 @@
-/* Rafael nebula v3: locally advected mist and drifting dust; no orbiting paths. */
+/* Rafael nebula v4: locally advected mist and drifting dust; no orbiting paths. */
 (() => {
   'use strict';
   const script = document.currentScript;
@@ -20,6 +20,7 @@
     varying vec2 vUV;
     uniform sampler2D uImage;
     uniform float uTime;
+    uniform float uRows;
     float hash(vec2 p) {
       return fract(sin(dot(p, vec2(127.1,311.7))) * 43758.5453);
     }
@@ -45,8 +46,11 @@
       return vec4(texel.rgb,texel.a*edge);
     }
     void main() {
-      vec2 uv = vUV;
-      float t = uTime;
+      vec2 uv = vec2(vUV.x, fract(vUV.y*uRows));
+      float band = floor(vUV.y*uRows);
+      float t = uTime + band*3.7;
+      if (mod(band,2.) > .5) uv.x = 1.-uv.x;
+      uv.x += sin(band*2.4)*.035;
       // Counter-currents above/below the title; no common translation.
       float direction = mix(-1.,1.,smoothstep(.35,.65,uv.y));
       vec2 p = uv*vec2(5.5,3.1) + vec2(-t*.065*direction,t*.018);
@@ -74,7 +78,14 @@
       tint = mix(tint,wine,smoothstep(.53,.82,eddy.y)*.5);
       rgb += tint*fog*(1.-alpha);
       alpha += fog*(1.-alpha);
-      gl_FragColor = vec4(rgb,alpha);
+      // A wider, translucent blue-grey envelope; the detailed dust stays fine.
+      float spread = (sampleMist(warped+vec2(0.,.025)).a
+                    +sampleMist(warped-vec2(0.,.025)).a)*.065;
+      spread *= .66+.34*flow;
+      rgb += blue*spread*(1.-alpha);
+      alpha += spread*(1.-alpha);
+      float seam = smoothstep(0.,.055,uv.y)*smoothstep(0.,.055,1.-uv.y);
+      gl_FragColor = vec4(rgb*seam,alpha*seam);
     }
   `;
   const vertexSource = `attribute vec2 aPosition; varying vec2 vUV;
@@ -147,16 +158,22 @@
       gl.texImage2D(gl.TEXTURE_2D,0,gl.RGBA,gl.RGBA,gl.UNSIGNED_BYTE,image);
       gl.uniform1i(gl.getUniformLocation(program,'uImage'),0);
       const time=gl.getUniformLocation(program,'uTime');
+      const rows=gl.getUniformLocation(program,'uRows');
+      const gallery=host.classList.contains('rf-nebula-gallery');
       let resize=true;
       const renderer={host,valid:true,time:7.3,previous:0,lastFrame:0,
-        interval:matchMedia('(max-width: 680px)').matches?1000/24:1000/30,
+        interval:gallery||matchMedia('(max-width: 680px)').matches?1000/24:1000/30,
         draw(){
           if (resize) {
             const box=layer.getBoundingClientRect();
-            const ratio=Math.min(devicePixelRatio||1,1.25,1000/Math.max(box.width,1));
+            const pixelBudget=gallery?540000:400000;
+            const ratio=Math.min(devicePixelRatio||1,1.25,1000/Math.max(box.width,1),
+              2048/Math.max(box.height,1),Math.sqrt(pixelBudget/Math.max(box.width*box.height,1)));
             canvas.width=Math.max(1,Math.round(box.width*ratio));
             canvas.height=Math.max(1,Math.round(box.height*ratio));
-            gl.viewport(0,0,canvas.width,canvas.height); resize=false;
+            gl.viewport(0,0,canvas.width,canvas.height);
+            gl.uniform1f(rows,gallery?Math.max(1,Math.min(12,box.height/440)):1);
+            resize=false;
           }
           gl.uniform1f(time,renderer.time); gl.drawArrays(gl.TRIANGLES,0,6);
         }
@@ -192,6 +209,8 @@
     if (host.querySelector(':scope > .rf-nebula-layer')) return;
     host.classList.add('rf-nebula-host');
     if (countryRoute) host.classList.add('rf-nebula-country');
+    const gallery=host.matches('#latest.travel-journal');
+    if (gallery) host.classList.add('rf-nebula-gallery');
     const layer = document.createElement('div');
     layer.className = 'rf-nebula-layer';
     layer.setAttribute('aria-hidden', 'true');
@@ -207,8 +226,8 @@
       dust.className = 'rf-nebula-dust';
       const side = i % 4;
       const step = Math.floor(i / 4);
-      const x = side < 2 ? 5 + step * 11 : side === 2 ? 3 + (step % 2) : 96 - (step % 2);
-      const y = side === 0 ? 7 + (step % 3) * 3 : side === 1 ? 88 + (step % 3) * 2 : 10 + step * 9;
+      const x = gallery ? (i%2 ? 86+(i%5)*2 : 4+(i%5)*2) : side < 2 ? 5 + step * 11 : side === 2 ? 3 + (step % 2) : 96 - (step % 2);
+      const y = gallery ? 3+i*2.65 : side === 0 ? 7 + (step % 3) * 3 : side === 1 ? 88 + (step % 3) * 2 : 10 + step * 9;
       dust.style.cssText = `--rf-dust-x:${x}%;--rf-dust-y:${y}%;--rf-dust-size:${i % 5 === 0 ? 2.6 : 1.4}px;--rf-dust-delay:${-i * 1.7}s;--rf-dust-duration:${10 + i % 9}s`;
       layer.append(dust);
     }
@@ -217,7 +236,7 @@
   }
 
   function init() {
-    const selector = countryRoute ? '.spain-head, .portugal-head, .france-head' : '.literary-signature';
+    const selector = countryRoute ? '.spain-head, .portugal-head, .france-head' : '.literary-signature, #latest.travel-journal';
     const hosts = [...document.querySelectorAll(selector)].map(enhance).filter(Boolean);
     if (!hosts.length) return;
     const visible = new Set();
