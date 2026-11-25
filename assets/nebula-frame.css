@@ -1,0 +1,170 @@
+/* Rafael · mist, champagne dust and flowing filaments · 2026-11-25 */
+.rf-nebula-host {
+  --rf-nebula-strength: .64;
+  --rf-nebula-duration: 22s;
+  position: relative;
+  isolation: isolate;
+}
+.rf-nebula-layer {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  border-radius: inherit;
+  pointer-events: none !important;
+  user-select: none;
+  contain: paint;
+  /* A real transparent opening: the mist never fills the centre. */
+  -webkit-mask-image: var(--rf-nebula-opening, radial-gradient(ellipse 43% 27% at 50% 50%, transparent 88%, #000 112%)), linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent), linear-gradient(0deg, transparent, #000 10%, #000 90%, transparent);
+  mask-image: var(--rf-nebula-opening, radial-gradient(ellipse 43% 27% at 50% 50%, transparent 88%, #000 112%)), linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent), linear-gradient(0deg, transparent, #000 10%, #000 90%, transparent);
+  -webkit-mask-composite: source-in;
+  mask-composite: intersect;
+}
+.rf-nebula-layer *, .rf-nebula-layer *::before, .rf-nebula-layer *::after {
+  pointer-events: none !important;
+  box-sizing: border-box;
+}
+.rf-nebula-halo {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 8% 16%, rgba(117,142,162,.10), transparent 37%),
+    radial-gradient(ellipse at 92% 80%, rgba(131,71,83,.065), transparent 34%),
+    radial-gradient(ellipse at 83% 8%, rgba(204,177,121,.12), transparent 38%);
+  animation: rf-nebula-breathe var(--rf-nebula-duration) ease-in-out infinite;
+}
+.rf-nebula-mist {
+  position: absolute;
+  left: -6%;
+  width: 112%;
+  height: 43%;
+  background-image: var(--rf-nebula-image);
+  background-repeat: no-repeat;
+  background-size: 100% 200%;
+  opacity: var(--rf-nebula-strength);
+  transform-origin: 50% 50%;
+  animation: rf-nebula-drift var(--rf-nebula-duration) ease-in-out infinite;
+}
+.rf-nebula-mist--top {
+  top: -10%;
+  background-position: center top;
+}
+.rf-nebula-mist--bottom {
+  bottom: -10%;
+  background-position: center bottom;
+  animation-name: rf-nebula-counterdrift;
+  animation-duration: 24s;
+  animation-delay: -8s;
+}
+.rf-nebula-mist--echo {
+  top: -16%;
+  left: -10%;
+  width: 120%;
+  height: 36%;
+  background-position: center bottom;
+  opacity: calc(var(--rf-nebula-strength) * .24);
+  animation-name: rf-nebula-counterdrift;
+  animation-duration: 20s;
+  animation-delay: -11s;
+}
+.rf-nebula-filaments {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  fill: none;
+}
+.rf-nebula-filaments path {
+  vector-effect: non-scaling-stroke;
+  stroke-linecap: round;
+}
+.rf-nebula-thread { stroke-width: .7; opacity: .15; }
+.rf-nebula-current {
+  stroke-width: 1.1;
+  stroke-dasharray: 70 14 9 907;
+  opacity: .58;
+  animation: rf-nebula-flow var(--rf-nebula-duration) linear infinite;
+}
+.rf-nebula-current--blue {
+  stroke-width: .8;
+  stroke-dasharray: 48 952;
+  opacity: .34;
+  animation-duration: 24s;
+  animation-delay: -9s;
+  animation-direction: reverse;
+}
+.rf-nebula-current--wine {
+  stroke-width: .8;
+  stroke-dasharray: 34 966;
+  opacity: .28;
+  animation-duration: 20s;
+  animation-delay: -13s;
+}
+.rf-nebula-dust {
+  position: absolute;
+  left: var(--rf-dust-x);
+  top: var(--rf-dust-y);
+  width: var(--rf-dust-size, 2px);
+  height: var(--rf-dust-size, 2px);
+  border-radius: 50%;
+  color: #c3a46c;
+  background: currentColor;
+  box-shadow: 0 0 4px 1px rgba(205,179,125,.28);
+  opacity: .18;
+  animation: rf-nebula-dust var(--rf-dust-duration, 18s) ease-in-out var(--rf-dust-delay, 0s) infinite;
+}
+.rf-nebula-dust:nth-of-type(4n) { color: #92a5b5; }
+.rf-nebula-dust:nth-of-type(7n) { color: #a37b84; }
+.rf-nebula-layer *, .rf-nebula-layer *::before, .rf-nebula-layer *::after {
+  animation-play-state: paused;
+}
+.rf-nebula-active > .rf-nebula-layer *,
+.rf-nebula-active > .rf-nebula-layer *::before,
+.rf-nebula-active > .rf-nebula-layer *::after {
+  animation-play-state: running;
+}
+/* The signature keeps its existing font and handwriting animation. */
+.literary-signature.rf-nebula-host { --rf-nebula-strength: .72; }
+.literary-signature > .rf-nebula-layer {
+  --rf-nebula-opening: radial-gradient(ellipse 44% 30% at 50% 50%, transparent 90%, #000 115%);
+}
+.literary-signature .rf-nebula-mist { height: 47%; }
+/* Country titles: concentrate the clouds at the corners. */
+.rf-nebula-country { --rf-nebula-strength: .56; }
+.rf-nebula-country > .rf-nebula-layer { inset: -28px -24px; }
+.rf-nebula-country .rf-nebula-mist {
+  -webkit-mask-image: linear-gradient(90deg, #000 2%, rgba(0,0,0,.24) 35%, rgba(0,0,0,.18) 65%, #000 98%);
+  mask-image: linear-gradient(90deg, #000 2%, rgba(0,0,0,.24) 35%, rgba(0,0,0,.18) 65%, #000 98%);
+}
+@keyframes rf-nebula-drift {
+  0%, 100% { transform: translate3d(-1.6%, -3px, 0) scale(1.025) rotate(-.35deg); }
+  50% { transform: translate3d(1.6%, 5px, 0) scale(1.06) rotate(.4deg); }
+}
+@keyframes rf-nebula-counterdrift {
+  0%, 100% { transform: translate3d(1.7%, 4px, 0) scale(1.045) rotate(.4deg); }
+  50% { transform: translate3d(-1.7%, -4px, 0) scale(1.01) rotate(-.45deg); }
+}
+@keyframes rf-nebula-breathe { 0%, 100% { opacity: .55; } 50% { opacity: 1; } }
+@keyframes rf-nebula-flow { from { stroke-dashoffset: 0; } to { stroke-dashoffset: -1000; } }
+@keyframes rf-nebula-dust {
+  0%, 100% { opacity: .14; transform: translate3d(-3px, 2px, 0) scale(.8); }
+  45% { opacity: .65; transform: translate3d(6px, -4px, 0) scale(1.1); }
+  70% { opacity: .28; transform: translate3d(9px, -1px, 0) scale(.9); }
+}
+@media (max-width: 680px) {
+  .rf-nebula-host { --rf-nebula-strength: .56; }
+  .rf-nebula-country { --rf-nebula-strength: .46; }
+  .rf-nebula-country > .rf-nebula-layer { inset: -20px -12px; }
+  .rf-nebula-mist { height: 33%; }
+  .literary-signature .rf-nebula-mist { height: 32%; }
+  .rf-nebula-mist--echo { display: none; }
+  .rf-nebula-dust:nth-of-type(n+13) { display: none; }
+  .rf-nebula-current { opacity: .38; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .rf-nebula-layer *, .rf-nebula-layer *::before, .rf-nebula-layer *::after {
+    animation: none !important;
+  }
+  .rf-nebula-dust { opacity: .3; }
+}
