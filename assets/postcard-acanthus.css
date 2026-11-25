@@ -1,0 +1,9 @@
+/* Rafael · engraved acanthus backdrop, with quiet postcard actions. */
+.tf-art .tf-orbit{inset:-35px -28px 72px;border:0!important;border-radius:0;transform:none;pointer-events:none;user-select:none;background:url('/assets/postcard-acanthus.png?v=20261125-1') center/contain no-repeat;opacity:.58;z-index:0}
+.tf-art .tf-orbit::before,.tf-art .tf-orbit::after{content:none!important;display:none!important}
+.tf-art .tf-art-note{z-index:3}
+.tf-art .tf-art-actions{border:0!important;box-shadow:none;background:none}
+.tf-art .tf-art-actions .tf-card-controls{border:0!important;padding-left:0}
+.tf-art .tf-art-actions .tf-read{border:0!important;text-decoration:none!important;box-shadow:none}
+@media(max-width:700px){.tf-art .tf-orbit{inset:-20px -10px 78px;opacity:.5}}
+@media(max-width:370px){.tf-art .tf-orbit{inset:3px -5px 86px;opacity:.43}}
