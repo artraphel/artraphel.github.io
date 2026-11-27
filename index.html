@@ -1069,5 +1069,95 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',()=>requestAnimationFrame(init),{once:true});else requestAnimationFrame(init);
 })();
 </script>
+<style>
+.europe-journey .rafael-visible-ship {
+  position: absolute !important;
+  bottom: auto !important;
+  transform: none !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  z-index: 100 !important;
+  pointer-events: none !important;
+  transition: left 1.1s ease-in-out, top 1.1s ease-in-out;
+}
+.rafael-visible-ship svg {
+  animation: rafael-sea-float 4s ease-in-out infinite !important;
+}
+@keyframes rafael-sea-float {
+  0%, 100% { transform: translateY(2px) rotate(-1deg); }
+  50% { transform: translateY(-4px) rotate(1deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .rafael-visible-ship { transition: none !important; }
+  .rafael-visible-ship svg { animation: none !important; }
+}
+</style>
+
+<script>
+(() => {
+  function init() {
+    const root = document.querySelector('[data-journey-map]');
+    const stage = root?.querySelector('.journey-map-stage');
+    const original = root?.querySelector('.journey-voyage-ship');
+    if (!stage || !original || stage.querySelector('.rafael-visible-ship')) return;
+
+    const ship = original.cloneNode(true);
+    ship.removeAttribute('id');
+    ship.classList.add('rafael-visible-ship');
+    original.style.setProperty('visibility', 'hidden', 'important');
+    stage.append(ship);
+
+    let interacted = false;
+
+    function place() {
+      const w = ship.offsetWidth, h = ship.offsetHeight;
+      let x = stage.clientWidth * .13 - w / 2;
+      let y = stage.clientHeight * .50 - h / 2;
+
+      if (interacted) {
+        const marker = root.querySelector('.journey-marker.is-active');
+        if (marker) {
+          const a = stage.getBoundingClientRect();
+          const b = marker.getBoundingClientRect();
+          x = b.left - a.left - stage.clientLeft - w + 6;
+          y = b.top - a.top - stage.clientTop - h + 10;
+        }
+      }
+
+      ship.style.setProperty('left', Math.max(4, x) + 'px', 'important');
+      ship.style.setProperty('top', Math.max(4, y) + 'px', 'important');
+    }
+
+    const controls = '.journey-marker,[data-city-target],.postcard-deck';
+    root.addEventListener('pointerdown', e => {
+      if (e.target.closest(controls)) interacted = true;
+    }, true);
+    root.addEventListener('keydown', e => {
+      if (e.target.closest(controls) &&
+          ['Enter', ' ', 'ArrowLeft', 'ArrowRight'].includes(e.key)) {
+        interacted = true;
+        queueMicrotask(place);
+      }
+    }, true);
+    ['click', 'focusin'].forEach(type => {
+      root.addEventListener(type, () => {
+        if (interacted) queueMicrotask(place);
+      });
+    });
+
+    new MutationObserver(() => {
+      if (interacted) place();
+    }).observe(root, {
+      subtree: true, attributes: true, attributeFilter: ['class']
+    });
+
+    new ResizeObserver(place).observe(stage);
+    place();
+  }
+
+  if (document.readyState === 'complete') requestAnimationFrame(init);
+  else window.addEventListener('load', () => requestAnimationFrame(init), { once: true });
+})();
+</script>
 </body>
 </html>
