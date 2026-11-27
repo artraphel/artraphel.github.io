@@ -1,0 +1,26 @@
+/* Map artwork only. Existing heading, frame, postcards and daylight rules stay in place. */
+.europe-journey .jm-atlas-plane{transform:none}
+.europe-journey .journey-map-stage{background:#b6d7d6}
+.europe-journey .journey-map-stage__map{object-fit:fill;filter:none}
+.europe-journey .journey-map-stage__chart-lines{display:none}
+.europe-journey .journey-map-stage::after{display:none}
+.europe-journey .journey-map-stage__era{color:#4d7070;font-size:8px;z-index:4;right:4%;bottom:4%}
+.europe-journey .journey-compass{top:19%;left:4%;color:#6e8778;opacity:.8;width:49px;height:49px;z-index:4}
+.europe-journey .journey-map-illustrations{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:3}
+.europe-journey .journey-location-lines{fill:#94784e;stroke:#726e51;stroke-width:.8;stroke-dasharray:2 3;opacity:.65}
+.europe-journey .journey-context-buildings{text-anchor:middle;font:8px Georgia,serif;letter-spacing:1.2px;fill:#445d4c}
+.europe-journey .journey-country-highlight.is-active{fill:#743f3b12;stroke:#8d5d4b;stroke-width:1.2}
+.europe-journey .jm-atlas-plane .journey-marker,.europe-journey .journey-marker{width:52px;height:55px;padding:0;border:0;background:none;overflow:visible;transform:translate(-50%,-100%)!important;z-index:7;opacity:1;cursor:pointer}
+.europe-journey .journey-building{display:block;width:100%;height:100%;object-fit:contain;object-position:center bottom;filter:drop-shadow(1px 4px 2px #223f4538);transition:filter .35s,translate .35s}
+.europe-journey .journey-marker.is-active .journey-building,.europe-journey .journey-marker:hover .journey-building{translate:0 -3px;filter:drop-shadow(0 0 5px #ffe2a99c) drop-shadow(1px 4px 2px #223f4544)}
+.europe-journey .journey-marker .journey-marker__halo,.europe-journey .journey-marker .journey-marker__dot{display:none}
+.europe-journey .jm-atlas-pins .journey-marker .journey-marker__label,.europe-journey .journey-marker .journey-marker__label{position:absolute;left:50%;right:auto;top:100%;bottom:auto;transform:translateX(-50%);margin:2px 0 0;padding:3px 5px;border-radius:3px;white-space:nowrap;font-size:9px;letter-spacing:.04em;line-height:1.2;color:#44584c;background:#f6f1daeb;box-shadow:0 1px 4px #315b5e1a}
+.europe-journey .journey-marker.is-active .journey-marker__label{color:#fff5df;background:#743f3b}
+.europe-journey .journey-marker:focus-visible{outline:2px solid #743f3b;outline-offset:4px;border-radius:5px}
+.europe-journey .journey-marker--porto{width:67px}.europe-journey .journey-marker--granada{width:69px}.europe-journey .journey-marker--eze{width:54px}.europe-journey .journey-marker--monaco{width:63px}
+.europe-journey .journey-marker--venice,.europe-journey .journey-marker--rome{width:68px}
+.europe-journey .voyage-caption{color:#446d72;background:#e1ece1b8;border-radius:3px;padding:3px 5px;font-size:8px}
+.europe-journey.jm-night .journey-map-stage .journey-compass{color:#eed9b5}
+@media(max-width:1100px) and (min-width:821px){.europe-journey .jm-atlas-plane .journey-marker{width:49px;height:49px}.europe-journey .journey-marker .journey-marker__label{font-size:8px}}
+@media(max-width:480px){.europe-journey .jm-atlas-plane .journey-marker{width:39px;height:42px;min-width:0}.europe-journey .journey-marker .journey-marker__label{font-size:7px;padding:3px}.europe-journey .journey-compass{width:30px;height:30px}.europe-journey .voyage-caption{font-size:7px}.europe-journey .journey-map-stage__era{font-size:6px}}
+@media(prefers-reduced-motion:reduce){.europe-journey .journey-building{transition:none}}

@@ -1,0 +1,21 @@
+/* Original font families, supplied locally for a faithful offline preview. */
+@font-face{font-family:'Rafael Parisienne';src:url('/assets/fonts/rafael-parisienne.woff') format('woff');font-style:normal;font-weight:400;font-display:swap}
+@font-face{font-family:'Rafael Cormorant Garamond';src:url('/assets/fonts/rafael-cormorant-garamond.woff') format('woff');font-style:normal;font-weight:400 700;font-display:swap}
+@font-face{font-family:'Rafael Noto Serif TC';src:url('/assets/fonts/rafael-noto-serif-tc.woff') format('woff');font-style:normal;font-weight:400 700;font-display:swap}
+.europe-journey{font-family:'Rafael Noto Serif TC','Noto Serif TC',serif;--journey-wine:#743f3b}
+.europe-journey .europe-journey__script,.europe-journey .jm-light-kicker,.europe-journey .jm-light-en,.europe-journey .postcard-city-script{font-family:'Rafael Parisienne','Parisienne',cursive;font-weight:400;font-synthesis:none}
+.europe-journey .europe-journey__script{color:#9a7551}
+.europe-journey .europe-journey__heading h2,.europe-journey .journey-story-card__title{font-family:'Rafael Cormorant Garamond','Rafael Noto Serif TC','Noto Serif TC',serif;color:#743f3b}
+.europe-journey .europe-journey__heading h2{font-weight:500}
+.europe-journey .journey-story-card__title{font-weight:600}
+.europe-journey .europe-journey__intro,.europe-journey .journey-story-card__summary,.europe-journey .journey-story-card__action,.europe-journey .jm-light-zh,.europe-journey .jm-light-status,.europe-journey .europe-journey__legend,.europe-journey .postcard-hint{font-family:'Rafael Noto Serif TC','Noto Serif TC',serif}
+.europe-journey .europe-journey__intro,.europe-journey .journey-story-card__summary{color:#765651}
+.europe-journey .journey-story-card__action,.europe-journey .postcard-city-script,.europe-journey .europe-journey__legend{color:#743f3b}
+.europe-journey .europe-journey__eyebrow,.europe-journey .journey-marker__label,.europe-journey .journey-story-card__kicker,.europe-journey .journey-story-card__location,.europe-journey .postcard-counter,.europe-journey .postcard-stamp,.europe-journey .journey-city-selector button{font-family:'Rafael Cormorant Garamond','Rafael Noto Serif TC',serif}
+/* A transparent raster vessel inside the original SVG and sailing anchor. */
+.europe-journey.has-postcards .journey-voyage-ship{top:0;left:0;bottom:auto;width:clamp(76px,7vw,96px);height:auto;opacity:1;transform:translate(-50%,-88%);filter:drop-shadow(0 4px 3px #294b4b38)}
+.europe-journey .journey-voyage-ship svg{display:block;width:100%;height:auto;overflow:visible}
+.europe-journey .journey-voyage-ship .ship-wave{fill:none;stroke:#f4edcf;stroke-width:1.2;opacity:.7}
+.europe-journey .journey-voyage-ship .ship-art{pointer-events:none}
+.europe-journey .voyage-approach{display:none}
+@media(max-width:480px){.europe-journey.has-postcards .journey-voyage-ship{width:72px}}
